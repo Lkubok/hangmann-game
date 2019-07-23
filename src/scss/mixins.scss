@@ -1,0 +1,38 @@
+@mixin flex-cc-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+@mixin flex-cl-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+}
+@mixin flex-cr-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: center;
+}
+@mixin flex-cc-col {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+@mixin basic-app-padding {
+  padding: 0 300px;
+}
+@mixin basic-app-margin {
+  margin: 0;
+}
+@mixin basic-nav-padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

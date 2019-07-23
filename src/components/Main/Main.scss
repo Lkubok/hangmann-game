@@ -1,0 +1,11 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+.app-main {
+  @include basic-app-padding;
+  @include flex-cl-row;
+  @include basic-app-margin;
+  background-color: $dark-color;
+  color: $white-color;
+  height: 200px;
+}

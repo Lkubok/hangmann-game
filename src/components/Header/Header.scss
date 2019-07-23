@@ -1,0 +1,12 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+.app-header {
+  @include basic-app-padding;
+  @include flex-cl-row;
+  @include basic-app-margin;
+  background-color: $back-color;
+  color: $primary-color;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
