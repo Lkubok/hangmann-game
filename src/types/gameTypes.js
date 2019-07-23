@@ -1,0 +1,1 @@
+export const LAUNCH_NEW_GAME = "LAUNCH_NEW_GAME";

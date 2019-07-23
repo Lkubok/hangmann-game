@@ -7,6 +7,6 @@ export default class Main extends Component {
   }
   render() {
     const { children } = this.props;
-    return <div>{children}</div>;
+    return <div className="app-main">{children}</div>;
   }
 }

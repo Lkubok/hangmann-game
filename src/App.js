@@ -14,7 +14,7 @@ import Game from "./components/Game";
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
+  // Redirect,
   Switch
 } from "react-router-dom";
 
