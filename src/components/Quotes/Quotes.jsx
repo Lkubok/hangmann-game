@@ -22,8 +22,12 @@ export class Quotes extends Component {
   componentDidMount() {
     this.props.updateQuotes(REACT_APP_API_HOST);
   }
+
+  handleClick = el => () => this.props.triggerChange(el);
   renderTableHeads() {
-    return Object.values(this.state.columns).map(el => <th>{el}</th>);
+    return Object.values(this.state.columns).map(el => (
+      <th onClick={this.handleClick(el)}>{el}</th>
+    ));
   }
   returnTableContets() {
     if (this.props.quotes.length === 0)
