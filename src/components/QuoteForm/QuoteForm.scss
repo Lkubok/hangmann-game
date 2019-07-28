@@ -1,0 +1,25 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+.form-handler {
+  width: 100%;
+}
+
+.add-edit-form {
+  @include flex-cc-row;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  input,
+  textarea {
+    flex-basis: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 5px;
+  }
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+}
