@@ -1,0 +1,30 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
+.pagination {
+  flex-basis: 50%;
+}
+
+.pagination ul {
+  display: inline-block;
+  padding-left: 0px;
+  padding-right: 15px;
+}
+
+.pagination li {
+  display: inline-block;
+  a {
+    padding: 5px;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: $primary-color;
+      color: $dark-color;
+      border-radius: 5px;
+    }
+  }
+}
+
+.page-active {
+  color: $primary-color;
+}

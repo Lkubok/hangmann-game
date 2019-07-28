@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import Pagination from "./Pagination";
+import ButtonBox from "./ButtonBox";
+import SearchBoxAndPageSize from "./SearchBoxAndPageSize";
 import { connect } from "react-redux";
-import ReactPaginate from "react-paginate";
 import {
-  updateQuotes,
-  updateActualPage,
-  deleteQuote
-} from "../../actions/quoteActions";
+  tableHeaders as columns,
+  columnNames,
+  columnKeys
+} from "./tableHeaders";
+import { updateQuotes, changeSorting } from "../../actions/quoteActions";
 import * as selectors from "../../reducers/selectors";
 import "./Quotes.scss";
 const { REACT_APP_API_HOST } = process.env;
@@ -14,35 +17,29 @@ export class Quotes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: {
-        number: "index",
-        quote: "Quote",
-        author: "Author",
-        insertAuthor: "Inserted By",
-        dateInsert: "Date of insertion",
-        lang: "Language",
-        difficulty: "difficulty",
-        modify: ""
-      }
+      columns
     };
   }
   componentDidMount() {
-    if (this.props.quotes.length === 0) {
+    if (this.props.quotes.length === 0)
       this.props.updateQuotes(REACT_APP_API_HOST);
-    }
   }
 
-  handleClick = el => () => this.props.triggerChange(el);
-  handlePageClick = e => this.props.updateActualPage(e.selected);
-  handleEdit = e => () => console.log(e);
-  handleDelete = e => () => this.props.deleteQuote(REACT_APP_API_HOST, e);
+  handleClick = el => () =>
+    this.props.changeSorting(el, this.props.sortBy, this.props.sortOrder); // (new elem, old elem, old sorting)
+
   renderTableHeads() {
-    return Object.values(this.state.columns).map(el => (
-      <th key={el} onClick={this.handleClick(el)}>
+    return columnNames.map((el, index) => (
+      <th key={el} onClick={this.handleClick(columnKeys[index])}>
         {el}
       </th>
     ));
   }
+  dateToHuman = dateStamp => {
+    const date = new Date(dateStamp);
+    return `${date.getFullYear()}-${date.getMonth() +
+      1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  };
   returnTableContets() {
     if (this.props.quotes.length === 0)
       return (
@@ -50,23 +47,21 @@ export class Quotes extends Component {
           <td>Loading...</td>
         </tr>
       );
-    const { quotes, actualPage, pagesCount, pageLimit } = this.props;
-    const arrayToRender = quotes.slice(
-      actualPage * pageLimit,
-      actualPage * pageLimit + pageLimit
-    );
+    const { quotes, actualPage, pageLimit } = this.props;
+    const arrayStart = actualPage * pageLimit;
+    const arrayToRender = quotes.slice(arrayStart, arrayStart + pageLimit);
     return arrayToRender.map((el, index) => (
       <tr key={index}>
-        <td>{index + actualPage * pageLimit + 1}</td>
+        <td>{index + arrayStart + 1}</td>
         <td>{el.quote}</td>
         <td>{el.quoteAuthor}</td>
         <td>{el.insertAuthor}</td>
-        <td>{el.dateInsert}</td>
+        <td>{this.dateToHuman(el.dateInsert)}</td>
+        <td>{this.dateToHuman(el.dateModify)}</td>
         <td>{el.lang}</td>
         <td>{el.difficulty}</td>
         <td>
-          <button onClick={this.handleEdit(el._id)}>Edit</button> /{" "}
-          <button onClick={this.handleDelete(el._id)}>Delete</button>
+          <ButtonBox id={el._id} />
         </td>
       </tr>
     ));
@@ -74,19 +69,10 @@ export class Quotes extends Component {
   render() {
     return (
       <>
-        <ReactPaginate
-          previousLabel={"previous"}
-          nextLabel={"next"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={this.props.pagesCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={this.handlePageClick}
-          containerClassName={"pagination"}
-          subContainerClassName={"pages pagination"}
-          activeClassName={"active"}
-        />
+        <div className="quotes-navigation">
+          <Pagination />
+          <SearchBoxAndPageSize />
+        </div>
         <table>
           <thead>
             <tr>{this.renderTableHeads()}</tr>
@@ -99,16 +85,16 @@ export class Quotes extends Component {
 }
 
 const mapStateToPops = (state, ownProps) => ({
-  quotes: state.quotesReducer.quotes,
-  pagesCount: selectors.pagesCount(state),
+  quotes: selectors.getSortedQuotes(state),
   actualPage: selectors.getActualPage(state),
-  pageLimit: selectors.getPageLimit(state)
+  pageLimit: selectors.getPageLimit(state),
+  sortOrder: selectors.getSortingOrder(state),
+  sortBy: selectors.getSortingBy(state)
 });
 
 const mapDispatchToProps = {
   updateQuotes,
-  updateActualPage,
-  deleteQuote
+  changeSorting
 };
 
 export default connect(

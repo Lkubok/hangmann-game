@@ -5,6 +5,10 @@ export const loadQuotes = arrayWithQuotes => ({
   type: types.LOAD_QUOTES,
   quotes: arrayWithQuotes
 });
+export const updateSortedQuotes = arrayWithSortedQuotes => ({
+  type: types.UPDATE_SORTED_QUOTES,
+  sortedQuotes: arrayWithSortedQuotes
+});
 export const changeActualPage = actualPage => ({
   type: types.CHANGE_ACTUAL_PAGE,
   page: actualPage
@@ -18,6 +22,22 @@ export const deleteQuoteInApi = quoteId => ({
   quoteId
 });
 
+export const changeFilterQuery = query => ({
+  type: types.CHANGE_FILTER_QUERY,
+  query
+});
+export const updatePageSize = pageSize => ({
+  type: types.UPDATE_PAGE_SIZE,
+  pageSize
+});
+export const changeSortOrder = order => ({
+  type: types.CHANGE_SORT_ORDER,
+  order
+});
+export const changeSortBy = orderBy => ({
+  type: types.CHANGE_SORT_BY,
+  orderBy
+});
 // THUNK ACTIONS:
 
 export const updateQuotes = api => dispatch => {
@@ -34,7 +54,19 @@ export const updateActualPage = actualPage => dispatch => {
 };
 
 export const deleteQuote = (api, quote) => dispatch => {
-  console.log("Quote", quote, "Deleted in remote API");
-  axios.delete(api + "/quotes/delete", { data: { id: quote } });
-  dispatch(deleteQuoteInState(quote));
+  let check = window.confirm("Are You sure to delete this quote ?");
+  if (check === true) {
+    console.log("Quote", quote, "Deleted in remote API");
+    axios.delete(api + "/quotes/delete", { data: { id: quote } });
+    dispatch(deleteQuoteInState(quote));
+  }
+};
+export const changeSorting = (byElem, oldElem, curSorting) => dispatch => {
+  if (byElem === oldElem) {
+    const newSortOrder = curSorting === "ASC" ? "DESC" : "ASC";
+    dispatch(changeSortOrder(newSortOrder));
+  } else {
+    dispatch(changeSortBy(byElem));
+    dispatch(changeSortOrder("ASC"));
+  }
 };
