@@ -1,0 +1,28 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
+.btn-box {
+  @include flex-cc-col;
+}
+
+.btn {
+  @include flex-item-btn;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+  &-edit {
+    background-color: $primary-color;
+    &:hover {
+      cursor: pointer;
+      background-color: $secondary-color;
+    }
+  }
+  &-danger {
+    background-color: $danger-color;
+    &:hover {
+      cursor: pointer;
+      background-color: red;
+    }
+  }
+}
