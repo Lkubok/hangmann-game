@@ -1,13 +1,13 @@
 export const tableHeaders = {
-  number: "index",
+  number: "nr.",
   quote: "Quote",
   quoteAuthor: "Author",
-  insertAuthor: "Inserted By",
-  dateInsert: "Insert Date",
-  dateModify: "Modify Date",
-  lang: "Language",
-  difficulty: "difficulty",
-  modify: "Modify"
+  insertAuthor: "Ins By",
+  dateInsert: "Insert",
+  dateModify: "Modify",
+  lang: "Lang",
+  difficulty: "diff.",
+  modify: "mod. "
 };
 export const columnNames = Object.values(tableHeaders);
 export const columnKeys = Object.keys(tableHeaders);

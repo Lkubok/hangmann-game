@@ -30,9 +30,13 @@ export class Quotes extends Component {
 
   renderTableHeads() {
     return columnNames.map((el, index) => (
-      <th key={el} onClick={this.handleClick(columnKeys[index])}>
+      <td
+        className="table-headings"
+        key={el}
+        onClick={this.handleClick(columnKeys[index])}
+      >
         {el}
-      </th>
+      </td>
     ));
   }
   dateToHuman = dateStamp => {
@@ -68,18 +72,20 @@ export class Quotes extends Component {
   }
   render() {
     return (
-      <>
+      <div>
         <div className="quotes-navigation">
           <Pagination />
           <SearchBoxAndPageSize />
         </div>
-        <table>
-          <thead>
+        <table className="quote-table">
+          <thead className="quote-table-header">
             <tr>{this.renderTableHeads()}</tr>
           </thead>
-          <tbody>{this.returnTableContets()}</tbody>
+          <tbody className="quote-table-body">
+            {this.returnTableContets()}
+          </tbody>
         </table>
-      </>
+      </div>
     );
   }
 }
