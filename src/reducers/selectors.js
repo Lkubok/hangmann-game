@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import matchSorter from "match-sorter";
+import _ from "lodash";
 
 export const getQuotes = state => state.quotesReducer.quotes;
 export const getPageLimit = state => state.quotesReducer.pageLimit;
@@ -14,23 +15,11 @@ export const getSortedQuotes = createSelector(
   getSortingBy,
   getSortingOrder,
   (quotes, filterQuery, sortingBy, sortingOrder) => {
-    return matchSorter(quotes, filterQuery, {
-      keys: [
-        { threshold: matchSorter.rankings.WORD_STARTS_WITH, key: "quote" },
-        {
-          threshold: matchSorter.rankings.WORD_STARTS_WITH,
-          key: "quoteAuthor"
-        },
-        { threshold: matchSorter.rankings.WORD_STARTS_WITH, key: "lang" },
-        { threshold: matchSorter.rankings.WORD_STARTS_WITH, key: "difficulty" },
-        { threshold: matchSorter.rankings.WORD_STARTS_WITH, key: "dateInsert" },
-        { threshold: matchSorter.rankings.WORD_STARTS_WITH, key: "dateModify" },
-        {
-          threshold: matchSorter.rankings.WORD_STARTS_WITH,
-          key: "insertAuthor"
-        }
-      ]
+    const sortedQuotes = matchSorter(quotes, filterQuery, {
+      keys: ["quote", "quoteAuthor", "insertAuthor", "lang", "difficulty"],
+      threshold: matchSorter.rankings.WORD_STARTS_WITH
     });
+    return _.orderBy(sortedQuotes, [sortingBy], [_.toLower(sortingOrder)]);
   }
 );
 

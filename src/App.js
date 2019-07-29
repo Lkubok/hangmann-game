@@ -18,6 +18,11 @@ import {
   Switch
 } from "react-router-dom";
 
+const EditComponent = props => {
+  console.log(props);
+  return <div>{"Edit"}</div>;
+};
+
 export default class App extends Component {
   render() {
     return (
@@ -34,6 +39,7 @@ export default class App extends Component {
               <Route exact path={"/stats"} component={Stats} />
               <Route exact path={"/addquote"} component={AddQuote} />
               <Route exact path={"/login"} component={Login} />
+              <Route path={"/quotes/:quoteId/edit"} component={EditComponent} />
               <Route path="*" component={NotFoundPage} />
             </Switch>
           </Main>

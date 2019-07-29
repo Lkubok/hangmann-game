@@ -18,16 +18,16 @@ const quotesReducer = (state = initialState, action) => {
     case types.UPDATE_SORTED_QUOTES:
       return { ...state, sortedQuotes: action.sortedQuotes };
     case types.CHANGE_ACTUAL_PAGE:
-      return { ...state, actualPage: action.page };
+      return { ...state, actualPage: action.actualPage };
     case types.DELETE_QUOTE_STATE:
       return {
         ...state,
         quotes: [...state.quotes].filter(el => el._id !== action.quoteId)
       };
     case types.CHANGE_FILTER_QUERY:
-      return { ...state, filterQuery: action.query };
+      return { ...state, filterQuery: action.query, actualPage: 0 };
     case types.UPDATE_PAGE_SIZE:
-      return { ...state, pageLimit: action.pageSize };
+      return { ...state, pageLimit: action.pageSize, actualPage: 0 };
     case types.CHANGE_SORT_ORDER:
       return { ...state, sortOrder: action.order };
     case types.CHANGE_SORT_BY:

@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import {
-  changeFilterQuery,
-  updateSortedQuotes,
-  updatePageSize
+  changeFilter,
+  changeSortedQuotes,
+  changePageSize
 } from "../../../actions/quoteActions";
 import * as selectors from "../../../reducers/selectors";
 import "./SearchBoxAndPageSize.scss";
@@ -11,11 +11,11 @@ import "./SearchBoxAndPageSize.scss";
 export class SearchBoxAndPageSize extends PureComponent {
   handleChange = e => {
     const { value, name } = e.target;
-    console.log(name);
-    if (name === "pageSize") this.props.updatePageSize(parseInt(value));
+    const { changePageSize, changeFilter, changeSortedQuotes } = this.props;
+    if (name === "pageSize") changePageSize(parseInt(value));
     else {
-      this.props.changeFilter(value);
-      this.props.updateSortedQuotes(this.props.quotes);
+      changeFilter(value);
+      changeSortedQuotes(this.props.quotes);
     }
   };
   render() {
@@ -34,7 +34,7 @@ export class SearchBoxAndPageSize extends PureComponent {
           onChange={this.handleChange}
           className="quote-page-size"
         >
-          <option value="">--- chose limit per page ---</option>
+          <option value="10">--- chose limit per page ---</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
@@ -48,17 +48,17 @@ export class SearchBoxAndPageSize extends PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   filterQuery: state.quotesReducer.filterQuery,
   pageSize: state.quotesReducer.pageSize,
   quotes: selectors.getSortedQuotes(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: arg => dispatch(changeFilterQuery(arg)),
-  updateSortedQuotes: arg => dispatch(updateSortedQuotes(arg)),
-  updatePageSize: arg => dispatch(updatePageSize(arg))
-});
+const mapDispatchToProps = {
+  changeFilter,
+  changeSortedQuotes,
+  changePageSize
+};
 
 export default connect(
   mapStateToProps,
