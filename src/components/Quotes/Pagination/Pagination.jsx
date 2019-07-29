@@ -9,26 +9,32 @@ export class Pagination extends PureComponent {
   handlePageClick = e => this.props.updateActualPage(e.selected);
 
   render() {
+    const { filterQuery, pagesCount, actualPage, pageLimit } = this.props;
     return (
       <ReactPaginate
+        key={`${filterQuery}+${pageLimit}`}
         previousLabel={"previous"}
         nextLabel={"next"}
         breakLabel={"..."}
         breakClassName={"break-me"}
-        pageCount={this.props.pagesCount}
+        pageCount={pagesCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={this.handlePageClick}
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}
         activeClassName={"page-active"}
+        initialPage={actualPage}
       />
     );
   }
 }
 
 const mapStateToPops = (state, ownProps) => ({
-  pagesCount: selectors.pagesCount(state)
+  pagesCount: selectors.pagesCount(state),
+  actualPage: selectors.getActualPage(state),
+  filterQuery: selectors.getFilterQuery(state),
+  pageLimit: selectors.getPageLimit(state)
 });
 
 const mapDispatchToProps = {
