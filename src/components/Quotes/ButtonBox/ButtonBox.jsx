@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { updateQuotes, deleteQuote } from "../../../actions/quoteActions";
 import "./ButtonBox.scss";
+import { Link } from "react-router-dom";
 const { REACT_APP_API_HOST } = process.env;
 
 export class ButtonBox extends PureComponent {
@@ -10,12 +11,9 @@ export class ButtonBox extends PureComponent {
   render() {
     return (
       <div className="btn-box">
-        <button
-          className="btn btn-edit"
-          onClick={this.handleEdit(this.props.id)}
-        >
-          Edit
-        </button>
+        <Link to={`/quotes/${this.props.id}/edit`}>
+          <button className="btn btn-edit">Edit</button>
+        </Link>
         <button
           className="btn btn-danger"
           onClick={this.handleDelete(this.props.id)}
