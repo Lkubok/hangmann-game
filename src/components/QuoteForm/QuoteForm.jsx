@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { withFormik, Form, Field } from "formik";
 import { Persist } from "formik-persist";
 import "./QuoteForm.scss";
@@ -9,12 +10,12 @@ const { REACT_APP_API_HOST } = process.env;
 
 export class QuoteForm extends Component {
   render() {
-    const { errors, touched, isSubmiting } = this.props;
     console.log(this.props);
+
+    const { errors, touched, isSubmiting } = this.props;
     return (
       <div className="form-handler">
         <Form className="add-edit-form">
-          {/* <div style={{ color: "red" }}>{errors.name && errors.name}</div> */}
           <p className="label">
             Quote:{" "}
             <span className="error">{touched.quote && errors.quote}</span>
@@ -60,7 +61,7 @@ const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-const QuoteFormik = withFormik({
+const myFormik = withFormik({
   mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang }) {
     return {
       quote: quote || "",
@@ -88,17 +89,18 @@ const QuoteFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { setSubmitting, resetForm, setErrors }) {
-    console.log("submitting", values, REACT_APP_API_HOST);
     axios
       .post(REACT_APP_API_HOST + "/quotes/add", values)
       .then(response => {
         if (response.status === 200) resetForm();
       })
-      .catch(error => setErrors({ quote: `${error.message}` }));
+      .catch(error => {
+        setErrors({ quote: `${error.response.data.message}` });
+      });
   }
-})(QuoteForm);
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuoteFormik);
+export default compose(
+  connect(mapStateToProps),
+  myFormik
+)(QuoteForm);
