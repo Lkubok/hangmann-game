@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { withFormik, Form, Field } from "formik";
 import { Persist } from "formik-persist";
 import "./QuoteForm.scss";
@@ -9,6 +10,8 @@ const { REACT_APP_API_HOST } = process.env;
 
 export class QuoteForm extends Component {
   render() {
+    console.log(this.props);
+
     const { errors, touched, isSubmiting } = this.props;
     return (
       <div className="form-handler">
@@ -58,7 +61,7 @@ const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-const QuoteFormik = withFormik({
+const myFormik = withFormik({
   mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang }) {
     return {
       quote: quote || "",
@@ -93,9 +96,9 @@ const QuoteFormik = withFormik({
       })
       .catch(error => setErrors({ quote: `${error.message}` }));
   }
-})(QuoteForm);
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuoteFormik);
+export default compose(
+  connect(mapStateToProps),
+  myFormik
+)(QuoteForm);
