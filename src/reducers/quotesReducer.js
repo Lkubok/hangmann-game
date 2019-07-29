@@ -18,7 +18,7 @@ const quotesReducer = (state = initialState, action) => {
     case types.UPDATE_SORTED_QUOTES:
       return { ...state, sortedQuotes: action.sortedQuotes };
     case types.CHANGE_ACTUAL_PAGE:
-      return { ...state, actualPage: action.page };
+      return { ...state, actualPage: action.actualPage };
     case types.DELETE_QUOTE_STATE:
       return {
         ...state,

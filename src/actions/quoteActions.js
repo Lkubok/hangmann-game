@@ -1,17 +1,17 @@
 import * as types from "../types/quotesTypes";
 import axios from "axios";
 
-export const loadQuotes = arrayWithQuotes => ({
+export const loadQuotes = quotes => ({
   type: types.LOAD_QUOTES,
-  quotes: arrayWithQuotes
+  quotes
 });
-export const updateSortedQuotes = arrayWithSortedQuotes => ({
+export const updateSortedQuotes = sortedQuotes => ({
   type: types.UPDATE_SORTED_QUOTES,
-  sortedQuotes: arrayWithSortedQuotes
+  sortedQuotes
 });
 export const changeActualPage = actualPage => ({
   type: types.CHANGE_ACTUAL_PAGE,
-  page: actualPage
+  actualPage
 });
 export const deleteQuoteInState = quoteId => ({
   type: types.DELETE_QUOTE_STATE,
@@ -47,16 +47,9 @@ export const updateQuotes = api => dispatch => {
     .catch(err => console.log(err));
 };
 
-// export const fetchAndUpdateQuotes = api =>
-
-export const updateActualPage = actualPage => dispatch => {
-  dispatch(changeActualPage(actualPage));
-};
-
 export const deleteQuote = (api, quote) => dispatch => {
   let check = window.confirm("Are You sure to delete this quote ?");
   if (check === true) {
-    console.log("Quote", quote, "Deleted in remote API");
     axios.delete(api + "/quotes/delete", { data: { id: quote } });
     dispatch(deleteQuoteInState(quote));
   }
@@ -69,4 +62,16 @@ export const changeSorting = (byElem, oldElem, curSorting) => dispatch => {
     dispatch(changeSortBy(byElem));
     dispatch(changeSortOrder("ASC"));
   }
+};
+
+export const changeFilter = filterQuery => dispatch => {
+  dispatch(changeFilterQuery(filterQuery));
+};
+
+export const changeSortedQuotes = quotes => dispatch => {
+  dispatch(updateSortedQuotes(quotes));
+};
+
+export const changePageSize = pageSize => dispatch => {
+  dispatch(updatePageSize(pageSize));
 };

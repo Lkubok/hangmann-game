@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 const { REACT_APP_API_HOST } = process.env;
 
 export class ButtonBox extends PureComponent {
-  handleEdit = e => () => console.log(e);
-  handleDelete = e => () => this.props.deleteQuote(REACT_APP_API_HOST, e);
+  handleDelete = id => () => this.props.deleteQuote(REACT_APP_API_HOST, id);
   render() {
     return (
       <div className="btn-box">

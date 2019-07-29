@@ -25,8 +25,10 @@ export class Quotes extends Component {
       this.props.updateQuotes(REACT_APP_API_HOST);
   }
 
-  handleClick = el => () =>
-    this.props.changeSorting(el, this.props.sortBy, this.props.sortOrder); // (new elem, old elem, old sorting)
+  handleClick = newSortByElem => () => {
+    const { sortBy, sortOrder } = this.props;
+    this.props.changeSorting(newSortByElem, sortBy, sortOrder);
+  };
 
   renderTableHeads() {
     return columnNames.map(this.renderSingleHeader);
