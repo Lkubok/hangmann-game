@@ -17,6 +17,10 @@ import {
   // Redirect,
   Switch
 } from "react-router-dom";
+const EditComponent = props => {
+  console.log(props);
+  return <div>{"Edit"}</div>;
+};
 
 export default class App extends Component {
   render() {
@@ -33,6 +37,7 @@ export default class App extends Component {
               <Route exact path={"/quotes"} component={Quotes} />
               <Route exact path={"/stats"} component={Stats} />
               <Route exact path={"/addquote"} component={AddQuote} />
+              <Route path={"/quotes/:quoteId/edit"} component={EditComponent} />
               <Route exact path={"/login"} component={Login} />
               <Route path="*" component={NotFoundPage} />
             </Switch>
