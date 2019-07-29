@@ -29,16 +29,19 @@ export class Quotes extends Component {
     this.props.changeSorting(el, this.props.sortBy, this.props.sortOrder); // (new elem, old elem, old sorting)
 
   renderTableHeads() {
-    return columnNames.map((el, index) => (
-      <td
-        className="table-headings"
-        key={el}
-        onClick={this.handleClick(columnKeys[index])}
-      >
-        {el}
-      </td>
-    ));
+    return columnNames.map(this.renderSingleHeader);
   }
+  renderSingleHeader = (el, index) => {
+    const { sortBy, sortOrder } = this.props;
+    const key = columnKeys[index];
+    const active = sortBy === key;
+    return (
+      <td className="table-headings" key={el} onClick={this.handleClick(key)}>
+        {el}
+        {active && (sortOrder === "ASC" ? "↑" : "↓")}
+      </td>
+    );
+  };
   dateToHuman = dateStamp => {
     const date = new Date(dateStamp);
     return `${date.getFullYear()}-${date.getMonth() +
