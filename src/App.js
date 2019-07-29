@@ -11,17 +11,7 @@ import About from "./components/About";
 import AddQuote from "./components/AddQuote";
 import Game from "./components/Game";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  // Redirect,
-  Switch
-} from "react-router-dom";
-
-const EditComponent = props => {
-  console.log(props);
-  return <div>{"Edit"}</div>;
-};
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default class App extends Component {
   render() {
@@ -39,7 +29,6 @@ export default class App extends Component {
               <Route exact path={"/stats"} component={Stats} />
               <Route exact path={"/addquote"} component={AddQuote} />
               <Route exact path={"/login"} component={Login} />
-              <Route path={"/quotes/:quoteId/edit"} component={EditComponent} />
               <Route path="*" component={NotFoundPage} />
             </Switch>
           </Main>
