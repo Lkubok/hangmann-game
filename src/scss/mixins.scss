@@ -19,6 +19,14 @@
   align-items: flex-start;
   text-align: center;
 }
+@mixin flex-sb-row {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
 @mixin flex-cc-col {
   display: flex;
   flex-flow: column wrap;
@@ -41,5 +49,17 @@
   padding: 5px;
   border-radius: 5px;
   background-color: $dark-color-light;
+}
+@mixin flex-item-btn {
+  flex: 1 1 100%;
+  text-align: center;
+  padding: 2px;
+  margin: 5px 0;
+}
+@mixin input-quote-header {
+  border: 1px solid $primary-color;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $dark-color;
   color: $white-color;
 }

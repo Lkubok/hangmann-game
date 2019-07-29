@@ -1,0 +1,15 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
+.quote-query-input {
+  @include input-quote-header;
+  flex-basis: 25%;
+}
+
+.quote-page-size {
+  @include input-quote-header;
+
+  option {
+    text-align: center;
+  }
+}
