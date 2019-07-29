@@ -10,11 +10,9 @@ const { REACT_APP_API_HOST } = process.env;
 export class QuoteForm extends Component {
   render() {
     const { errors, touched, isSubmiting } = this.props;
-    console.log(this.props);
     return (
       <div className="form-handler">
         <Form className="add-edit-form">
-          {/* <div style={{ color: "red" }}>{errors.name && errors.name}</div> */}
           <p className="label">
             Quote:{" "}
             <span className="error">{touched.quote && errors.quote}</span>
@@ -88,7 +86,6 @@ const QuoteFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { setSubmitting, resetForm, setErrors }) {
-    console.log("submitting", values, REACT_APP_API_HOST);
     axios
       .post(REACT_APP_API_HOST + "/quotes/add", values)
       .then(response => {
