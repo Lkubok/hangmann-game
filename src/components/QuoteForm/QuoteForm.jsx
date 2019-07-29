@@ -94,7 +94,9 @@ const myFormik = withFormik({
       .then(response => {
         if (response.status === 200) resetForm();
       })
-      .catch(error => setErrors({ quote: `${error.message}` }));
+      .catch(error => {
+        setErrors({ quote: `${error.response.data.message}` });
+      });
   }
 });
 
