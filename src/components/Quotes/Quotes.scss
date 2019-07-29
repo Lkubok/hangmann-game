@@ -9,13 +9,22 @@
     text-align: center;
   }
 }
+.quotes-wrapper {
+  flex-basis: 100%;
+}
 .quotes-navigation {
   @include flex-sb-row;
+  background-color: $dark-color;
   border-bottom: 1px solid $primary-color;
   margin-bottom: 0px;
   padding-bottom: 20px;
   padding-top: 10px;
   width: 100%;
+  position: sticky;
+  top: 0px;
+}
+.quotes-body {
+  flex-basis: 100%;
 }
 .table-headings {
   font-weight: 700;
@@ -71,6 +80,7 @@
   }
   &-header {
     border-bottom: 1px solid $primary-color;
+
     td {
       margin: 0;
       padding-top: 10px;

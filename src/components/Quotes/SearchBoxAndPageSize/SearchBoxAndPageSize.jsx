@@ -34,7 +34,7 @@ export class SearchBoxAndPageSize extends PureComponent {
           onChange={this.handleChange}
           className="quote-page-size"
         >
-          <option value="">--- chose limit per page ---</option>
+          <option value="10">--- chose limit per page ---</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>

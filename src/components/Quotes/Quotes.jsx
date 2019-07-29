@@ -50,15 +50,19 @@ export class Quotes extends Component {
       1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   };
   returnTableContets() {
-    if (this.props.quotes.length === 0)
+    const { quotes, sortedQuotes, actualPage, pageLimit } = this.props;
+    if (quotes.length === 0 || sortedQuotes.length === 0)
       return (
         <tr className="contents-loading">
-          <td>Loading...</td>
+          <td />
+          <td>{quotes.length === 0 ? "Loading..." : "No match found"}</td>
         </tr>
       );
-    const { quotes, actualPage, pageLimit } = this.props;
     const arrayStart = actualPage * pageLimit;
-    const arrayToRender = quotes.slice(arrayStart, arrayStart + pageLimit);
+    const arrayToRender = sortedQuotes.slice(
+      arrayStart,
+      arrayStart + pageLimit
+    );
     return arrayToRender.map((el, index) => (
       <tr key={index}>
         <td>{index + arrayStart + 1}</td>
@@ -77,26 +81,29 @@ export class Quotes extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="quotes-wrapper">
         <div className="quotes-navigation">
           <Pagination />
           <SearchBoxAndPageSize />
         </div>
-        <table className="quote-table">
-          <thead className="quote-table-header">
-            <tr>{this.renderTableHeads()}</tr>
-          </thead>
-          <tbody className="quote-table-body">
-            {this.returnTableContets()}
-          </tbody>
-        </table>
+        <div className="quotes-body">
+          <table className="quote-table">
+            <thead className="quote-table-header">
+              <tr>{this.renderTableHeads()}</tr>
+            </thead>
+            <tbody className="quote-table-body">
+              {this.returnTableContets()}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToPops = (state, ownProps) => ({
-  quotes: selectors.getSortedQuotes(state),
+  quotes: selectors.getQuotes(state),
+  sortedQuotes: selectors.getSortedQuotes(state),
   actualPage: selectors.getActualPage(state),
   pageLimit: selectors.getPageLimit(state),
   sortOrder: selectors.getSortingOrder(state),
