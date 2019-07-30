@@ -113,7 +113,7 @@ const myFormik = withFormik({
       console.log("IdValues", idValues);
 
       axios
-        .post(REACT_APP_API_HOST + `/quotes/update`, idValues)
+        .put(REACT_APP_API_HOST + `/quotes/update`, idValues)
         .then(response => {
           if (response.status === 200) resetForm();
         })
