@@ -11,14 +11,15 @@ import About from "./components/About";
 import AddQuote from "./components/AddQuote";
 import EditQuote from "./components/EditQuote";
 import Game from "./components/Game";
+import history from "./history";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 export default class App extends Component {
   render() {
     return (
       <>
-        <Router>
+        <Router history={history}>
           <Header />
           <Navbar />
           <Main>

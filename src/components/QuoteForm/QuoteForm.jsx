@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
-import { Persist } from "formik-persist";
+import history from "../../history";
 import "./QuoteForm.scss";
 import * as Yup from "yup";
 import axios from "axios";
+import { updateQuotes } from "../../actions/quoteActions";
+
 const { REACT_APP_API_HOST } = process.env;
 
 export class QuoteForm extends Component {
+  handleGoBack = e => {
+    e.preventDefault();
+    history.goBack();
+  };
   render() {
     const { errors, touched, isSubmiting } = this.props;
-    console.log(this.props);
     return (
       <div className="form-handler">
         <Form className="add-edit-form">
@@ -20,15 +26,14 @@ export class QuoteForm extends Component {
             <span className="error">{touched.quote && errors.quote}</span>
           </p>
           <Field component="textarea" placeholder="Write Quote" name="quote" />
-
           <p className="label">
             Quote Author:
             <span className="error">
               {touched.quoteAuthor && errors.quoteAuthor}
             </span>
           </p>
-          <Field type="text" placeholder="Quote Author" name="quoteAuthor" />
 
+          <Field type="text" placeholder="Quote Author" name="quoteAuthor" />
           <p className="label">
             Insertion Author:
             <span className="error">
@@ -40,16 +45,16 @@ export class QuoteForm extends Component {
             placeholder="Insertion Author"
             name="insertAuthor"
           />
-
           <p className="label">
             Language:
             <span className="error">{touched.lang && errors.lang}</span>
           </p>
           <Field type="text" placeholder="Language" name="lang" />
-
-          {/* <Persist name="quote-form" /> */}
-          <button type="submit" disbaled={isSubmiting}>
+          <button className="btn" type="submit" disbaled={isSubmiting}>
             Submit quote
+          </button>
+          <button className="btn btn-info" onClick={this.handleGoBack}>
+            Go back
           </button>
         </Form>
       </div>
@@ -60,7 +65,9 @@ const mapStateToProps = (state, ownProps) => ({
   quoteId: ownProps.id
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = {
+  updateQuotes
+};
 
 const myFormik = withFormik({
   mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang, id }) {
@@ -91,7 +98,6 @@ const myFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { setSubmitting, resetForm, setErrors }) {
-    console.log(values);
     if (values.id === "") {
       delete values.id;
       axios
@@ -99,32 +105,40 @@ const myFormik = withFormik({
         .then(response => {
           if (response.status === 200) resetForm();
         })
+        .then(
+          setTimeout(() => {
+            history.push("/quotes");
+          }, 500)
+        )
         .catch(error => {
           setErrors({ quote: `${error.response.data.message}` });
         });
     } else {
       const id = values.id;
       delete values.id;
-      console.log("values: ", values);
       const idValues = {
         id,
         quote: values
       };
-      console.log("IdValues", idValues);
 
       axios
         .put(REACT_APP_API_HOST + `/quotes/update`, idValues)
         .then(response => {
-          if (response.status === 200) resetForm();
+          history.push("/quotes");
         })
         .catch(error => {
-          setErrors({ quote: `${error.response.data}` });
+          setErrors({ quote: `${error}` });
         });
     }
   }
 });
 
-export default compose(
-  connect(mapStateToProps),
-  myFormik
-)(QuoteForm);
+export default withRouter(
+  compose(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    ),
+    myFormik
+  )(QuoteForm)
+);
