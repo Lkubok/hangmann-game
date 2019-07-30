@@ -10,9 +10,8 @@ const { REACT_APP_API_HOST } = process.env;
 
 export class QuoteForm extends Component {
   render() {
-    console.log(this.props);
-
     const { errors, touched, isSubmiting } = this.props;
+    console.log(this.props);
     return (
       <div className="form-handler">
         <Form className="add-edit-form">
@@ -48,7 +47,7 @@ export class QuoteForm extends Component {
           </p>
           <Field type="text" placeholder="Language" name="lang" />
 
-          <Persist name="quote-form" />
+          {/* <Persist name="quote-form" /> */}
           <button type="submit" disbaled={isSubmiting}>
             Submit quote
           </button>
@@ -57,17 +56,20 @@ export class QuoteForm extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state, ownProps) => ({
+  quoteId: ownProps.id
+});
 
 const mapDispatchToProps = dispatch => ({});
 
 const myFormik = withFormik({
-  mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang }) {
+  mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang, id }) {
     return {
       quote: quote || "",
       quoteAuthor: quoteAuthor || "",
       insertAuthor: insertAuthor || "",
-      lang: lang || ""
+      lang: lang || "",
+      id: id || ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -89,14 +91,36 @@ const myFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { setSubmitting, resetForm, setErrors }) {
-    axios
-      .post(REACT_APP_API_HOST + "/quotes/add", values)
-      .then(response => {
-        if (response.status === 200) resetForm();
-      })
-      .catch(error => {
-        setErrors({ quote: `${error.response.data.message}` });
-      });
+    console.log(values);
+    if (values.id === "") {
+      delete values.id;
+      axios
+        .post(REACT_APP_API_HOST + `/quotes/add`, values)
+        .then(response => {
+          if (response.status === 200) resetForm();
+        })
+        .catch(error => {
+          setErrors({ quote: `${error.response.data.message}` });
+        });
+    } else {
+      const id = values.id;
+      delete values.id;
+      console.log("values: ", values);
+      const idValues = {
+        id,
+        quote: values
+      };
+      console.log("IdValues", idValues);
+
+      axios
+        .post(REACT_APP_API_HOST + `/quotes/update`, idValues)
+        .then(response => {
+          if (response.status === 200) resetForm();
+        })
+        .catch(error => {
+          setErrors({ quote: `${error.response.data}` });
+        });
+    }
   }
 });
 
