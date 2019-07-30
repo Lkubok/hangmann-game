@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import QuoteFormik from "../QuoteForm";
 
 export default class AddQuote extends Component {
   render() {
-    return <div>Add Quote</div>;
+    return <QuoteFormik />;
   }
 }
