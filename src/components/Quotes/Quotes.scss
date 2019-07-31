@@ -13,7 +13,13 @@
   flex-basis: 100%;
 }
 .quotes-navigation {
-  @include flex-sb-row;
+  @media all and (max-width: 1920px) {
+    @include flex-sb-row;
+  }
+  @media all and (max-width: 992px) {
+    @include flex-cc-col;
+  }
+
   background-color: $dark-color;
   border-bottom: 1px solid $primary-color;
   margin-bottom: 0px;
@@ -39,8 +45,15 @@
   &-header {
     flex-basis: 100%;
     tr {
+      @media all and (max-width: 1920px) {
+        flex-flow: row;
+      }
+      @media all and (max-width: 768px) {
+        flex-flow: column;
+        height: 200px;
+      }
       display: flex;
-      flex-flow: row;
+
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid $primary-color;
@@ -98,4 +111,6 @@
       }
     }
   }
+}
+.quote-table-item {
 }

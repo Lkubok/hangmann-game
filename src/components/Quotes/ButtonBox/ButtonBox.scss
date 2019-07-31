@@ -2,11 +2,18 @@
 @import "../../../scss/variables.scss";
 
 .btn-box {
-  @include flex-cc-col;
+  @media all and (max-width: 1920px) {
+    @include flex-cc-col;
+  }
+  @media all and (max-width: 768px) {
+    @include flex-cc-row;
+    width: 100%;
+  }
 }
 
 .btn {
   @include flex-item-btn;
+  flex-basis: 50%;
   width: 100%;
   border: 0;
   border-radius: 5px;
