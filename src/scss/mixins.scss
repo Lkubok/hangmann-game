@@ -38,19 +38,24 @@
 }
 @mixin basic-app-padding {
   @media all and (min-width: 554px) {
-    padding: 0 5px;
+    padding-left: 0 5px;
+    padding-right: 0 5px;
   }
   @media all and (min-width: 768px) {
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   @media all and (min-width: 992px) {
-    padding: 0 30px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   @media all and (min-width: 1200px) {
-    padding: 0 100px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
   @media all and (min-width: 1600px) {
-    padding: 0 300px;
+    padding-left: 300px;
+    padding-right: 300px;
   }
 }
 @mixin basic-app-margin {
