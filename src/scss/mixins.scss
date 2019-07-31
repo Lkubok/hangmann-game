@@ -44,6 +44,12 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+@mixin input-add-edit-quote {
+  border: 1px solid $primary-color;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: $dark-color-light;
+}
 @mixin flex-item-btn {
   flex: 1 1 100%;
   text-align: center;

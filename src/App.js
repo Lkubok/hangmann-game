@@ -9,15 +9,17 @@ import Quotes from "./components/Quotes";
 import NotFoundPage from "./components/NotFoundPage";
 import About from "./components/About";
 import AddQuote from "./components/AddQuote";
+import EditQuote from "./components/EditQuote";
 import Game from "./components/Game";
+import history from "./history";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 export default class App extends Component {
   render() {
     return (
       <>
-        <Router>
+        <Router history={history}>
           <Header />
           <Navbar />
           <Main>
@@ -28,6 +30,7 @@ export default class App extends Component {
               <Route exact path={"/quotes"} component={Quotes} />
               <Route exact path={"/stats"} component={Stats} />
               <Route exact path={"/addquote"} component={AddQuote} />
+              <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />
               <Route exact path={"/login"} component={Login} />
               <Route path="*" component={NotFoundPage} />
             </Switch>

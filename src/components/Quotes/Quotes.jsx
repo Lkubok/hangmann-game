@@ -8,7 +8,11 @@ import {
   columnNames,
   columnKeys
 } from "./tableHeaders";
-import { updateQuotes, changeSorting } from "../../actions/quoteActions";
+import {
+  updateQuotes,
+  changeSorting,
+  removeAllQuotes
+} from "../../actions/quoteActions";
 import * as selectors from "../../reducers/selectors";
 import "./Quotes.scss";
 const { REACT_APP_API_HOST } = process.env;
@@ -23,6 +27,9 @@ export class Quotes extends Component {
   componentDidMount() {
     if (this.props.quotes.length === 0)
       this.props.updateQuotes(REACT_APP_API_HOST);
+  }
+  componentWillUnmount() {
+    this.props.removeAllQuotes();
   }
 
   handleClick = newSortByElem => () => {
@@ -49,7 +56,7 @@ export class Quotes extends Component {
     return `${date.getFullYear()}-${date.getMonth() +
       1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   };
-  returnTableContets() {
+  renderTableContents() {
     const { quotes, sortedQuotes, actualPage, pageLimit } = this.props;
     if (quotes.length === 0 || sortedQuotes.length === 0)
       return (
@@ -92,7 +99,7 @@ export class Quotes extends Component {
               <tr>{this.renderTableHeads()}</tr>
             </thead>
             <tbody className="quote-table-body">
-              {this.returnTableContets()}
+              {this.renderTableContents()}
             </tbody>
           </table>
         </div>
@@ -112,6 +119,7 @@ const mapStateToPops = (state, ownProps) => ({
 
 const mapDispatchToProps = {
   updateQuotes,
+  removeAllQuotes,
   changeSorting
 };
 
