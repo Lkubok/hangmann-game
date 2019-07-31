@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Box Component Should match snapshot after mount 1`] = `
+<Fragment>
+  <input
+    className="quote-query-input"
+    id="filterQuery"
+    onChange={[Function]}
+    placeholder="Type search query.."
+    type="text"
+  />
+  <select
+    className="quote-page-size"
+    name="pageSize"
+    onChange={[Function]}
+  >
+    <option
+      value="10"
+    >
+      --- chose limit per page ---
+    </option>
+    <option
+      value="5"
+    >
+      5
+    </option>
+    <option
+      value="10"
+    >
+      10
+    </option>
+    <option
+      value="15"
+    >
+      15
+    </option>
+    <option
+      value="20"
+    >
+      20
+    </option>
+    <option
+      value="30"
+    >
+      30
+    </option>
+    <option
+      value="50"
+    >
+      50
+    </option>
+    <option
+      value="100"
+    >
+      100
+    </option>
+  </select>
+</Fragment>
+`;

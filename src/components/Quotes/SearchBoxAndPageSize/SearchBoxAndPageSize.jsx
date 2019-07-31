@@ -14,8 +14,8 @@ export class SearchBoxAndPageSize extends PureComponent {
     const { changePageSize, changeFilter, changeSortedQuotes } = this.props;
     if (name === "pageSize") changePageSize(parseInt(value));
     else {
-      changeFilter(value);
-      changeSortedQuotes(this.props.quotes);
+      /*       changeFilter(value);
+      changeSortedQuotes(this.props.quotes); */
     }
   };
   render() {
@@ -27,6 +27,7 @@ export class SearchBoxAndPageSize extends PureComponent {
           value={this.props.filterQuery}
           className="quote-query-input"
           placeholder="Type search query.."
+          id="filterQuery"
         />
         <select
           name="pageSize"
