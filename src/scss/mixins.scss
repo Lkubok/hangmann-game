@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @mixin flex-cc-row {
   display: flex;
   flex-flow: row wrap;
@@ -35,7 +37,21 @@
   text-align: center;
 }
 @mixin basic-app-padding {
-  padding: 0 300px;
+  @media all and (min-width: 554px) {
+    padding: 0 5px;
+  }
+  @media all and (min-width: 768px) {
+    padding: 0 10px;
+  }
+  @media all and (min-width: 992px) {
+    padding: 0 30px;
+  }
+  @media all and (min-width: 1200px) {
+    padding: 0 100px;
+  }
+  @media all and (min-width: 1600px) {
+    padding: 0 300px;
+  }
 }
 @mixin basic-app-margin {
   margin: 0;
