@@ -133,8 +133,9 @@ const myFormik = withFormik({
   }
 });
 
-export default withRouter(
+export default compose(
   compose(
+    withRouter,
     connect(
       mapStateToProps,
       mapDispatchToProps
