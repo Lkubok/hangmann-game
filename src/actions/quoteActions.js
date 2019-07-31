@@ -75,3 +75,7 @@ export const changeSortedQuotes = quotes => dispatch => {
 export const changePageSize = pageSize => dispatch => {
   dispatch(updatePageSize(pageSize));
 };
+export const removeAllQuotes = () => dispatch => {
+  dispatch(loadQuotes([]));
+  dispatch(updateSortedQuotes([]));
+};

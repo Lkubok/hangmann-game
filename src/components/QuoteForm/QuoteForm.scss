@@ -32,7 +32,7 @@
     resize: none;
     height: 100px;
   }
-  button {
+  .btn {
     border: 0;
     background-color: $dark-color-light;
     color: $white-color;
@@ -46,6 +46,14 @@
       cursor: pointer;
       background-color: $primary-color;
       color: $dark-color;
+    }
+    &-info {
+      border: 1px solid $secondary-color;
+      background-color: $dark-color;
+      &:hover {
+        background-color: $dark-color-light;
+        color: $white-color;
+      }
     }
   }
 }
