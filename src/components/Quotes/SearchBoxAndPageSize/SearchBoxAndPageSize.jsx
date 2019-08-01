@@ -10,6 +10,7 @@ import "./SearchBoxAndPageSize.scss";
 
 export class SearchBoxAndPageSize extends PureComponent {
   handleChange = e => {
+    console.log("aaa");
     const { value, name } = e.target;
     const { changePageSize, changeFilter, changeSortedQuotes } = this.props;
     if (name === "pageSize") changePageSize(parseInt(value));
