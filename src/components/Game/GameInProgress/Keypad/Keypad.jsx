@@ -7,18 +7,31 @@ import * as selectors from "../../../../reducers/selectors";
 import "./Keypad.scss";
 
 class Keypad extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      typed: [],
+      untyped: []
+    };
+  }
   onKeyPress = button => {
+    this.forceUpdate();
     const { pressLetter, gameId, typed } = this.props;
     pressLetter(button, gameId, typed);
+    /*     this.setState(prevState => {
+      prevState.typed.push(button);
+    }); */
   };
   listTypedButtons = () => {
     return this.props.typed.join(" ");
   };
+  componentDidUpdate() {}
 
   render() {
     return (
       <div className="keyboard">
         <Keyboard
+          key={this.listTypedButtons()}
           onKeyPress={button => this.onKeyPress(button)}
           layout={{
             default: [
@@ -29,12 +42,14 @@ class Keypad extends Component {
           }}
           buttonTheme={[
             {
-              class: "key-button-typed",
-              buttons: ""
+              class: "key-button key-button-typed",
+              // buttons: `"${this.state.typed.join(" ")}"`
+              buttons: "a"
             },
             {
-              class: "key-button-untyped",
-              buttons: " "
+              class: "key-button key-button-untyped",
+              // buttons: `"${this.state.untyped.join("")}"`
+              buttons: "b"
             }
           ]}
         />
@@ -44,7 +59,8 @@ class Keypad extends Component {
 }
 const mapStateToProps = state => ({
   gameId: selectors.getGameId(state),
-  typed: selectors.getTypedLetters(state)
+  typed: selectors.getTypedLetters(state),
+  guessed: selectors.getGuessedLetters(state)
 });
 const mapDispatchToProps = {
   pressLetter
