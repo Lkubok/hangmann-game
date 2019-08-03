@@ -1,0 +1,12 @@
+@import "../../../../scss/mixins.scss";
+@import "../../../../scss/variables.scss";
+
+.game-finished {
+  @include flex-cc-row;
+  position: absolute;
+  background-color: $primary-color-opacity;
+  width: 100%;
+  height: 100%;
+  font-weight: 900;
+  font-size: 3em;
+}

@@ -1,2 +1,14 @@
 @import "../../../../scss/mixins.scss";
 @import "../../../../scss/variables.scss";
+
+.key-button {
+  &-typed {
+    background-color: red !important;
+  }
+  &-untyped {
+    background-color: green !important;
+  }
+}
+.key-buton-untyped {
+  background-color: blue;
+}

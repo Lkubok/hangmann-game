@@ -6,13 +6,16 @@ export default class Loading extends Component {
     dots: ""
   };
   componentDidMount() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState(prevState => {
         return {
           dots: prevState.dots + "."
         };
       });
     }, 250);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

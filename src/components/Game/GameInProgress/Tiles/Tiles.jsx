@@ -6,8 +6,20 @@ import "./Tiles.scss";
 export class Tiles extends Component {
   renderTiles = () => {
     const { lettersToGuess } = this.props;
-    return lettersToGuess.map(el => (
-      <div className="letter-tile">{el === "encoded" ? "" : el}</div>
+    console.log(lettersToGuess);
+    return lettersToGuess.map((el, index) => (
+      <div
+        key={index}
+        className={
+          el === "encoded"
+            ? "tile tile-to-guess"
+            : [" ", "?", "!", ",", ".", ":", ";", "-", "+"].includes(el)
+            ? "tile tile-space"
+            : "tile tile-guessed"
+        }
+      >
+        {el === "encoded" ? "" : el}
+      </div>
     ));
   };
   render() {
