@@ -1,2 +1,7 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
+
+.loading-content {
+  @include flex-cc-col;
+  @include loading-content;
+}

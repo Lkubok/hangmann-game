@@ -1,12 +1,7 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
 
-.loading-content {
+.loading-holder {
   @include flex-cc-col;
-  min-height: 600px;
-  width: 100%;
-  border: 3px solid $primary-color;
-  border-radius: 20px;
-  flex-basis: 100%;
-  color: $primary-color;
+  @include loading-content;
 }

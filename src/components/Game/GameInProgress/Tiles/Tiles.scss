@@ -1,0 +1,13 @@
+@import "../../../../scss/mixins.scss";
+@import "../../../../scss/variables.scss";
+
+.letter-box {
+  @include flex-cc-row;
+}
+
+.letter-tile {
+  height: 40px;
+  width: 40px;
+  margin: 10px;
+  background-color: red;
+}

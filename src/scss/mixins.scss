@@ -69,3 +69,12 @@
   background-color: $dark-color-light;
   color: $white-color;
 }
+
+@mixin loading-content {
+  min-height: 600px;
+  width: 100%;
+  border: 3px solid $primary-color;
+  border-radius: 20px;
+  flex-basis: 100%;
+  color: $primary-color;
+}
