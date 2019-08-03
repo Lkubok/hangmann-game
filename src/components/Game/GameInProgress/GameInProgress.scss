@@ -1,7 +1,6 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
 
-.loading-holder {
-  @include flex-cc-col;
-  @include loading-content;
+.game-container {
+  position: relative;
 }

@@ -10,6 +10,19 @@ export const getSortingOrder = state => state.quotesReducer.sortOrder;
 export const getSortingBy = state => state.quotesReducer.sortBy;
 export const getFetchingStatus = state => state.editQuoteReducer.isFetching;
 export const getFetchedQuote = state => state.editQuoteReducer.fetchedQuote;
+//GAME SELECTORS
+export const getGameId = state => state.gameReducer.gameId;
+export const getIsRequesting = state => state.gameReducer.isRequesting;
+export const getLettersToGuess = state => state.gameReducer.lettersToGuess;
+export const getQuoteAuthor = state => state.gameReducer.quoteAuthor;
+export const getTypedLetters = state => state.gameReducer.typedLetters;
+export const getLifes = state => state.gameReducer.lifes;
+export const getStateOfGame = state => state.gameReducer.stateOfGame;
+export const getGuessedLetters = state => state.gameReducer.guessedLetters;
+export const getStartTime = state => state.gameReducer.gameStartedAt;
+export const getIsFinished = state => state.gameReducer.isFinished;
+// export const getGameReducer = state => state.gameReducer;
+// export const getKeyboardRefresh = state => state.gameReducer.keyboardRefresh;
 
 export const getSortedQuotes = createSelector(
   getQuotes,
