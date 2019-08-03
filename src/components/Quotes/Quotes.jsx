@@ -71,7 +71,7 @@ export class Quotes extends Component {
       arrayStart + pageLimit
     );
     return arrayToRender.map((el, index) => (
-      <tr key={index}>
+      <tr className="quote-table-item" key={index}>
         <td>{index + arrayStart + 1}</td>
         <td>{el.quote}</td>
         <td>{el.quoteAuthor}</td>
