@@ -10,6 +10,7 @@ export const getSortingOrder = state => state.quotesReducer.sortOrder;
 export const getSortingBy = state => state.quotesReducer.sortBy;
 export const getFetchingStatus = state => state.editQuoteReducer.isFetching;
 export const getFetchedQuote = state => state.editQuoteReducer.fetchedQuote;
+export const getGameId = state => state.gameReducer.gameId;
 
 export const getSortedQuotes = createSelector(
   getQuotes,

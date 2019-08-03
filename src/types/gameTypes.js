@@ -1,1 +1,1 @@
-export const LAUNCH_NEW_GAME = "LAUNCH_NEW_GAME";
+export const SET_NEW_GAME = "SET_NEW_GAME";
