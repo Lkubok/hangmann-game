@@ -43,6 +43,27 @@ export const getSortedQuotes = createSelector(
   }
 );
 
+export const getScoreToSend = createSelector(
+  getGameId,
+  getGameUserName,
+  getUserEmail,
+  getGameLang,
+  getLifes,
+  getGameLevel,
+  getStateOfGame,
+  (gameId, player, userEmail, lang, lifes, level, stateOfGame) => {
+    return {
+      gameId,
+      player,
+      userEmail,
+      lang,
+      lifes: lifes.toString(),
+      level,
+      stateOfGame
+    };
+  }
+);
+
 export const pagesCount = createSelector(
   getSortedQuotes,
   getPageLimit,

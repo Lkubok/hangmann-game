@@ -126,9 +126,6 @@ export const fetchSingleQuote = (api, id) => dispatch => {
     .then(data => dispatch(changeSearchedQuote(data.quote)));
 };
 
-// TO DO
-// - action to send game to stats api endpoint
-
 export const pressLetter = (letter, gameId) => dispatch => {
   axios
     .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
@@ -140,6 +137,7 @@ export const pressLetter = (letter, gameId) => dispatch => {
         dispatch(addToGuessedLetter(letter));
         if (data.stateOfGame === "win") {
           dispatch(changeIsFinished(true));
+          dispatch(changeStateOfGame("win"));
         }
       } else if (data.arrayToRespond.length === 0) {
         dispatch(changeLifesCount(parseInt(data.lifes)));
@@ -166,4 +164,11 @@ export const clearGameParams = (username, email, level, lang) => dispatch => {
 
 export const saveTime = time => dispatch => {
   dispatch(saveTimeLeft(time));
+};
+
+export const sendGameStat = score => dispatch => {
+  axios
+    .post(REACT_APP_API_HOST + "/games/stats", score)
+    .then(response => response.data)
+    .then(data => console.log(data));
 };
