@@ -16,21 +16,28 @@ const initialState = {
   userEmail: "",
   gameLevel: "",
   gameLang: "",
-  searchedQuote: ""
+  searchedQuote: "",
+  timeLeft: null
 };
 
 const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_NEW_GAME:
       return {
-        ...state, //IT MIGHT BE PROBLEMATIC - SEARCH HERE IN FUTURE IN CASE OF PROBLEMS
+        ...state,
         ...action.game,
         stateOfGame: "alive",
         isAlive: true,
-        gameStartedAt: Date.now()
+        gameStartedAt: Date.now(),
+        timeLeft: null
       };
     case types.RESET_GAME:
-      return { ...initialState, typedLetters: [], guessedLetters: [] };
+      return {
+        ...initialState,
+        typedLetters: [],
+        guessedLetters: [],
+        timeLeft: null
+      };
     case types.CHANGE_GAME_USERNAME:
       return { ...state, userName: action.userName };
     case types.CHANGE_USER_EMAIL:
@@ -42,7 +49,12 @@ const gameReducer = (state = initialState, action) => {
     case types.SET_REQUESTING:
       return { ...state, isRequesting: action.status };
     case types.REMOVE_GAME:
-      return { ...initialState, typedLetters: [], guessedLetters: [] };
+      return {
+        ...initialState,
+        typedLetters: [],
+        guessedLetters: [],
+        timeLeft: null
+      };
     case types.ADD_TYPED_LETTER:
       return { ...state, ...state.typedLetters.push(action.letter) };
     case types.CHANGE_STATE_OF_GAME:
@@ -57,6 +69,8 @@ const gameReducer = (state = initialState, action) => {
       return { ...state, isFinished: action.status };
     case types.CHANGE_SEARCHED_QUOTE:
       return { ...state, searchedQuote: action.quote };
+    case types.SAVE_TIME_LEFT:
+      return { ...state, timeLeft: action.time };
     case types.KEYBOARD_REFRESH:
       return {
         ...state

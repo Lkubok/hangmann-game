@@ -16,10 +16,18 @@ import "./GameInProgress.scss";
 export class GameInProgress extends Component {
   handleGameDelete = id => () => {
     const { userName, userEmail, userLevel, userLang } = this.props;
-    this.props.deleteGame(id);
-    this.props.clearGameParams(userName, userEmail, userLevel, userLang);
+    this.props.deleteGame(id, userName, userEmail, userLevel, userLang);
   };
-  handleKeyPress = e => this.props.pressLetter(e.key, this.props.gameId);
+  handleKeyPress = e => {
+    this.forceUpdate();
+    const { pressLetter, gameId, typed } = this.props;
+    if (typed.includes(e.key)) {
+      return;
+    } else {
+      pressLetter(e.key, gameId);
+    }
+  };
+
   render() {
     const { gameId, quoteAuthor, isFinished } = this.props;
     return (
@@ -50,7 +58,9 @@ const mapStateToProps = state => ({
   userName: selectors.getGameUserName(state),
   userEmail: selectors.getUserEmail(state),
   userLevel: selectors.getGameLevel(state),
-  userLang: selectors.getGameLang(state)
+  userLang: selectors.getGameLang(state),
+  typed: selectors.getTypedLetters(state),
+  guessed: selectors.getGuessedLetters(state)
 });
 
 const mapDispatchToProps = {

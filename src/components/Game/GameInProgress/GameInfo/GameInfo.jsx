@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as selectors from "../../../../reducers/selectors";
 import "./GameInfo.scss";
-import { closeGame } from "../../../../actions/gameActions";
+import { closeGame, saveTime } from "../../../../actions/gameActions";
 const { REACT_APP_GAME_TIME } = process.env;
 
 export class GameInfo extends Component {
@@ -10,7 +10,9 @@ export class GameInfo extends Component {
     super(props);
     this.state = {
       startTime: this.props.startTime,
-      timeLeft: parseInt(this.props.startTime) + parseInt(REACT_APP_GAME_TIME)
+      timeLeft: this.props.stoppedTime
+        ? this.props.stoppedTime
+        : parseInt(this.props.startTime) + parseInt(REACT_APP_GAME_TIME)
     };
   }
   componentDidMount() {
@@ -27,6 +29,11 @@ export class GameInfo extends Component {
       clearInterval(this.interval);
       this.props.closeGame();
     }
+  }
+  componentWillUnmount() {
+    const { saveTime } = this.props;
+    saveTime(this.state.timeLeft);
+    clearInterval(this.interval);
   }
   showTime = () => {
     const { startTime, timeLeft } = this.state;
@@ -70,10 +77,12 @@ const mapStateToProps = state => ({
   lifes: selectors.getLifes(state),
   startTime: selectors.getStartTime(state),
   stateOfGame: selectors.getStateOfGame(state),
-  isFinished: selectors.getIsFinished(state)
+  isFinished: selectors.getIsFinished(state),
+  stoppedTime: selectors.getTimeLeft(state)
 });
 const mapDispatchToProps = {
-  closeGame
+  closeGame,
+  saveTime
 };
 
 export default connect(

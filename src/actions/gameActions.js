@@ -65,9 +65,11 @@ export const changeSearchedQuote = quote => ({
   type: types.CHANGE_SEARCHED_QUOTE,
   quote
 });
-/* export const keyboardRefresh = () => ({
-  type: types.KEYBOARD_REFRESH
-}); */
+export const saveTimeLeft = time => ({
+  type: types.SAVE_TIME_LEFT,
+  time
+});
+
 //THUNK
 
 export const launchNewGame = (player, level, lang) => dispatch => {
@@ -94,7 +96,13 @@ export const setUserParams = (username, level, lang, email) => dispatch => {
   dispatch(changeGameUserName(username));
 };
 
-export const deleteGame = gameId => dispatch => {
+export const deleteGame = (
+  gameId,
+  userName,
+  userEmail,
+  userLevel,
+  userLang
+) => dispatch => {
   let check = window.confirm("Are you sure to leave the game ?");
   if (check === true) {
     axios
@@ -107,6 +115,7 @@ export const deleteGame = gameId => dispatch => {
           dispatch(removeGame());
         }
       });
+    dispatch(clearGameParams(userName, userEmail, userLevel, userLang));
   }
 };
 
@@ -117,33 +126,28 @@ export const fetchSingleQuote = (api, id) => dispatch => {
     .then(data => dispatch(changeSearchedQuote(data.quote)));
 };
 
-//TUTAJ OBSLUŻ CHANGE FINISH - WYKASUJ COMMENT
-
-export const pressLetter = (letter, gameId, typed) => dispatch => {
-  if (typed.includes(letter)) {
-    return;
-  } else {
-    axios
-      .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
-      .then(response => response.data)
-      .then(data => {
-        dispatch(addTypedLetter(letter));
-        if (data.arrayToRespond.length > 0) {
-          dispatch(changeLetterStatus(data.arrayToRespond, letter));
-          dispatch(addToGuessedLetter(letter));
-          if (data.stateOfGame === "win") {
-            dispatch(changeIsFinished(true));
-          }
-        } else if (data.arrayToRespond.length === 0) {
-          dispatch(changeLifesCount(parseInt(data.lifes)));
-          dispatch(changeStateOfGame(data.stateOfGame));
-          if (parseInt(data.lifes) === 0) {
-            dispatch(changeIsAlive(false));
-            dispatch(changeIsFinished(true));
-          }
+export const pressLetter = (letter, gameId) => dispatch => {
+  axios
+    .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
+    .then(response => response.data)
+    .then(data => {
+      dispatch(addTypedLetter(letter));
+      if (data.arrayToRespond.length > 0) {
+        dispatch(changeLetterStatus(data.arrayToRespond, letter));
+        dispatch(addToGuessedLetter(letter));
+        if (data.stateOfGame === "win") {
+          dispatch(changeIsFinished(true));
+          dispatch(changeStateOfGame("win"));
         }
-      });
-  }
+      } else if (data.arrayToRespond.length === 0) {
+        dispatch(changeLifesCount(parseInt(data.lifes)));
+        dispatch(changeStateOfGame(data.stateOfGame));
+        if (parseInt(data.lifes) === 0) {
+          dispatch(changeIsAlive(false));
+          dispatch(changeIsFinished(true));
+        }
+      }
+    });
 };
 
 export const closeGame = () => dispatch => {
@@ -156,4 +160,15 @@ export const clearGameParams = (username, email, level, lang) => dispatch => {
   dispatch(changeGameLang(lang));
   dispatch(changeUserEmail(email));
   dispatch(changeGameUserName(username));
+};
+
+export const saveTime = time => dispatch => {
+  dispatch(saveTimeLeft(time));
+};
+
+export const sendGameStat = score => dispatch => {
+  axios
+    .post(REACT_APP_API_HOST + "/games/stats", score)
+    .then(response => response.data)
+    .then(data => console.log(data));
 };

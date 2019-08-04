@@ -10,7 +10,7 @@ export const getSortingOrder = state => state.quotesReducer.sortOrder;
 export const getSortingBy = state => state.quotesReducer.sortBy;
 export const getFetchingStatus = state => state.editQuoteReducer.isFetching;
 export const getFetchedQuote = state => state.editQuoteReducer.fetchedQuote;
-//GAME SELECTORS
+
 export const getGameId = state => state.gameReducer.gameId;
 export const getIsRequesting = state => state.gameReducer.isRequesting;
 export const getLettersToGuess = state => state.gameReducer.lettersToGuess;
@@ -21,13 +21,13 @@ export const getStateOfGame = state => state.gameReducer.stateOfGame;
 export const getGuessedLetters = state => state.gameReducer.guessedLetters;
 export const getStartTime = state => state.gameReducer.gameStartedAt;
 export const getIsFinished = state => state.gameReducer.isFinished;
-// export const getGameReducer = state => state.gameReducer;
-// export const getKeyboardRefresh = state => state.gameReducer.keyboardRefresh;
+
 export const getGameUserName = state => state.gameReducer.userName;
 export const getUserEmail = state => state.gameReducer.userEmail;
 export const getGameLevel = state => state.gameReducer.gameLevel;
 export const getGameLang = state => state.gameReducer.gameLang;
 export const getSearchedQuote = state => state.gameReducer.searchedQuote;
+export const getTimeLeft = state => state.gameReducer.timeLeft;
 
 export const getSortedQuotes = createSelector(
   getQuotes,
@@ -40,6 +40,27 @@ export const getSortedQuotes = createSelector(
       threshold: matchSorter.rankings.WORD_STARTS_WITH
     });
     return _.orderBy(sortedQuotes, [sortingBy], [_.toLower(sortingOrder)]);
+  }
+);
+
+export const getScoreToSend = createSelector(
+  getGameId,
+  getGameUserName,
+  getUserEmail,
+  getGameLang,
+  getLifes,
+  getGameLevel,
+  getStateOfGame,
+  (gameId, player, userEmail, lang, lifes, level, stateOfGame) => {
+    return {
+      gameId,
+      player,
+      userEmail,
+      lang,
+      lifes: lifes.toString(),
+      level,
+      stateOfGame
+    };
   }
 );
 
