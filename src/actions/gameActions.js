@@ -94,7 +94,13 @@ export const setUserParams = (username, level, lang, email) => dispatch => {
   dispatch(changeGameUserName(username));
 };
 
-export const deleteGame = gameId => dispatch => {
+export const deleteGame = (
+  gameId,
+  userName,
+  userEmail,
+  userLevel,
+  userLang
+) => dispatch => {
   let check = window.confirm("Are you sure to leave the game ?");
   if (check === true) {
     axios
@@ -107,6 +113,7 @@ export const deleteGame = gameId => dispatch => {
           dispatch(removeGame());
         }
       });
+    dispatch(clearGameParams(userName, userEmail, userLevel, userLang));
   }
 };
 

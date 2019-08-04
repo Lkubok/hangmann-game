@@ -62,7 +62,7 @@ export class StartGame extends Component {
             <option value="medium">medium</option>
             <option value="hard">hard</option>
           </Field>
-          <button disabled={isRequesting}>Submit</button>
+          <button disabled={isRequesting}>Start Game</button>
         </Form>
       </div>
     );
