@@ -6,7 +6,6 @@ import "./Tiles.scss";
 export class Tiles extends Component {
   renderTiles = () => {
     const { lettersToGuess } = this.props;
-    console.log(lettersToGuess);
     return lettersToGuess.map((el, index) => (
       <div
         key={index}

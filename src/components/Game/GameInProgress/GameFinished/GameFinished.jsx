@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import GameSending from "./GameSending";
 import { connect } from "react-redux";
 import * as selectors from "../../../../reducers/selectors";
 import "./GameFinished.scss";
-import { clearGameParams } from "../../../../actions/gameActions";
-import { fetchSingleQuote } from "../../../../actions/gameActions";
+import {
+  clearGameParams,
+  sendGameStat,
+  fetchSingleQuote
+} from "../../../../actions/gameActions";
 
 const { REACT_APP_API_HOST } = process.env;
 
@@ -12,17 +16,18 @@ export class GameFinished extends Component {
     const { userName, userEmail, userLevel, userLang } = this.props;
     this.props.clearGameParams(userName, userEmail, userLevel, userLang);
   };
-  searchedQuote = id => {
-    const idToFetch = id.slice(0, 24);
-    this.props.fetchSingleQuote(REACT_APP_API_HOST, idToFetch);
+  searchedQuote = () => {
     return this.props.searchedQuote;
   };
+
   componentDidMount() {
-    //SEND HERE STATS FROM GAME TO BACKEND
+    const { gameId } = this.props;
+    const idToFetch = gameId.slice(0, 24);
+    this.props.fetchSingleQuote(REACT_APP_API_HOST, idToFetch);
   }
   render() {
-    const { isGuessed, gameId } = this.props;
-    console.log(isGuessed);
+    console.log("searchedQuote", this.props.searchedQuote);
+    const { isGuessed } = this.props;
     return (
       <div
         className={
@@ -34,10 +39,11 @@ export class GameFinished extends Component {
         <h2>game finished</h2>
         {isGuessed ? <h3>Congratulations !</h3> : <h3>You are dead ;( </h3>}
         {isGuessed ? null : <h4>searched quote was:</h4>}
-        {isGuessed ? null : <h5>{this.searchedQuote(gameId)}</h5>}
+        {isGuessed ? null : <h5>{this.searchedQuote()}</h5>}
         <button className="btn-restart" onClick={this.handlePlayAgain}>
           Play again
         </button>
+        {this.props.searchedQuote === "" ? null : <GameSending />}
       </div>
     );
   }
@@ -48,26 +54,20 @@ const mapStateToProps = state => ({
   userLevel: selectors.getGameLevel(state),
   userLang: selectors.getGameLang(state),
   isGuessed: selectors.isGuessed(state),
+  gameStatus: selectors.getStateOfGame(state),
   gameId: selectors.getGameId(state),
-  searchedQuote: selectors.getSearchedQuote(state)
+  searchedQuote: selectors.getSearchedQuote(state),
+  scoreToSend: selectors.getScoreToSend(state),
+  startTime: selectors.getStartTime(state)
 });
 
 const mapDispatchToProps = {
   clearGameParams,
-  fetchSingleQuote
+  fetchSingleQuote,
+  sendGameStat
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(GameFinished);
-
-//MAKE SOME VARIABLES THINGS
-
-//RED SCREEN WHEN DEAD
-
-//BUTTONS TO START NEW GAME
-
-//WHEN DIDMOUNT SEND TO BACKEND STATS
-
-//CODE WHEN IS FINISHED AND QUOTE IS NOT GUESSED  FROM STATE OF GAME -> WIN CONDITION
