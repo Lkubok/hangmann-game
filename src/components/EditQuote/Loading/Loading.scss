@@ -3,5 +3,9 @@
 
 .loading-holder {
   @include flex-cc-col;
-  @include loading-content;
+  @include content-base-container;
+  width: 100%;
+
+  flex-basis: 100%;
+  color: $primary-color;
 }
