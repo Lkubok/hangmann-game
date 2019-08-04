@@ -7,10 +7,18 @@ import { withFormik, Form, Field } from "formik";
 
 import * as selectors from "../../../reducers/selectors";
 import Loading from "../../EditQuote/Loading";
+import axios from "axios";
 
 import "./StartGame.scss";
+const { REACT_APP_API_HOST } = process.env;
 
 export class StartGame extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      langs: []
+    };
+  }
   handleSubmitting = e => {
     e.preventDefault();
     const { launchNewGame, errors, setUserParams } = this.props;
@@ -28,6 +36,19 @@ export class StartGame extends Component {
       launchNewGame(username, level, lang);
       setUserParams(username, level, lang, email);
     }
+  };
+  componentDidMount() {
+    axios
+      .get(REACT_APP_API_HOST + "/quotes/langs")
+      .then(response => response.data)
+      .then(data => this.setState({ langs: data }));
+  }
+  renderSelectOptions = () => {
+    return this.state.langs.map(el => (
+      <option key={el} value={el}>
+        {el}
+      </option>
+    ));
   };
   renderLoading() {
     const { errors, touched, isRequesting } = this.props;
@@ -50,8 +71,7 @@ export class StartGame extends Component {
           </p>
           <Field component="select" name="lang">
             <option>--- select lang ---</option>
-            <option value="pl">pl</option>
-            <option value="eng">eng</option>
+            {this.renderSelectOptions()}
           </Field>
           <p className="game-select-label">
             Level: <span>{touched.level && errors.level}</span>
