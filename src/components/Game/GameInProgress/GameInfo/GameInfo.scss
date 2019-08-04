@@ -1,2 +1,20 @@
 @import "../../../../scss/mixins.scss";
 @import "../../../../scss/variables.scss";
+
+.game-info {
+  @include flex-cc-row;
+  flex-basis: 100%;
+  justify-content: space-around;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  .info-elem {
+    @include flex-cc-row;
+    flex-basis: 33%;
+    padding: 20px;
+    p {
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}

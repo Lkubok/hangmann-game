@@ -27,6 +27,7 @@ export const getGameUserName = state => state.gameReducer.userName;
 export const getUserEmail = state => state.gameReducer.userEmail;
 export const getGameLevel = state => state.gameReducer.gameLevel;
 export const getGameLang = state => state.gameReducer.gameLang;
+export const getSearchedQuote = state => state.gameReducer.searchedQuote;
 
 export const getSortedQuotes = createSelector(
   getQuotes,
@@ -47,5 +48,13 @@ export const pagesCount = createSelector(
   getPageLimit,
   (quotes, limit) => {
     return parseInt(quotes.length / limit);
+  }
+);
+
+export const isGuessed = createSelector(
+  getLettersToGuess,
+  letters => {
+    if (letters.includes("encoded")) return false;
+    return true;
   }
 );
