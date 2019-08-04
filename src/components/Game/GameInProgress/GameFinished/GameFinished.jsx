@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as selectors from "../../../../reducers/selectors";
 import "./GameFinished.scss";
 import { clearGameParams } from "../../../../actions/gameActions";
 export class GameFinished extends Component {
   handlePlayAgain = () => {
-    this.props.clearGameParams();
+    const { userName, userEmail, userLevel, userLang } = this.props;
+    this.props.clearGameParams(userName, userEmail, userLevel, userLang);
   };
   componentDidMount() {
     //SEND HERE STATS FROM GAME TO BACKEND
@@ -18,7 +20,12 @@ export class GameFinished extends Component {
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  userName: selectors.getGameUserName(state),
+  userEmail: selectors.getUserEmail(state),
+  userLevel: selectors.getGameLevel(state),
+  userLang: selectors.getGameLang(state)
+});
 
 const mapDispatchToProps = {
   clearGameParams

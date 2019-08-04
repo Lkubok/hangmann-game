@@ -66,9 +66,21 @@ export class StartGame extends Component {
 }
 
 const MyForm = withFormik({
-  mapPropsToValues({ username }) {
+  mapPropsToValues({
+    username,
+    email,
+    lang,
+    level,
+    getUserName,
+    getUserEmail,
+    getGameLang,
+    getGameLevel
+  }) {
     return {
-      username: username || ""
+      username: username || getUserName,
+      email: email || getUserEmail,
+      lang: lang || getGameLang,
+      level: level || getGameLevel
     };
   },
   validationSchema: Yup.object().shape({
@@ -91,7 +103,11 @@ const MyForm = withFormik({
 });
 
 const mapStateToProps = state => ({
-  isRequesting: selectors.getIsRequesting(state)
+  isRequesting: selectors.getIsRequesting(state),
+  getUserName: selectors.getGameUserName(state),
+  getUserEmail: selectors.getUserEmail(state),
+  getUserLevel: selectors.getGameLevel(state),
+  getUserLang: selectors.getGameLang(state)
 });
 
 const mapDispatchToProps = {
