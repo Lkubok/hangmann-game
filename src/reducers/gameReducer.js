@@ -24,7 +24,7 @@ const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_NEW_GAME:
       return {
-        ...state, //IT MIGHT BE PROBLEMATIC - SEARCH HERE IN FUTURE IN CASE OF PROBLEMS
+        ...state,
         ...action.game,
         stateOfGame: "alive",
         isAlive: true,

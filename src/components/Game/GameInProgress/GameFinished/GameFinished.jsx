@@ -23,7 +23,6 @@ export class GameFinished extends Component {
   }
   render() {
     const { isGuessed, gameId } = this.props;
-    console.log(isGuessed);
     return (
       <div
         className={

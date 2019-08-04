@@ -10,7 +10,7 @@ export const getSortingOrder = state => state.quotesReducer.sortOrder;
 export const getSortingBy = state => state.quotesReducer.sortBy;
 export const getFetchingStatus = state => state.editQuoteReducer.isFetching;
 export const getFetchedQuote = state => state.editQuoteReducer.fetchedQuote;
-//GAME SELECTORS
+
 export const getGameId = state => state.gameReducer.gameId;
 export const getIsRequesting = state => state.gameReducer.isRequesting;
 export const getLettersToGuess = state => state.gameReducer.lettersToGuess;
@@ -21,8 +21,7 @@ export const getStateOfGame = state => state.gameReducer.stateOfGame;
 export const getGuessedLetters = state => state.gameReducer.guessedLetters;
 export const getStartTime = state => state.gameReducer.gameStartedAt;
 export const getIsFinished = state => state.gameReducer.isFinished;
-// export const getGameReducer = state => state.gameReducer;
-// export const getKeyboardRefresh = state => state.gameReducer.keyboardRefresh;
+
 export const getGameUserName = state => state.gameReducer.userName;
 export const getUserEmail = state => state.gameReducer.userEmail;
 export const getGameLevel = state => state.gameReducer.gameLevel;

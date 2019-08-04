@@ -69,9 +69,7 @@ export const saveTimeLeft = time => ({
   type: types.SAVE_TIME_LEFT,
   time
 });
-/* export const keyboardRefresh = () => ({
-  type: types.KEYBOARD_REFRESH
-}); */
+
 //THUNK
 
 export const launchNewGame = (player, level, lang) => dispatch => {
@@ -128,7 +126,8 @@ export const fetchSingleQuote = (api, id) => dispatch => {
     .then(data => dispatch(changeSearchedQuote(data.quote)));
 };
 
-//TUTAJ OBSLUŻ CHANGE FINISH - WYKASUJ COMMENT
+// TO DO
+// - action to send game to stats api endpoint
 
 export const pressLetter = (letter, gameId) => dispatch => {
   axios

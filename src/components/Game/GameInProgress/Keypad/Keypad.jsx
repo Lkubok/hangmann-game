@@ -26,7 +26,6 @@ class Keypad extends Component {
   listTypedButtons = () => {
     return this.props.typed.join(" ");
   };
-  componentDidUpdate() {}
 
   render() {
     return (
