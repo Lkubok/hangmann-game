@@ -3,10 +3,9 @@
 
 .loading-content {
   @include flex-cc-col;
-  min-height: 600px;
+  @include content-base-container;
   width: 100%;
-  border: 3px solid $primary-color;
-  border-radius: 20px;
+
   flex-basis: 100%;
   color: $primary-color;
 }
