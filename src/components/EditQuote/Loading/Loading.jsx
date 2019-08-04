@@ -15,14 +15,8 @@ export default class Loading extends Component {
       });
     }, 250);
   }
-  componentWillUnmount() {
-    // clearInterval(this.interval);
-  }
-
   componentDidUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
+    clearInterval(this.interval);
   }
 
   render() {
