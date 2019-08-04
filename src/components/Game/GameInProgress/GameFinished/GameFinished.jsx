@@ -18,7 +18,8 @@ export class GameFinished extends Component {
     return this.props.searchedQuote;
   };
   componentDidMount() {
-    //SEND HERE STATS FROM GAME TO BACKEND
+    //TODO:
+    // - SEND HERE STATS FROM GAME TO BACKEND
   }
   render() {
     const { isGuessed, gameId } = this.props;
@@ -61,13 +62,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(GameFinished);
-
-//MAKE SOME VARIABLES THINGS
-
-//RED SCREEN WHEN DEAD
-
-//BUTTONS TO START NEW GAME
-
-//WHEN DIDMOUNT SEND TO BACKEND STATS
-
-//CODE WHEN IS FINISHED AND QUOTE IS NOT GUESSED  FROM STATE OF GAME -> WIN CONDITION

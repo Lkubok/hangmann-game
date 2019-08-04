@@ -65,6 +65,10 @@ export const changeSearchedQuote = quote => ({
   type: types.CHANGE_SEARCHED_QUOTE,
   quote
 });
+export const saveTimeLeft = time => ({
+  type: types.SAVE_TIME_LEFT,
+  time
+});
 /* export const keyboardRefresh = () => ({
   type: types.KEYBOARD_REFRESH
 }); */
@@ -126,31 +130,27 @@ export const fetchSingleQuote = (api, id) => dispatch => {
 
 //TUTAJ OBSLUŻ CHANGE FINISH - WYKASUJ COMMENT
 
-export const pressLetter = (letter, gameId, typed) => dispatch => {
-  if (typed.includes(letter)) {
-    return;
-  } else {
-    axios
-      .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
-      .then(response => response.data)
-      .then(data => {
-        dispatch(addTypedLetter(letter));
-        if (data.arrayToRespond.length > 0) {
-          dispatch(changeLetterStatus(data.arrayToRespond, letter));
-          dispatch(addToGuessedLetter(letter));
-          if (data.stateOfGame === "win") {
-            dispatch(changeIsFinished(true));
-          }
-        } else if (data.arrayToRespond.length === 0) {
-          dispatch(changeLifesCount(parseInt(data.lifes)));
-          dispatch(changeStateOfGame(data.stateOfGame));
-          if (parseInt(data.lifes) === 0) {
-            dispatch(changeIsAlive(false));
-            dispatch(changeIsFinished(true));
-          }
+export const pressLetter = (letter, gameId) => dispatch => {
+  axios
+    .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
+    .then(response => response.data)
+    .then(data => {
+      dispatch(addTypedLetter(letter));
+      if (data.arrayToRespond.length > 0) {
+        dispatch(changeLetterStatus(data.arrayToRespond, letter));
+        dispatch(addToGuessedLetter(letter));
+        if (data.stateOfGame === "win") {
+          dispatch(changeIsFinished(true));
         }
-      });
-  }
+      } else if (data.arrayToRespond.length === 0) {
+        dispatch(changeLifesCount(parseInt(data.lifes)));
+        dispatch(changeStateOfGame(data.stateOfGame));
+        if (parseInt(data.lifes) === 0) {
+          dispatch(changeIsAlive(false));
+          dispatch(changeIsFinished(true));
+        }
+      }
+    });
 };
 
 export const closeGame = () => dispatch => {
@@ -163,4 +163,8 @@ export const clearGameParams = (username, email, level, lang) => dispatch => {
   dispatch(changeGameLang(lang));
   dispatch(changeUserEmail(email));
   dispatch(changeGameUserName(username));
+};
+
+export const saveTime = time => dispatch => {
+  dispatch(saveTimeLeft(time));
 };

@@ -16,7 +16,8 @@ const initialState = {
   userEmail: "",
   gameLevel: "",
   gameLang: "",
-  searchedQuote: ""
+  searchedQuote: "",
+  timeLeft: null
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -57,6 +58,8 @@ const gameReducer = (state = initialState, action) => {
       return { ...state, isFinished: action.status };
     case types.CHANGE_SEARCHED_QUOTE:
       return { ...state, searchedQuote: action.quote };
+    case types.SAVE_TIME_LEFT:
+      return { ...state, timeLeft: action.time };
     case types.KEYBOARD_REFRESH:
       return {
         ...state

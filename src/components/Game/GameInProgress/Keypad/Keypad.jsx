@@ -17,7 +17,11 @@ class Keypad extends Component {
   onKeyPress = button => {
     this.forceUpdate();
     const { pressLetter, gameId, typed } = this.props;
-    pressLetter(button, gameId, typed);
+    if (typed.includes(button)) {
+      return;
+    } else {
+      pressLetter(button, gameId);
+    }
     /*     this.setState(prevState => {
       prevState.typed.push(button);
     }); */

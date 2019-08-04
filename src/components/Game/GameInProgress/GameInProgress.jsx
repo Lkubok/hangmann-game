@@ -21,7 +21,11 @@ export class GameInProgress extends Component {
   handleKeyPress = e => {
     this.forceUpdate();
     const { pressLetter, gameId, typed } = this.props;
-    pressLetter(e.key, gameId, typed);
+    if (typed.includes(e.key)) {
+      return;
+    } else {
+      pressLetter(e.key, gameId);
+    }
   };
 
   render() {
