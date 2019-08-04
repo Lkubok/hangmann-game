@@ -139,6 +139,10 @@ export const closeGame = () => dispatch => {
   dispatch(changeIsFinished(true));
 };
 
-export const clearGameParams = () => dispatch => {
+export const clearGameParams = (username, email, level, lang) => dispatch => {
   dispatch(resetGame());
+  dispatch(changeGameLevel(level));
+  dispatch(changeGameLang(lang));
+  dispatch(changeUserEmail(email));
+  dispatch(changeGameUserName(username));
 };

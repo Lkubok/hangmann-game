@@ -44,12 +44,12 @@ class Keypad extends Component {
             {
               class: "key-button key-button-typed",
               // buttons: `"${this.state.typed.join(" ")}"`
-              buttons: "a"
+              buttons: "W"
             },
             {
               class: "key-button key-button-untyped",
               // buttons: `"${this.state.untyped.join("")}"`
-              buttons: "b"
+              buttons: "Q"
             }
           ]}
         />

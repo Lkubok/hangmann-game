@@ -23,6 +23,10 @@ export const getStartTime = state => state.gameReducer.gameStartedAt;
 export const getIsFinished = state => state.gameReducer.isFinished;
 // export const getGameReducer = state => state.gameReducer;
 // export const getKeyboardRefresh = state => state.gameReducer.keyboardRefresh;
+export const getGameUserName = state => state.gameReducer.userName;
+export const getUserEmail = state => state.gameReducer.userEmail;
+export const getGameLevel = state => state.gameReducer.gameLevel;
+export const getGameLang = state => state.gameReducer.gameLang;
 
 export const getSortedQuotes = createSelector(
   getQuotes,
