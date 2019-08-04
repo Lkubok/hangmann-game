@@ -33,15 +33,12 @@ export class GameInfo extends Component {
     const timeLeftValue = timeLeft - startTime;
     return timeLeftValue > 0 ? timeLeftValue / 1000 + "s" : "0s";
   };
+  getStartDate = date => {
+    const startTime = new Date(date);
+    return `${startTime.getHours()} : ${startTime.getMinutes()} : ${startTime.getSeconds()}`;
+  };
   render() {
-    const {
-      startTime,
-      lifes,
-      typedLetters,
-      lettersToGuess,
-      stateOfGame,
-      guessedLetters
-    } = this.props;
+    const { startTime, lifes, stateOfGame } = this.props;
     return (
       <div className="game-info">
         <div className="info-elem">
@@ -51,7 +48,7 @@ export class GameInfo extends Component {
         </div>
         <div className="info-elem">
           <p className>
-            Game Start Time: <span>{startTime}</span>
+            Game Start Time: <span>{this.getStartDate(startTime)}</span>
           </p>
         </div>
         <div className="info-elem">
@@ -82,15 +79,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(GameInfo);
-
-/* 
-
-export const getLettersToGuess = state => state.gameReducer.lettersToGuess;
-export const getQuoteAuthor = state => state.gameReducer.quoteAuthor;
-export const getTypedLetters = state => state.gameReducer.typedLetters;
-export const getLifes = state => state.gameReducer.lifes;
-export const getStateOfGame = state => state.gameReducer.getStateOfGame;
-export const getGuessedLetters = state => state.gameReducer.guessedLetters;
-export const getStartTime = state => state.gameReducer.guessedLetters;
-export const getIsFinished = state => state.gameReducer.isFinished;
- */

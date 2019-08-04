@@ -31,7 +31,7 @@ class Keypad extends Component {
     return (
       <div className="keyboard">
         <Keyboard
-          key={this.listTypedButtons()}
+          key={this.state.typed}
           onKeyPress={button => this.onKeyPress(button)}
           layout={{
             default: [

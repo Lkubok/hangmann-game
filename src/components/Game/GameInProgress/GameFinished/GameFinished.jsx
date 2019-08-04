@@ -8,14 +8,30 @@ export class GameFinished extends Component {
     const { userName, userEmail, userLevel, userLang } = this.props;
     this.props.clearGameParams(userName, userEmail, userLevel, userLang);
   };
+  searchedQuote = () => {
+    return "saa";
+  };
   componentDidMount() {
     //SEND HERE STATS FROM GAME TO BACKEND
   }
   render() {
+    const { isGuessed } = this.props;
+    console.log(isGuessed);
     return (
-      <div className="game-finished">
-        GAME FINISHED
-        <button onClick={this.handlePlayAgain}>Play again</button>
+      <div
+        className={
+          isGuessed
+            ? "game-finished game-finished-win"
+            : "game-finished game-finished-dead"
+        }
+      >
+        <h2>game finished</h2>
+        {isGuessed ? <h3>Congratulations !</h3> : <h3>You are dead ;( </h3>}
+        {isGuessed ? null : <h4>searched quote:</h4>}
+        {isGuessed ? null : <h5>{this.searchedQuote()}</h5>}
+        <button className="btn-restart" onClick={this.handlePlayAgain}>
+          Play again
+        </button>
       </div>
     );
   }
@@ -24,7 +40,8 @@ const mapStateToProps = state => ({
   userName: selectors.getGameUserName(state),
   userEmail: selectors.getUserEmail(state),
   userLevel: selectors.getGameLevel(state),
-  userLang: selectors.getGameLang(state)
+  userLang: selectors.getGameLang(state),
+  isGuessed: selectors.isGuessed(state)
 });
 
 const mapDispatchToProps = {

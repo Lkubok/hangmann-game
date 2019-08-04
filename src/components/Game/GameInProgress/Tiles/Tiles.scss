@@ -10,8 +10,8 @@ $width: 50;
 
 .tile {
   @include flex-cc-row;
-  height: 80px;
-  width: 50px;
+  height: 60px;
+  width: 40px;
   margin: 10px;
   border: 1px solid $dark-color;
   border-radius: 15px;

@@ -49,3 +49,11 @@ export const pagesCount = createSelector(
     return parseInt(quotes.length / limit);
   }
 );
+
+export const isGuessed = createSelector(
+  getLettersToGuess,
+  letters => {
+    if (letters.includes("encoded")) return false;
+    return true;
+  }
+);
