@@ -45,19 +45,35 @@ export const changeIsFinished = status => ({
 export const resetGame = () => ({
   type: types.RESET_GAME
 });
+export const changeGameLevel = level => ({
+  type: types.CHANGE_GAME_LEVEL,
+  level
+});
+export const changeGameLang = lang => ({
+  type: types.CHANGE_GAME_LANG,
+  lang
+});
+export const changeGameUserName = userName => ({
+  type: types.CHANGE_GAME_USERNAME,
+  userName
+});
+export const changeUserEmail = email => ({
+  type: types.CHANGE_USER_EMAIL,
+  email
+});
 /* export const keyboardRefresh = () => ({
   type: types.KEYBOARD_REFRESH
 }); */
 //THUNK
 
-export const launchNewGame = () => dispatch => {
+export const launchNewGame = (player, level, lang) => dispatch => {
   dispatch(setRequesting(true));
   // setTimeout(() => {
   axios
     .post(REACT_APP_API_HOST + "/games/new", {
-      player: "JonSnow",
-      level: "easy",
-      lang: "eng"
+      player: player,
+      level: level,
+      lang: lang
     })
     .then(response => response.data)
     .then(data => {
@@ -65,6 +81,13 @@ export const launchNewGame = () => dispatch => {
       dispatch(setRequesting(false));
     });
   // }, 1000);
+};
+
+export const setUserParams = (username, level, lang, email) => dispatch => {
+  dispatch(changeGameLevel(level));
+  dispatch(changeGameLang(lang));
+  dispatch(changeUserEmail(email));
+  dispatch(changeGameUserName(username));
 };
 
 export const deleteGame = gameId => dispatch => {

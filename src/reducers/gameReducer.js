@@ -11,7 +11,11 @@ const initialState = {
   lifes: "",
   isRequesting: false,
   isFinished: false,
-  gameStartedAt: ""
+  gameStartedAt: "",
+  userName: "",
+  userEmail: "",
+  gameLevel: "",
+  gameLang: ""
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -26,6 +30,14 @@ const gameReducer = (state = initialState, action) => {
       };
     case types.RESET_GAME:
       return { ...initialState, typedLetters: [], guessedLetters: [] };
+    case types.CHANGE_GAME_USERNAME:
+      return { ...state, userName: action.userName };
+    case types.CHANGE_USER_EMAIL:
+      return { ...state, userEmail: action.email };
+    case types.CHANGE_GAME_LEVEL:
+      return { ...state, gameLevel: action.level };
+    case types.CHANGE_GAME_LANG:
+      return { ...state, gameLang: action.lang };
     case types.SET_REQUESTING:
       return { ...state, isRequesting: action.status };
     case types.REMOVE_GAME:
