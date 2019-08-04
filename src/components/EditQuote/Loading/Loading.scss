@@ -1,12 +1,18 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
 
-.loading-content {
-  @include flex-cc-col;
+.loading-holder {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
   min-height: 600px;
   width: 100%;
   border: 3px solid $primary-color;
   border-radius: 20px;
-  flex-basis: 100%;
   color: $primary-color;
+  h1,
+  h3 {
+    width: 100%;
+  }
 }

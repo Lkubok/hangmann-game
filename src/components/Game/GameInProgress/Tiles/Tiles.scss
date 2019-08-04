@@ -1,0 +1,31 @@
+@import "../../../../scss/mixins.scss";
+@import "../../../../scss/variables.scss";
+
+$height: 80;
+$width: 50;
+
+.letter-box {
+  @include flex-cc-row;
+}
+
+.tile {
+  @include flex-cc-row;
+  height: 60px;
+  width: 40px;
+  margin: 10px;
+  border: 1px solid $dark-color;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.8em;
+  text-transform: capitalize;
+  &-to-guess {
+    background-color: $white-color;
+  }
+  &-guessed {
+    background-color: $primary-color;
+  }
+  &-space {
+    background-color: $dark-color;
+    border-color: $dark-color-light;
+  }
+}

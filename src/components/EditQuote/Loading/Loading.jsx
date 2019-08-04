@@ -15,6 +15,9 @@ export default class Loading extends Component {
       });
     }, 250);
   }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   componentDidUnmount() {
     if (this.interval) {
@@ -24,9 +27,8 @@ export default class Loading extends Component {
 
   render() {
     return (
-      <div className="loading-content">
+      <div className="loading-holder">
         <h1>Loading</h1>
-        <br />
         <h3>{this.state.dots}</h3>
       </div>
     );

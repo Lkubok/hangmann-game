@@ -1,0 +1,29 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
+
+.form-holder {
+  @include flex-cc-row;
+  @include loading-content;
+  align-items: flex-start;
+  border: 0;
+}
+
+.user-params-form {
+  @include flex-cc-row;
+  @include form-edit;
+  color: $white-color;
+  input,
+  select {
+    @include input-textarea-look;
+  }
+  button {
+    @include std-button;
+  }
+}
+
+.game-select-label {
+  color: $primary-color;
+  span {
+    color: $danger-color;
+  }
+}
