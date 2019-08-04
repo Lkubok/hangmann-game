@@ -61,6 +61,10 @@ export const changeUserEmail = email => ({
   type: types.CHANGE_USER_EMAIL,
   email
 });
+export const changeSearchedQuote = quote => ({
+  type: types.CHANGE_SEARCHED_QUOTE,
+  quote
+});
 /* export const keyboardRefresh = () => ({
   type: types.KEYBOARD_REFRESH
 }); */
@@ -68,19 +72,19 @@ export const changeUserEmail = email => ({
 
 export const launchNewGame = (player, level, lang) => dispatch => {
   dispatch(setRequesting(true));
-  // setTimeout(() => {
-  axios
-    .post(REACT_APP_API_HOST + "/games/new", {
-      player: player,
-      level: level,
-      lang: lang
-    })
-    .then(response => response.data)
-    .then(data => {
-      dispatch(setNewGame(data));
-      dispatch(setRequesting(false));
-    });
-  // }, 1000);
+  setTimeout(() => {
+    axios
+      .post(REACT_APP_API_HOST + "/games/new", {
+        player: player,
+        level: level,
+        lang: lang
+      })
+      .then(response => response.data)
+      .then(data => {
+        dispatch(setNewGame(data));
+        dispatch(setRequesting(false));
+      });
+  }, 1000);
 };
 
 export const setUserParams = (username, level, lang, email) => dispatch => {
@@ -104,6 +108,13 @@ export const deleteGame = gameId => dispatch => {
         }
       });
   }
+};
+
+export const fetchSingleQuote = (api, id) => dispatch => {
+  axios
+    .get(api + "/quotes/single/" + id)
+    .then(response => response.data)
+    .then(data => dispatch(changeSearchedQuote(data.quote)));
 };
 
 //TUTAJ OBSLUŻ CHANGE FINISH - WYKASUJ COMMENT

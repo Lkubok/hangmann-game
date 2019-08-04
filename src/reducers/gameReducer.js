@@ -15,7 +15,8 @@ const initialState = {
   userName: "",
   userEmail: "",
   gameLevel: "",
-  gameLang: ""
+  gameLang: "",
+  searchedQuote: ""
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -41,7 +42,7 @@ const gameReducer = (state = initialState, action) => {
     case types.SET_REQUESTING:
       return { ...state, isRequesting: action.status };
     case types.REMOVE_GAME:
-      return { ...initialState, typedLetters: [] };
+      return { ...initialState, typedLetters: [], guessedLetters: [] };
     case types.ADD_TYPED_LETTER:
       return { ...state, ...state.typedLetters.push(action.letter) };
     case types.CHANGE_STATE_OF_GAME:
@@ -54,6 +55,8 @@ const gameReducer = (state = initialState, action) => {
       return { ...state, ...state.guessedLetters.push(action.letter) };
     case types.CHANGE_IS_FINISHED:
       return { ...state, isFinished: action.status };
+    case types.CHANGE_SEARCHED_QUOTE:
+      return { ...state, searchedQuote: action.quote };
     case types.KEYBOARD_REFRESH:
       return {
         ...state
