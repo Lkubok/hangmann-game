@@ -2,12 +2,50 @@
 @import "../../scss/variables.scss";
 
 .app-welcome {
-  @include basic-app-padding;
-  @include flex-cl-row;
-  @include basic-app-margin;
-  background-color: $black-color;
+  @include flex-cc-row;
+  @include content-base-container;
+  flex-basis: 100%;
+  justify-content: space-between;
   color: $primary-color;
   padding-top: 40px;
   padding-bottom: 20px;
-  height: 500px;
+}
+.hang-container {
+  flex-basis: 40%;
+}
+
+.hang-image {
+}
+.app-info {
+  @include flex-cc-row;
+  color: $white-color;
+  font-weight: 700;
+  .info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    &-header {
+      font-size: 2em;
+    }
+    &-body {
+      font-size: 1.4em;
+      font-weight: 400;
+    }
+  }
+}
+
+.welcome-buttons {
+  flex-basis: 60%;
+  @include flex-cc-row;
+  button {
+    @include welcome-button;
+    flex-basis: 100%;
+    margin: 20px 40px;
+    padding: 20px 10px;
+  }
+  .button-play {
+    background-color: $secondary-color;
+    color: $dark-color;
+  }
 }
