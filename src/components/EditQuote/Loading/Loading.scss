@@ -2,6 +2,17 @@
 @import "../../../scss/variables.scss";
 
 .loading-holder {
-  @include flex-cc-col;
-  @include loading-content;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  width: 100%;
+  border: 3px solid $primary-color;
+  border-radius: 20px;
+  color: $primary-color;
+  h1,
+  h3 {
+    width: 100%;
+  }
 }

@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @mixin flex-cc-row {
   display: flex;
   flex-flow: row wrap;

@@ -16,7 +16,14 @@ export class StartGame extends Component {
     const { launchNewGame, errors, setUserParams } = this.props;
     const isErrors = Object.keys(errors);
     const { email, username, lang, level } = this.props.values;
-    if (isErrors.length > 0 || username.length === 0) this.forceUpdate();
+    if (
+      isErrors.length > 0 ||
+      username.length === 0 ||
+      level.length === 0 ||
+      email.length === 0 ||
+      lang.length === 0
+    )
+      this.forceUpdate();
     else {
       launchNewGame(username, level, lang);
       setUserParams(username, level, lang, email);
@@ -28,7 +35,7 @@ export class StartGame extends Component {
     return isRequesting ? (
       <Loading />
     ) : (
-      <div className="loading-holder">
+      <div className="form-holder">
         <Form className="user-params-form" onSubmit={this.handleSubmitting}>
           <p className="game-select-label">
             User name: <span>{touched.username && errors.username}</span>

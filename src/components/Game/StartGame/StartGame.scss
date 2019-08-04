@@ -1,7 +1,7 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
 
-.loading-holder {
+.form-holder {
   @include flex-cc-row;
   @include loading-content;
   align-items: flex-start;

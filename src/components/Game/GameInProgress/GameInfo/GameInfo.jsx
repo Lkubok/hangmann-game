@@ -22,8 +22,8 @@ export class GameInfo extends Component {
   }
   componentDidUpdate() {
     const { startTime, timeLeft } = this.state;
-    const { lifes } = this.props;
-    if (timeLeft < startTime || lifes === 0) {
+    const { isFinished, lifes } = this.props;
+    if (timeLeft < startTime || lifes === 0 || isFinished) {
       clearInterval(this.interval);
       this.props.closeGame();
     }
@@ -69,7 +69,8 @@ export class GameInfo extends Component {
 const mapStateToProps = state => ({
   lifes: selectors.getLifes(state),
   startTime: selectors.getStartTime(state),
-  stateOfGame: selectors.getStateOfGame(state)
+  stateOfGame: selectors.getStateOfGame(state),
+  isFinished: selectors.getIsFinished(state)
 });
 const mapDispatchToProps = {
   closeGame
