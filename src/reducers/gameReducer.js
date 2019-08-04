@@ -28,10 +28,16 @@ const gameReducer = (state = initialState, action) => {
         ...action.game,
         stateOfGame: "alive",
         isAlive: true,
-        gameStartedAt: Date.now()
+        gameStartedAt: Date.now(),
+        timeLeft: null
       };
     case types.RESET_GAME:
-      return { ...initialState, typedLetters: [], guessedLetters: [] };
+      return {
+        ...initialState,
+        typedLetters: [],
+        guessedLetters: [],
+        timeLeft: null
+      };
     case types.CHANGE_GAME_USERNAME:
       return { ...state, userName: action.userName };
     case types.CHANGE_USER_EMAIL:
@@ -43,7 +49,12 @@ const gameReducer = (state = initialState, action) => {
     case types.SET_REQUESTING:
       return { ...state, isRequesting: action.status };
     case types.REMOVE_GAME:
-      return { ...initialState, typedLetters: [], guessedLetters: [] };
+      return {
+        ...initialState,
+        typedLetters: [],
+        guessedLetters: [],
+        timeLeft: null
+      };
     case types.ADD_TYPED_LETTER:
       return { ...state, ...state.typedLetters.push(action.letter) };
     case types.CHANGE_STATE_OF_GAME:
