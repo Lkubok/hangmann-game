@@ -14,7 +14,7 @@ export default class Loading extends Component {
       });
     }, 250);
   }
-  componentWillUnmount() {
+  componentDidUnmount() {
     clearInterval(this.interval);
   }
 
