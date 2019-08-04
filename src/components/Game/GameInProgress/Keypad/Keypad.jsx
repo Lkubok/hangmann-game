@@ -22,9 +22,6 @@ class Keypad extends Component {
     } else {
       pressLetter(button, gameId);
     }
-    /*     this.setState(prevState => {
-      prevState.typed.push(button);
-    }); */
   };
   listTypedButtons = () => {
     return this.props.typed.join(" ");
