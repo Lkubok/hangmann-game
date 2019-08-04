@@ -78,3 +78,42 @@
   flex-basis: 100%;
   color: $primary-color;
 }
+
+@mixin form-edit {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  justify-content: flex-start;
+}
+@mixin input-textarea-look {
+  @include input-add-edit-quote;
+  flex-basis: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.4s ease-out;
+  &:focus {
+    border: 0;
+    outline: none;
+    background: $dark-color-light-hover;
+  }
+}
+
+@mixin std-button {
+  border: 0;
+  background-color: $dark-color-light;
+  color: $white-color;
+  flex-basis: 100%;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    background-color: $primary-color;
+    color: $dark-color;
+  }
+}

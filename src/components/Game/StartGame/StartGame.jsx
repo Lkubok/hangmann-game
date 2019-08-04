@@ -29,7 +29,7 @@ export class StartGame extends Component {
       <Loading />
     ) : (
       <div className="loading-holder">
-        <Form onSubmit={this.handleSubmitting}>
+        <Form className="user-params-form" onSubmit={this.handleSubmitting}>
           <p className="game-select-label">
             User name: <span>{touched.username && errors.username}</span>
           </p>
@@ -85,7 +85,7 @@ const MyForm = withFormik({
       .required("Select a language!"),
     level: Yup.string()
       .min(3)
-      .max(10)
+      .max(25)
       .required("Select level!")
   })
 });
@@ -98,11 +98,6 @@ const mapDispatchToProps = {
   launchNewGame,
   setUserParams
 };
-
-/* export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StartGame); */
 
 export default compose(
   connect(
