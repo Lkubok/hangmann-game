@@ -36,7 +36,7 @@ export class GameFinished extends Component {
             : "game-finished game-finished-dead"
         }
       >
-        <h2>game finished</h2>
+        {isGuessed ? <h2>game finished</h2> : <h2>game over !</h2>}
         {isGuessed ? <h3>Congratulations !</h3> : <h3>You are dead ;( </h3>}
         {isGuessed ? null : <h4>searched quote was:</h4>}
         {isGuessed ? null : <h5>{this.searchedQuote()}</h5>}
