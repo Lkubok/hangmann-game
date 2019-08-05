@@ -139,11 +139,11 @@ export const fetchSingleQuote = (api, id) => dispatch => {
 };
 
 export const pressLetter = (letter, gameId) => dispatch => {
+  dispatch(addTypedLetter(letter));
   axios
     .post(REACT_APP_API_HOST + "/games/check", { gameId, letter })
     .then(response => response.data)
     .then(data => {
-      dispatch(addTypedLetter(letter));
       if (data.arrayToRespond.length > 0) {
         dispatch(changeLetterStatus(data.arrayToRespond, letter));
         dispatch(addToGuessedLetter(letter));

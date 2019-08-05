@@ -7,7 +7,7 @@ import {
   clearGameParams
 } from "../../../actions/gameActions";
 import Tiles from "./Tiles";
-import Keypad from "./Keypad/index";
+import Keypad from "./Keypad";
 import GameInfo from "./GameInfo";
 import GameFinished from "./GameFinished/index";
 import * as selectors from "../../../reducers/selectors";
@@ -19,7 +19,6 @@ export class GameInProgress extends Component {
     this.props.deleteGame(id, userName, userEmail, userLevel, userLang);
   };
   handleKeyPress = e => {
-    this.forceUpdate();
     const { pressLetter, gameId, typed } = this.props;
     if (typed.includes(e.key)) {
       return;
@@ -29,6 +28,7 @@ export class GameInProgress extends Component {
   };
 
   render() {
+    console.log("gameinproress ", this.props.typed);
     const { gameId, quoteAuthor, isFinished } = this.props;
     return (
       <>
@@ -43,7 +43,7 @@ export class GameInProgress extends Component {
             <div className="quote-item">Quote by:</div>
             <div className="quote-item">{quoteAuthor}</div>
           </div>
-          <Keypad />
+          <Keypad typed={this.props.typed} />
           <button onClick={this.handleGameDelete(gameId)}>Leave game</button>
         </div>
         <GameInfo />

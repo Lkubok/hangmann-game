@@ -15,7 +15,6 @@ class Keypad extends Component {
     };
   }
   onKeyPress = button => {
-    this.forceUpdate();
     const { pressLetter, gameId, typed } = this.props;
     if (typed.includes(button)) {
       return;
@@ -29,10 +28,9 @@ class Keypad extends Component {
 
   render() {
     return (
-      <div className="keyboard">
+      <div className="keyboard" key={`${this.props.typed.join("-")}`}>
         <Keyboard
-          key={this.state.typed}
-          onKeyPress={button => this.onKeyPress(button)}
+          onKeyPress={this.onKeyPress}
           layout={{
             default: [
               "q w e r t y u i o p",
@@ -43,12 +41,12 @@ class Keypad extends Component {
           buttonTheme={[
             {
               class: "key-button key-button-typed",
-              // buttons: `"${this.state.typed.join(" ")}"`
-              buttons: "W"
+              buttons: `${this.props.typed.join(" ")}`
+              // buttons: "w"
             },
             {
               class: "key-button key-button-untyped",
-              // buttons: `"${this.state.untyped.join("")}"`
+              // buttons: `${this.state.untyped.join(" ")}`
               buttons: "Q"
             }
           ]}
@@ -59,7 +57,7 @@ class Keypad extends Component {
 }
 const mapStateToProps = state => ({
   gameId: selectors.getGameId(state),
-  typed: selectors.getTypedLetters(state),
+  // typed: selectors.getTypedLetters(state),
   guessed: selectors.getGuessedLetters(state)
 });
 const mapDispatchToProps = {

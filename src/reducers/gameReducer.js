@@ -59,12 +59,9 @@ const gameReducer = (state = initialState, action) => {
           "lastGameLevel",
           "lastGameLang"
         ])
-        /*         typedLetters: [],
-        guessedLetters: [],
-        timeLeft: null */
       };
     case types.ADD_TYPED_LETTER:
-      return { ...state, ...state.typedLetters.push(action.letter) };
+      return { ...state, typedLetters: [...state.typedLetters, action.letter] };
     case types.CHANGE_STATE_OF_GAME:
       return { ...state, stateOfGame: action.state };
     case types.CHANGE_LIFES_COUNT:
@@ -72,7 +69,10 @@ const gameReducer = (state = initialState, action) => {
     case types.CHANGE_IS_ALIVE:
       return { ...state, isAlive: action.value };
     case types.ADD_GUESSED_LETTER:
-      return { ...state, ...state.guessedLetters.push(action.letter) };
+      return {
+        ...state,
+        guessedLetters: [...state.guessedLetters, action.letter]
+      };
     case types.CHANGE_IS_FINISHED:
       return { ...state, isFinished: action.status };
     case types.CHANGE_SEARCHED_QUOTE:

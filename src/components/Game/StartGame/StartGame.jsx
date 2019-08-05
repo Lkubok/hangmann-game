@@ -21,18 +21,10 @@ export class StartGame extends Component {
   }
   handleSubmitting = e => {
     e.preventDefault();
-    const { launchNewGame, errors, setUserParams } = this.props;
-    const isErrors = Object.keys(errors);
+    const { launchNewGame, setUserParams, isValid } = this.props;
     const { email, username, lang, level } = this.props.values;
-    if (
-      isErrors.length > 0 ||
-      username.length === 0 ||
-      level.length === 0 ||
-      email.length === 0 ||
-      lang.length === 0
-    )
-      this.forceUpdate();
-    else {
+
+    if (isValid) {
       launchNewGame(username, level, lang);
       setUserParams(username, level, lang, email);
     }

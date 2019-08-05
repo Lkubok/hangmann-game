@@ -6,6 +6,7 @@ import "./Tiles.scss";
 export class Tiles extends Component {
   renderTiles = () => {
     const { lettersToGuess } = this.props;
+    console.log("tiles", this.props.typed);
     return lettersToGuess.map((el, index) => (
       <div
         key={index}
@@ -29,7 +30,8 @@ export class Tiles extends Component {
 }
 
 const mapStateToProps = state => ({
-  lettersToGuess: selectors.getLettersToGuess(state)
+  lettersToGuess: selectors.getLettersToGuess(state),
+  typed: selectors.getTypedLetters(state)
 });
 
 const mapDispatchToProps = {};
