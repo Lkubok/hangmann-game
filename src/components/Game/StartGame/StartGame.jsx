@@ -24,7 +24,7 @@ export class StartGame extends Component {
     const { launchNewGame, setUserParams, isValid } = this.props;
     const { email, username, lang, level } = this.props.values;
 
-    if (isValid) {
+    if (isValid && username) {
       launchNewGame(username, level, lang);
       setUserParams(username, level, lang, email);
     }
@@ -118,7 +118,8 @@ const MyForm = withFormik({
       .min(3)
       .max(25)
       .required("Select level!")
-  })
+  }),
+  isInitialValid: true
 });
 
 const mapStateToProps = state => {

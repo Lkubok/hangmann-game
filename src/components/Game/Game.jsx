@@ -6,7 +6,6 @@ import GameInProgress from "./GameInProgress";
 
 export class Game extends Component {
   render() {
-    console.log("kokojambi", this.props.typedLetters, this.props.typedLetters2);
     return this.props.gameId ? <GameInProgress /> : <StartGame />;
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Loading.scss";
-import { clearInterval } from "timers";
 
 export default class Loading extends Component {
   state = {
@@ -16,10 +15,6 @@ export default class Loading extends Component {
     }, 250);
   }
   componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  componentDidUnmount() {
     if (this.interval) {
       clearInterval(this.interval);
     }
