@@ -14,16 +14,18 @@ import * as selectors from "../../../reducers/selectors";
 import "./GameInProgress.scss";
 
 export class GameInProgress extends Component {
-  enteringRef = React.createRef();
+  // enteringRef = React.createRef();
   componentDidMount() {
-    if (this.enteringRef.current) {
+    /*     if (this.enteringRef.current) {
       this.enteringRef.current.focus();
-    }
+    } */
+    window.addEventListener("keydown", this.handleKeyPress);
   }
   handleGameDelete = id => () => {
     const { userName, userEmail, userLevel, userLang } = this.props;
     this.props.deleteGame(id, userName, userEmail, userLevel, userLang);
   };
+
   handleKeyPress = e => {
     const { pressLetter, gameId, typed } = this.props;
     if (typed.includes(e.key)) {
