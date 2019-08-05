@@ -14,6 +14,12 @@ import * as selectors from "../../../reducers/selectors";
 import "./GameInProgress.scss";
 
 export class GameInProgress extends Component {
+  enteringRef = React.createRef();
+  componentDidMount() {
+    if (this.enteringRef.current) {
+      this.enteringRef.current.focus();
+    }
+  }
   handleGameDelete = id => () => {
     const { userName, userEmail, userLevel, userLang } = this.props;
     this.props.deleteGame(id, userName, userEmail, userLevel, userLang);
@@ -33,6 +39,7 @@ export class GameInProgress extends Component {
     return (
       <>
         <div
+          ref={this.enteringRef}
           className="game-container"
           onKeyPress={this.handleKeyPress}
           tabIndex="0"
