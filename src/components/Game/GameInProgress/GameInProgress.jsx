@@ -19,7 +19,7 @@ export class GameInProgress extends Component {
     /*     if (this.enteringRef.current) {
       this.enteringRef.current.focus();
     } */
-    window.addEventListener("keydown", this.handleKeyPress);
+    window.addEventListener("keypress", this.handleKeyPress);
   }
   handleGameDelete = id => () => {
     const { userName, userEmail, userLevel, userLang } = this.props;
