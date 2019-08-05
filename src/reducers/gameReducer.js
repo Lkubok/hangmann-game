@@ -1,4 +1,5 @@
 import * as types from "../types/gameTypes";
+import _ from "lodash";
 
 const initialState = {
   isAlive: "",
@@ -17,7 +18,11 @@ const initialState = {
   gameLevel: "",
   gameLang: "",
   searchedQuote: "",
-  timeLeft: null
+  timeLeft: null,
+  lastUserName: "",
+  lastUserEmail: "",
+  lastGameLevel: "",
+  lastGameLang: ""
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -31,13 +36,9 @@ const gameReducer = (state = initialState, action) => {
         gameStartedAt: Date.now(),
         timeLeft: null
       };
-    case types.RESET_GAME:
-      return {
-        ...initialState,
-        typedLetters: [],
-        guessedLetters: [],
-        timeLeft: null
-      };
+
+    case types.SAVE_LAST_USER:
+      return { ...state, ...action.user };
     case types.CHANGE_GAME_USERNAME:
       return { ...state, userName: action.userName };
     case types.CHANGE_USER_EMAIL:
@@ -49,11 +50,18 @@ const gameReducer = (state = initialState, action) => {
     case types.SET_REQUESTING:
       return { ...state, isRequesting: action.status };
     case types.REMOVE_GAME:
+    case types.RESET_GAME:
       return {
-        ...initialState,
-        typedLetters: [],
+        ...state,
+        ..._.omit(_.cloneDeep(initialState), [
+          "lastUserName",
+          "lastUserEmail",
+          "lastGameLevel",
+          "lastGameLang"
+        ])
+        /*         typedLetters: [],
         guessedLetters: [],
-        timeLeft: null
+        timeLeft: null */
       };
     case types.ADD_TYPED_LETTER:
       return { ...state, ...state.typedLetters.push(action.letter) };

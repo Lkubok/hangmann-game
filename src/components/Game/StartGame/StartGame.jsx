@@ -100,14 +100,14 @@ const MyForm = withFormik({
     level,
     getUserName,
     getUserEmail,
-    getGameLang,
-    getGameLevel
+    getUserLang,
+    getUserLevel
   }) {
     return {
       username: username || getUserName,
       email: email || getUserEmail,
-      lang: lang || getGameLang,
-      level: level || getGameLevel
+      lang: lang || getUserLang,
+      level: level || getUserLevel
     };
   },
   validationSchema: Yup.object().shape({
@@ -129,13 +129,15 @@ const MyForm = withFormik({
   })
 });
 
-const mapStateToProps = state => ({
-  isRequesting: selectors.getIsRequesting(state),
-  getUserName: selectors.getGameUserName(state),
-  getUserEmail: selectors.getUserEmail(state),
-  getUserLevel: selectors.getGameLevel(state),
-  getUserLang: selectors.getGameLang(state)
-});
+const mapStateToProps = state => {
+  return {
+    isRequesting: selectors.getIsRequesting(state),
+    getUserName: selectors.getLastUserName(state),
+    getUserEmail: selectors.getLastUserEmail(state),
+    getUserLevel: selectors.getLastGameLevel(state),
+    getUserLang: selectors.getLastGameLang(state)
+  };
+};
 
 const mapDispatchToProps = {
   launchNewGame,

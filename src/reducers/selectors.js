@@ -29,6 +29,11 @@ export const getGameLang = state => state.gameReducer.gameLang;
 export const getSearchedQuote = state => state.gameReducer.searchedQuote;
 export const getTimeLeft = state => state.gameReducer.timeLeft;
 
+export const getLastUserName = state => state.gameReducer.lastUserName;
+export const getLastUserEmail = state => state.gameReducer.lastUserEmail;
+export const getLastGameLevel = state => state.gameReducer.lastGameLevel;
+export const getLastGameLang = state => state.gameReducer.lastGameLang;
+
 export const getSortedQuotes = createSelector(
   getQuotes,
   getFilterQuery,

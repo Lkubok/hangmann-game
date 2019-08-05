@@ -69,6 +69,10 @@ export const saveTimeLeft = time => ({
   type: types.SAVE_TIME_LEFT,
   time
 });
+export const saveLastUser = user => ({
+  type: types.SAVE_LAST_USER,
+  user
+});
 
 //THUNK
 
@@ -94,6 +98,14 @@ export const setUserParams = (username, level, lang, email) => dispatch => {
   dispatch(changeGameLang(lang));
   dispatch(changeUserEmail(email));
   dispatch(changeGameUserName(username));
+  dispatch(
+    saveLastUser({
+      lastUserName: username,
+      lastUserEmail: email,
+      lastGameLevel: level,
+      lastGameLang: lang
+    })
+  );
 };
 
 export const deleteGame = (
@@ -156,10 +168,10 @@ export const closeGame = () => dispatch => {
 
 export const clearGameParams = (username, email, level, lang) => dispatch => {
   dispatch(resetGame());
-  dispatch(changeGameLevel(level));
-  dispatch(changeGameLang(lang));
-  dispatch(changeUserEmail(email));
-  dispatch(changeGameUserName(username));
+  dispatch(changeGameLevel());
+  dispatch(changeGameLang());
+  dispatch(changeUserEmail());
+  dispatch(changeGameUserName());
 };
 
 export const saveTime = time => dispatch => {
