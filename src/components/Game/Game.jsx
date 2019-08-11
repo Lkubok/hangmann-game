@@ -10,9 +10,6 @@ export class Game extends Component {
   }
 }
 const mapStateToProps = state => ({
-  typedLetters: state.gameReducer.typedLetters,
-  typedLetters2: selectors.getTypedLetters(state),
-  gameId: selectors.getGameId(state),
-  isFinished: selectors
+  gameId: selectors.getGameId(state)
 });
 export default connect(mapStateToProps)(Game);

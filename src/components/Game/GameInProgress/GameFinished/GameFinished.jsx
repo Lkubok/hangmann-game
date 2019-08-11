@@ -12,22 +12,26 @@ import {
 const { REACT_APP_API_HOST } = process.env;
 
 export class GameFinished extends Component {
-  handlePlayAgain = () => {
-    const { userName, userEmail, userLevel, userLang } = this.props;
-    this.props.clearGameParams(userName, userEmail, userLevel, userLang);
-  };
-  searchedQuote = () => {
-    return this.props.searchedQuote;
-  };
-
   componentDidMount() {
     const { gameId } = this.props;
     const idToFetch = gameId.slice(0, 24);
     this.props.fetchSingleQuote(REACT_APP_API_HOST, idToFetch);
   }
+  handlePlayAgain = () => {
+    const {
+      clearGameParams,
+      userName,
+      userEmail,
+      userLevel,
+      userLang
+    } = this.props;
+    clearGameParams(userName, userEmail, userLevel, userLang);
+  };
+  searchedQuote = () => {
+    return this.props.searchedQuote;
+  };
   render() {
-    console.log("searchedQuote", this.props.searchedQuote);
-    const { isGuessed } = this.props;
+    const { isGuessed, searchedQuote } = this.props;
     return (
       <div
         className={
@@ -36,14 +40,24 @@ export class GameFinished extends Component {
             : "game-finished game-finished-dead"
         }
       >
-        {isGuessed ? <h2>game finished</h2> : <h2>game over !</h2>}
-        {isGuessed ? <h3>Congratulations !</h3> : <h3>You are dead ;( </h3>}
-        {isGuessed ? null : <h4>searched quote was:</h4>}
-        {isGuessed ? null : <h5>{this.searchedQuote()}</h5>}
+        {isGuessed ? (
+          <>
+            <h2>game finished</h2>
+            <h3>Congratulations !</h3>
+          </>
+        ) : (
+          <>
+            {" "}
+            <h2>game over !</h2>
+            <h3>You are dead ;( </h3>
+            <h4>searched quote was:</h4>
+            <h5>{this.searchedQuote()}</h5>
+          </>
+        )}
         <button className="btn-restart" onClick={this.handlePlayAgain}>
           Play again
         </button>
-        {this.props.searchedQuote === "" ? null : <GameSending />}
+        {searchedQuote && <GameSending />}
       </div>
     );
   }
@@ -58,7 +72,8 @@ const mapStateToProps = state => ({
   gameId: selectors.getGameId(state),
   searchedQuote: selectors.getSearchedQuote(state),
   scoreToSend: selectors.getScoreToSend(state),
-  startTime: selectors.getStartTime(state)
+  startTime: selectors.getStartTime(state),
+  isFinished: selectors.getIsFinished(state)
 });
 
 const mapDispatchToProps = {

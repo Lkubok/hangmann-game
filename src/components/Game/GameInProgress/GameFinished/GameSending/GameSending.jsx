@@ -11,15 +11,22 @@ const { REACT_APP_API_HOST } = process.env;
 
 export class GameSending extends Component {
   componentDidMount() {
-    const { sendGameStat, scoreToSend, gameId, startTime } = this.props;
+    const {
+      fetchSingleQuote,
+      sendGameStat,
+      scoreToSend,
+      gameId,
+      startTime
+    } = this.props;
     const idToFetch = gameId.slice(0, 24);
-    this.props.fetchSingleQuote(REACT_APP_API_HOST, idToFetch);
+    fetchSingleQuote(REACT_APP_API_HOST, idToFetch);
     const score = {
       ...scoreToSend,
       gameTime: `${Date.now() - startTime}`
     };
     sendGameStat(score);
   }
+
   render() {
     return <h6 className="database-info">game stored in database</h6>;
   }

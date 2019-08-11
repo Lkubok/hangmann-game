@@ -9,17 +9,15 @@ export class GameInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: this.props.startTime,
-      timeLeft: this.props.stoppedTime
-        ? this.props.stoppedTime
-        : parseInt(this.props.startTime) + parseInt(REACT_APP_GAME_TIME)
+      startTime: props.startTime,
+      timeLeft: props.stoppedTime
+        ? props.stoppedTime
+        : parseInt(props.startTime) + parseInt(REACT_APP_GAME_TIME)
     };
   }
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.setState(prevState => {
-        return { timeLeft: prevState.timeLeft - 1000 };
-      });
+      this.setState(prevState => ({ timeLeft: prevState.timeLeft - 1000 }));
     }, 1000);
   }
   componentDidUpdate() {

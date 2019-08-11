@@ -14,45 +14,23 @@ import * as selectors from "../../../reducers/selectors";
 import "./GameInProgress.scss";
 
 export class GameInProgress extends Component {
-  // enteringRef = React.createRef();
-  componentDidMount() {
-    /*     if (this.enteringRef.current) {
-      this.enteringRef.current.focus();
-    } */
-    window.addEventListener("keypress", this.handleKeyPress);
-  }
   handleGameDelete = id => () => {
-    const { userName, userEmail, userLevel, userLang } = this.props;
-    this.props.deleteGame(id, userName, userEmail, userLevel, userLang);
-  };
-
-  handleKeyPress = e => {
-    const { pressLetter, gameId, typed } = this.props;
-    if (typed.includes(e.key)) {
-      return;
-    } else {
-      pressLetter(e.key, gameId);
-    }
+    const { deleteGame, userName, userEmail, userLevel, userLang } = this.props;
+    deleteGame(id, userName, userEmail, userLevel, userLang);
   };
 
   render() {
-    console.log("gameinproress ", this.props.typed);
     const { gameId, quoteAuthor, isFinished } = this.props;
     return (
       <>
-        <div
-          ref={this.enteringRef}
-          className="game-container"
-          onKeyPress={this.handleKeyPress}
-          tabIndex="0"
-        >
+        <div className="game-container" tabIndex="0">
           {isFinished ? <GameFinished /> : null}
           <Tiles />
           <div className="quote-author">
             <div className="quote-item">Quote by:</div>
             <div className="quote-item">{quoteAuthor}</div>
           </div>
-          <Keypad typed={this.props.typed} />
+          <Keypad />
           <button onClick={this.handleGameDelete(gameId)}>Leave game</button>
         </div>
         <GameInfo />
