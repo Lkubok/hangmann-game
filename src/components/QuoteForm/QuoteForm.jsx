@@ -97,7 +97,7 @@ const myFormik = withFormik({
       .max(50)
       .required("Insertion author is required")
   }),
-  handleSubmit(values, { setSubmitting, resetForm, setErrors }) {
+  handleSubmit(values, { props, resetForm, setErrors }) {
     if (values.id === "") {
       delete values.id;
       axios
@@ -124,7 +124,7 @@ const myFormik = withFormik({
       axios
         .put(REACT_APP_API_HOST + `/quotes/update`, idValues)
         .then(response => {
-          history.push("/quotes");
+          props.history.push("/quotes");
         })
         .catch(error => {
           setErrors({ quote: `${error}` });
@@ -134,12 +134,10 @@ const myFormik = withFormik({
 });
 
 export default compose(
-  compose(
-    withRouter,
-    connect(
-      mapStateToProps,
-      mapDispatchToProps
-    ),
-    myFormik
-  )(QuoteForm)
-);
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  myFormik
+)(QuoteForm);

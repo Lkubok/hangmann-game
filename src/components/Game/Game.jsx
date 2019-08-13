@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import * as selectors from "../../reducers/selectors";
+import { connect } from "react-redux";
+import StartGame from "./StartGame/index";
+import GameInProgress from "./GameInProgress";
 
-export default class Game extends Component {
+export class Game extends Component {
   render() {
-    return <div>GAME</div>;
+    return this.props.gameId ? <GameInProgress /> : <StartGame />;
   }
 }
+const mapStateToProps = state => ({
+  gameId: selectors.getGameId(state)
+});
+export default connect(mapStateToProps)(Game);

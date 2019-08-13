@@ -4,12 +4,15 @@
 .quote-query-input {
   @include input-quote-header;
   flex-basis: 25%;
+  color: $white-color;
 }
 
 .quote-page-size {
   @include input-quote-header;
 
-  option {
+  option,
+  select {
     text-align: center;
+    color: $white-color;
   }
 }

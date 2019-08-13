@@ -14,7 +14,6 @@ export const insertFetchedQuote = quote => ({
 export const fetchQuote = id => dispatch => {
   dispatch(changeFetchStatus(true));
   setTimeout(() => {
-    // In production, delete setTimeout !!!
     axios
       .get(REACT_APP_API_HOST + "/quotes/single/" + id)
       .then()
