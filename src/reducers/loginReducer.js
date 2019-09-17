@@ -5,7 +5,8 @@ const initialState = {
   email: "",
   password: "",
   responseFromServer: "",
-  isProceding: false
+  isProceding: false,
+  jwt: ""
 };
 
 const loginReducer = (state = initialState, action) => {

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { setUserLogOut } from "../../actions/appActions";
+
 import "./Navbar.scss";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <nav>
@@ -54,16 +57,39 @@ export default class Navbar extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/login"
-              className="nav-item"
-              activeClassName="nav-item-active"
-            >
-              Login / Sign in
-            </NavLink>
+            {this.props.isLogged ? (
+              <button
+                className="nav-item nav-item-danger"
+                onClick={() => this.props.setUserLogOut()}
+              >
+                Log Out
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                className="nav-item"
+                activeClassName="nav-item-active"
+              >
+                Login / Sign in
+              </NavLink>
+            )}
           </li>
         </ul>
       </nav>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userName: state.appParamsReducer.userName,
+  isLogged: state.appParamsReducer.isLogged
+});
+
+const mapDispatchToProps = {
+  setUserLogOut
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);
