@@ -5,10 +5,11 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { setUserLogIn } from "../../actions/appActions";
+import { setUserLogIn } from "../../../actions/appActions";
+import "./SignForm.scss";
 const { REACT_APP_API_HOST } = process.env;
 
-class Login extends Component {
+class SignForm extends Component {
   render() {
     const { errors, touched, isSubmiting } = this.props;
 
@@ -81,4 +82,4 @@ export default compose(
     mapDispatchToProps
   ),
   loginFormik
-)(Login);
+)(SignForm);

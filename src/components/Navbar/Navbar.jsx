@@ -66,7 +66,7 @@ class Navbar extends Component {
               </button>
             ) : (
               <NavLink
-                to="/login"
+                to="/user"
                 className="nav-item"
                 activeClassName="nav-item-active"
               >

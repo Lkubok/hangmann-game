@@ -16,4 +16,5 @@ export const setUserLogIn = user => dispatch => {
 
 export const setUserLogOut = () => dispatch => {
   dispatch(userLogOut());
+  localStorage.removeItem("JWT_HANG_TOKEN");
 };
