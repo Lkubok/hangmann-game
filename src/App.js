@@ -45,6 +45,7 @@ class App extends Component {
         <Navbar />
         <Main>
           <Switch>
+            {/* PROTECTED ROUTE 0 inside this another route  */}
             <Route exact path={"/"} component={Welcome} />
             <Route exact path={"/game"} component={Game} />
             <Route exact path={"/about"} component={About} />
