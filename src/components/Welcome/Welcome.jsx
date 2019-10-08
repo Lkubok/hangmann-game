@@ -14,7 +14,7 @@ export class Welcome extends Component {
           <button className="button-play" onClick={() => history.push("/game")}>
             Play without login for free
           </button>
-          <button onClick={() => history.push("/login")}>Sign in</button>
+          <button onClick={() => history.push("/signup")}>Sign Up</button>
           <button onClick={() => history.push("/quotes")}>
             Browse available quotes
           </button>

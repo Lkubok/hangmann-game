@@ -11,29 +11,25 @@ import About from "./components/About";
 import AddQuote from "./components/AddQuote";
 import EditQuote from "./components/EditQuote";
 import Game from "./components/Game";
+import SignUp from "./components/User/SignUp";
 import history from "./history";
 
 import jwt_decode from "jwt-decode";
+import { options } from "./options/connection";
+import { token } from "./options/connection";
+
 import { setUserLogIn } from "./actions/appActions";
 import { connect } from "react-redux";
 
 import { Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
-const { REACT_APP_API_HOST } = process.env;
 
 class App extends Component {
   componentDidMount() {
-    const token = localStorage.getItem("JWT_HANG_TOKEN");
-    const options = {
-      method: "GET",
-      headers: { "content-type": "application/json", Authorization: token },
-      url: REACT_APP_API_HOST + `/islogged`
-    };
     axios(options)
       .then(response => {
         if (response.status === 200) {
           let decoded = jwt_decode(token);
-          console.log(decoded);
           this.props.setUserLogIn(decoded.username);
         } else {
         }
@@ -41,19 +37,6 @@ class App extends Component {
       .catch(error => {
         console.log("errors!!!! -> ", error);
       });
-
-    // axios
-    //   .post(REACT_APP_API_HOST + `/auth/signin`, values)
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       resetForm();
-    //       localStorage.setItem("JWT_HANG_TOKEN", response.data.token);
-    //       props.setUserLogIn(values.username);
-    //     }
-    //   })
-    //   .catch(error => {
-    //     setErrors({ password: `${error.response.data.msg}` });
-    //   });
   }
   render() {
     return (
@@ -66,6 +49,7 @@ class App extends Component {
             <Route exact path={"/game"} component={Game} />
             <Route exact path={"/about"} component={About} />
             <Route exact path={"/quotes"} component={Quotes} />
+            <Route exact path={"/signup"} component={SignUp} />
             <Route exact path={"/stats"} component={Stats} />
             <Route exact path={"/addquote"} component={AddQuote} />
             <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />

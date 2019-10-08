@@ -70,7 +70,7 @@ class Navbar extends Component {
                 className="nav-item"
                 activeClassName="nav-item-active"
               >
-                Login / Sign in
+                Login
               </NavLink>
             )}
           </li>

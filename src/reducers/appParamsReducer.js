@@ -2,10 +2,7 @@ import * as types from "../types/appTypes";
 
 const initialState = {
   isLogged: false,
-  isActive: false,
-  userName: "",
-  refreshDate: "",
-  appStartedAt: ""
+  userName: ""
 };
 
 const appParamsReducer = (state = initialState, action) => {

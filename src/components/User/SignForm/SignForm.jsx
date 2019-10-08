@@ -6,34 +6,50 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { setUserLogIn } from "../../../actions/appActions";
+import history from "../../../history";
 import "./SignForm.scss";
 const { REACT_APP_API_HOST } = process.env;
 
 class SignForm extends Component {
+  handleButton = e => {
+    e.preventDefault();
+    history.push("/signup");
+  };
   render() {
     const { errors, touched, isSubmiting } = this.props;
 
     return (
-      <Form className="add-edit-form">
-        <p className="label">
-          Username:{" "}
-          <span className="error">{touched.username && errors.username}</span>
-        </p>
-        <Field placeholder="Write username" name="username" />
-        <p className="label">
-          Password:
-          <span className="error">{touched.password && errors.password}</span>
-        </p>
+      <>
+        <Form className="add-edit-form">
+          <p className="label">
+            Username:{" "}
+            <span className="error">{touched.username && errors.username}</span>
+          </p>
+          <Field placeholder="Write username" name="username" />
+          <p className="label">
+            Password:
+            <span className="error">{touched.password && errors.password}</span>
+          </p>
+          <Field
+            type="password"
+            placeholder="Write your password"
+            name="password"
+          />
+          <button className="btn" type="submit" disbaled={isSubmiting}>
+            Sign In
+          </button>
 
-        <Field
-          type="password"
-          placeholder="Write your password"
-          name="password"
-        />
-        <button className="btn" type="submit" disbaled={isSubmiting}>
-          Sign In
-        </button>
-      </Form>
+          <p
+            className="label"
+            style={{ textAlign: "center", width: "100%", marginTop: "20px" }}
+          >
+            If You don't have an account please sign up:
+          </p>
+          <button className="btn" onClick={this.handleButton}>
+            Sign Up
+          </button>
+        </Form>
+      </>
     );
   }
 }

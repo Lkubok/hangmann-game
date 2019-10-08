@@ -15,6 +15,9 @@ export const setUserLogIn = user => dispatch => {
 };
 
 export const setUserLogOut = () => dispatch => {
-  dispatch(userLogOut());
-  localStorage.removeItem("JWT_HANG_TOKEN");
+  let check = window.confirm("Are you sure you want to log out ?");
+  if (check === true) {
+    dispatch(userLogOut());
+    localStorage.removeItem("JWT_HANG_TOKEN");
+  }
 };

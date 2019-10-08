@@ -1,2 +1,15 @@
 @import "../../../scss/mixins.scss";
 @import "../../../scss/variables.scss";
+
+
+.btn {
+    @include std-button;
+    &-info {
+      border: 1px solid $secondary-color;
+      background-color: $dark-color;
+      &:hover {
+        background-color: $dark-color-light;
+        color: $white-color;
+      }
+    }
+  }
