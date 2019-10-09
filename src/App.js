@@ -15,22 +15,38 @@ import SignUp from "./components/User/SignUp";
 import history from "./history";
 
 import jwt_decode from "jwt-decode";
-import { options } from "./options/connection";
-import { token } from "./options/connection";
+// import { options } from "./options/connection";
+// import { token } from "./options/connection";
 
 import { setUserLogIn } from "./actions/appActions";
 import { connect } from "react-redux";
 
+import { setJwt, setUserEmail } from "./actions/appActions";
+
 import { Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
+const { REACT_APP_API_HOST } = process.env;
+const token = localStorage.getItem("JWT_HANG_TOKEN");
+
+const connectionOptions = {
+  headers: {
+    "content-type": "application/json",
+    Authorization: token
+  },
+  method: "GET",
+  url: REACT_APP_API_HOST + `/islogged`
+};
+
 class App extends Component {
   componentDidMount() {
-    axios(options)
+    axios({ ...connectionOptions })
       .then(response => {
         if (response.status === 200) {
           let decoded = jwt_decode(token);
           this.props.setUserLogIn(decoded.username);
+          this.props.setJwt(token);
+          this.props.setUserEmail(response.data.email);
         } else {
         }
       })
@@ -63,7 +79,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = { setUserLogIn };
+const mapDispatchToProps = { setUserLogIn, setJwt, setUserEmail };
 
 export default connect(
   null,

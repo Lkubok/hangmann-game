@@ -4,7 +4,7 @@ import "./Welcome.scss";
 
 export class Welcome extends Component {
   render() {
-    const { history } = this.props;
+    const { history, isLogged } = this.props;
     return (
       <div className="app-welcome">
         <div className="hang-container">
@@ -12,9 +12,12 @@ export class Welcome extends Component {
         </div>
         <div className="welcome-buttons">
           <button className="button-play" onClick={() => history.push("/game")}>
-            Play without login for free
+            {/* Play without login for free */}
+            {isLogged ? <>Play</> : <>Play without login for free</>}
           </button>
-          <button onClick={() => history.push("/signup")}>Sign Up</button>
+          {isLogged ? null : (
+            <button onClick={() => history.push("/signup")}>Sign Up</button>
+          )}
           <button onClick={() => history.push("/quotes")}>
             Browse available quotes
           </button>
@@ -35,7 +38,9 @@ export class Welcome extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isLogged: state.appParamsReducer.isLogged
+});
 
 const mapDispatchToProps = {};
 

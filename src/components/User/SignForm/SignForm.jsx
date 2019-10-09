@@ -5,7 +5,11 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { setUserLogIn } from "../../../actions/appActions";
+import {
+  setUserLogIn,
+  setJwt,
+  setUserEmail
+} from "../../../actions/appActions";
 import history from "../../../history";
 import "./SignForm.scss";
 const { REACT_APP_API_HOST } = process.env;
@@ -56,7 +60,7 @@ class SignForm extends Component {
 
 const mapStateToProps = (state, ownProps) => ({});
 
-const mapDispatchToProps = { setUserLogIn };
+const mapDispatchToProps = { setUserLogIn, setJwt, setUserEmail };
 
 const loginFormik = withFormik({
   mapPropsToValues({ username, password }) {
@@ -82,7 +86,9 @@ const loginFormik = withFormik({
         if (response.status === 200) {
           resetForm();
           localStorage.setItem("JWT_HANG_TOKEN", response.data.token);
-          props.setUserLogIn(values.username);
+          props.setUserLogIn(values.username, response.data.email);
+          props.setJwt(response.data.token);
+          // props.setUserEmail(response.data.email);
         }
       })
       .catch(error => {

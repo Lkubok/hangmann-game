@@ -93,11 +93,14 @@ const MyForm = withFormik({
     getUserName,
     getUserEmail,
     getUserLang,
-    getUserLevel
+    getUserLevel,
+    isLogged,
+    AppUserEmail,
+    AppUserName
   }) {
     return {
-      username: username || getUserName,
-      email: email || getUserEmail,
+      username: isLogged ? AppUserName : username || getUserName,
+      email: isLogged ? AppUserEmail : email || getUserEmail,
       lang: lang || getUserLang,
       level: level || getUserLevel
     };
@@ -128,7 +131,10 @@ const mapStateToProps = state => {
     getUserName: selectors.getLastUserName(state),
     getUserEmail: selectors.getLastUserEmail(state),
     getUserLevel: selectors.getLastGameLevel(state),
-    getUserLang: selectors.getLastGameLang(state)
+    getUserLang: selectors.getLastGameLang(state),
+    isLogged: state.appParamsReducer.isLogged,
+    AppUserEmail: state.appParamsReducer.userEmail,
+    AppUserName: state.appParamsReducer.userName
   };
 };
 

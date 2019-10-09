@@ -118,9 +118,6 @@ const loginFormik = withFormik({
         if (response.status === 200) {
           resetForm();
           history.push("/user");
-
-          // localStorage.setItem("JWT_HANG_TOKEN", response.data.token);
-          // props.setUserLogIn(values.username);
         }
       })
       .catch(error => {

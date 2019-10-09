@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 const { REACT_APP_API_HOST } = process.env;
 
 export class ButtonBox extends PureComponent {
-  handleDelete = id => () => this.props.deleteQuote(REACT_APP_API_HOST, id);
+  handleDelete = id => () => {
+    this.props.deleteQuote(REACT_APP_API_HOST, id, this.props.token);
+  };
   render() {
     return (
       <div className="btn-box">
@@ -25,7 +27,8 @@ export class ButtonBox extends PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  id: ownProps.id
+  id: ownProps.id,
+  token: state.appParamsReducer.jwt
 });
 
 const mapDispatchToProps = {

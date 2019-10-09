@@ -9,7 +9,7 @@ import "./User.scss";
 class User extends Component {
   render() {
     const { isLogged } = this.props;
-    return <>{isLogged ? history.push("/game") : <SignForm />}</>;
+    return <>{isLogged ? history.push("/") : <SignForm />}</>;
   }
 }
 

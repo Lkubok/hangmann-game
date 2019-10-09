@@ -19,15 +19,7 @@ class Navbar extends Component {
               Game
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/about"
-              className="nav-item"
-              activeClassName="nav-item-active"
-            >
-              About
-            </NavLink>
-          </li>
+
           <li>
             <NavLink
               to="/quotes"
@@ -37,7 +29,7 @@ class Navbar extends Component {
               Quotes
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/stats"
               className="nav-item"
@@ -45,7 +37,7 @@ class Navbar extends Component {
             >
               Stats
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               to="/addquote"
@@ -54,6 +46,15 @@ class Navbar extends Component {
             >
               {" "}
               AddQuote
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className="nav-item"
+              activeClassName="nav-item-active"
+            >
+              About
             </NavLink>
           </li>
           <li>

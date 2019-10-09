@@ -8,6 +8,8 @@ import "./QuoteForm.scss";
 import * as Yup from "yup";
 import axios from "axios";
 import { updateQuotes } from "../../actions/quoteActions";
+// import { options } from "../../options/connection";
+import qs from "qs";
 
 const { REACT_APP_API_HOST } = process.env;
 
@@ -17,7 +19,8 @@ export class QuoteForm extends Component {
     history.goBack();
   };
   render() {
-    const { errors, touched, isSubmiting } = this.props;
+    const { errors, touched, isSubmiting, isLogged, token } = this.props;
+
     return (
       <div className="form-handler">
         <Form className="add-edit-form">
@@ -44,6 +47,7 @@ export class QuoteForm extends Component {
             type="text"
             placeholder="Insertion Author"
             name="insertAuthor"
+            disabled={isLogged}
           />
           <p className="label">
             Language:
@@ -62,7 +66,10 @@ export class QuoteForm extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => ({
-  quoteId: ownProps.id
+  quoteId: ownProps.id,
+  isLogged: state.appParamsReducer.isLogged,
+  userName: state.appParamsReducer.userName,
+  token: state.appParamsReducer.jwt
 });
 
 const mapDispatchToProps = {
@@ -70,11 +77,19 @@ const mapDispatchToProps = {
 };
 
 const myFormik = withFormik({
-  mapPropsToValues({ quote, quoteAuthor, insertAuthor, lang, id }) {
+  mapPropsToValues({
+    quote,
+    quoteAuthor,
+    insertAuthor,
+    lang,
+    id,
+    userName,
+    isLogged
+  }) {
     return {
       quote: quote || "",
       quoteAuthor: quoteAuthor || "",
-      insertAuthor: insertAuthor || "",
+      insertAuthor: (isLogged ? userName : insertAuthor) || "",
       lang: lang || "",
       id: id || ""
     };
@@ -98,20 +113,34 @@ const myFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { props, resetForm, setErrors }) {
+    // if (!props.isLogged) {
+    //   alert("You should log in");
+    // } else {
+
+    const urlAdd = REACT_APP_API_HOST + `/quotes/add`;
+    const urlUpdate = REACT_APP_API_HOST + `/quotes/update`;
     if (values.id === "") {
       delete values.id;
+      console.log(values);
       axios
-        .post(REACT_APP_API_HOST + `/quotes/add`, values)
-        .then(response => {
-          if (response.status === 200) resetForm();
+        .post(urlAdd, values, {
+          headers: {
+            "content-type": "application/json",
+            Authorization: props.token
+          }
         })
-        .then(
-          setTimeout(() => {
-            history.push("/quotes");
-          }, 500)
-        )
+        .then(response => {
+          if (response.status === 200) {
+            resetForm();
+            setTimeout(() => {
+              history.push("/quotes");
+            }, 500);
+          } else {
+          }
+        })
         .catch(error => {
           setErrors({ quote: `${error.response.data.message}` });
+          alert("You should log In to add quotes", error.response.data.message);
         });
     } else {
       const id = values.id;
@@ -122,14 +151,21 @@ const myFormik = withFormik({
       };
 
       axios
-        .put(REACT_APP_API_HOST + `/quotes/update`, idValues)
+        .put(urlUpdate, idValues, {
+          headers: {
+            "content-type": "application/json",
+            Authorization: props.token
+          }
+        })
         .then(response => {
           props.history.push("/quotes");
         })
         .catch(error => {
           setErrors({ quote: `${error}` });
+          alert("You should log In to add quotes", error);
         });
     }
+    // }
   }
 });
 

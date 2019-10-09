@@ -47,13 +47,32 @@ export const updateQuotes = api => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const deleteQuote = (api, quote) => dispatch => {
+export const deleteQuote = (api, quote, token) => dispatch => {
   let check = window.confirm("Are You sure to delete this quote ?");
   if (check === true) {
-    axios.delete(api + "/quotes/delete", { data: { id: quote } });
-    dispatch(deleteQuoteInState(quote));
+    const url = api + "/quotes/delete";
+    const content = {
+      id: quote
+    };
+    axios
+      .delete(url, {
+        headers: {
+          "content-type": "application/json",
+          Authorization: token
+        },
+        data: content
+      })
+      .then(response => {
+        if (response.status === 200) {
+          dispatch(deleteQuoteInState(quote));
+        }
+      })
+      .catch(error => {
+        alert("You should be logged in to delete files", error);
+      });
   }
 };
+
 export const changeSorting = (byElem, oldElem, curSorting) => dispatch => {
   if (byElem === oldElem) {
     const newSortOrder = curSorting === "ASC" ? "DESC" : "ASC";
