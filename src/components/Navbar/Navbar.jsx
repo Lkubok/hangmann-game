@@ -63,7 +63,7 @@ class Navbar extends Component {
                 className="nav-item nav-item-danger"
                 onClick={() => this.props.setUserLogOut()}
               >
-                Log Out
+                LogOut
               </button>
             ) : (
               <NavLink

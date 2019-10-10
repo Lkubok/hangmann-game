@@ -11,6 +11,15 @@
  
   @media all and (max-width: 992px) {
     justify-content: space-around;
+    font-size: 12px;
+    li{
+      
+        button{
+          font-size: 12px;
+
+        }
+      
+    }
   }
   li {
     @include border-item-no-last;
