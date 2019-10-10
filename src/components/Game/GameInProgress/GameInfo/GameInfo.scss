@@ -2,6 +2,15 @@
 @import "../../../../scss/variables.scss";
 
 .game-info {
+  @media all and (max-width: 992px) {
+    margin-top: 10px;
+  .info-elem{
+    flex-basis: 45% !important;
+    margin-top: 0px !important;
+    padding: 2px !important;
+  }
+  
+  }
   @include flex-cc-row;
   flex-basis: 100%;
   justify-content: space-around;

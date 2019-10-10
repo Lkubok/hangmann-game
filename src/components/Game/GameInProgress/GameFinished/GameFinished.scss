@@ -2,6 +2,10 @@
 @import "../../../../scss/variables.scss";
 
 .game-finished {
+  @media all and (max-width: 992px) {
+   
+    font-size: 1.5em !important;
+  }
   @include flex-cc-row;
   position: absolute;
   width: 100%;
