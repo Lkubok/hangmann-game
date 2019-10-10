@@ -4,7 +4,8 @@ const initialState = {
   isLogged: false,
   userName: "",
   jwt: "",
-  userEmail: ""
+  userEmail: "",
+  isRequesting: false
 };
 
 const appParamsReducer = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const appParamsReducer = (state = initialState, action) => {
       return { ...state, jwt: action.jwt };
     case types.SET_EMAIL:
       return { ...state, userEmail: action.email };
+    case types.SET_REQUESTING:
+      return { ...state, isRequesting: action.requestValue };
     default:
       return state;
   }

@@ -8,10 +8,13 @@ import { compose } from "redux";
 import {
   setUserLogIn,
   setJwt,
-  setUserEmail
+  setUserEmail,
+  setRequesting
 } from "../../../actions/appActions";
 import history from "../../../history";
+import Loading from "../../EditQuote/Loading";
 import "./SignForm.scss";
+
 const { REACT_APP_API_HOST } = process.env;
 
 class SignForm extends Component {
@@ -20,47 +23,62 @@ class SignForm extends Component {
     history.push("/signup");
   };
   render() {
-    const { errors, touched, isSubmiting } = this.props;
+    const { errors, touched, isSubmiting, isRequesting } = this.props;
 
     return (
       <>
-        <Form className="add-edit-form">
-          <p className="label">
-            Username:{" "}
-            <span className="error">{touched.username && errors.username}</span>
-          </p>
-          <Field placeholder="Write username" name="username" />
-          <p className="label">
-            Password:
-            <span className="error">{touched.password && errors.password}</span>
-          </p>
-          <Field
-            type="password"
-            placeholder="Write your password"
-            name="password"
-          />
-          <button className="btn" type="submit" disbaled={isSubmiting}>
-            Sign In
-          </button>
+        {isRequesting ? (
+          <Loading />
+        ) : (
+          <Form className="add-edit-form">
+            <p className="label">
+              Username:{" "}
+              <span className="error">
+                {touched.username && errors.username}
+              </span>
+            </p>
+            <Field placeholder="Write username" name="username" />
+            <p className="label">
+              Password:
+              <span className="error">
+                {touched.password && errors.password}
+              </span>
+            </p>
+            <Field
+              type="password"
+              placeholder="Write your password"
+              name="password"
+            />
+            <button className="btn" type="submit" disbaled={isSubmiting}>
+              Sign In
+            </button>
 
-          <p
-            className="label"
-            style={{ textAlign: "center", width: "100%", marginTop: "20px" }}
-          >
-            If You don't have an account please sign up:
-          </p>
-          <button className="btn" onClick={this.handleButton}>
-            Sign Up
-          </button>
-        </Form>
+            <p
+              className="label"
+              style={{ textAlign: "center", width: "100%", marginTop: "20px" }}
+            >
+              If You don't have an account please sign up:
+            </p>
+            <button className="btn" onClick={this.handleButton}>
+              Sign Up
+            </button>
+          </Form>
+        )}
       </>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state, ownProps) => ({
+  isRequesting: state.appParamsReducer.isRequesting
+});
 
-const mapDispatchToProps = { setUserLogIn, setJwt, setUserEmail };
+const mapDispatchToProps = {
+  setUserLogIn,
+  setJwt,
+  setUserEmail,
+  setRequesting
+};
 
 const loginFormik = withFormik({
   mapPropsToValues({ username, password }) {
@@ -80,6 +98,7 @@ const loginFormik = withFormik({
       .required("Password is required")
   }),
   handleSubmit(values, { props, resetForm, setErrors }) {
+    props.setRequesting(true);
     axios
       .post(REACT_APP_API_HOST + `/auth/signin`, values)
       .then(response => {
@@ -89,6 +108,7 @@ const loginFormik = withFormik({
           props.setUserLogIn(values.username, response.data.email);
           props.setJwt(response.data.token);
           // props.setUserEmail(response.data.email);
+          props.setRequesting(false);
         }
       })
       .catch(error => {

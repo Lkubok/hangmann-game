@@ -45,11 +45,6 @@ class Keypad extends Component {
     const arrayLetters = letters.split(" ");
     const untypedLetters = _.without(arrayLetters, ...typed.join(", "));
 
-    console.log("Untyped", untypedLetters);
-    console.log("Typed", typed);
-    console.log("Guessed", guessed);
-    console.log("Bad", badButtonsArray);
-
     return (
       <div className="keyboard" key={`${this.props.typed.join("-")}`}>
         <Keyboard

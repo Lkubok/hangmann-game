@@ -10,6 +10,11 @@ export const userLogOut = () => ({
   type: types.LOG_OUT
 });
 
+export const setRequesting = requestValue => ({
+  type: types.SET_REQUESTING,
+  requestValue
+});
+
 export const setUserLogIn = (user, email) => dispatch => {
   dispatch(userLogIn(user));
   dispatch(setUserEmail(email));

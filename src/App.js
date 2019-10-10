@@ -40,19 +40,22 @@ const connectionOptions = {
 
 class App extends Component {
   componentDidMount() {
-    axios({ ...connectionOptions })
-      .then(response => {
-        if (response.status === 200) {
-          let decoded = jwt_decode(token);
-          this.props.setUserLogIn(decoded.username);
-          this.props.setJwt(token);
-          this.props.setUserEmail(response.data.email);
-        } else {
-        }
-      })
-      .catch(error => {
-        console.log("errors!!!! -> ", error);
-      });
+    if (token) {
+      axios({ ...connectionOptions })
+        .then(response => {
+          if (response.status === 200) {
+            let decoded = jwt_decode(token);
+            this.props.setUserLogIn(decoded.username);
+            this.props.setJwt(token);
+            this.props.setUserEmail(response.data.email);
+          } else if (response.status !== 200) {
+            localStorage.removeItem("JWT_HANG_TOKEN");
+          }
+        })
+        .catch(error => {
+          console.log("errors!!!! -> ", error);
+        });
+    }
   }
   render() {
     return (
@@ -74,6 +77,7 @@ class App extends Component {
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </Main>
+        {/* FOOTER */}
       </Router>
     );
   }
