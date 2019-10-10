@@ -12,9 +12,29 @@ export class Tiles extends Component {
         className={
           el === "encoded"
             ? "tile tile-to-guess"
-            : [" ", "?", "!", ",", ".", ":", ";", "-", "+", "'", "`"].includes(
-                el
-              )
+            : [
+                " ",
+                "?",
+                "!",
+                ",",
+                ".",
+                ":",
+                ";",
+                "-",
+                "+",
+                "'",
+                "`",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "0"
+              ].includes(el)
             ? "tile tile-space"
             : "tile tile-guessed"
         }

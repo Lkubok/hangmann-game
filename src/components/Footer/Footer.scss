@@ -1,0 +1,21 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+
+.app-footer {
+    @include basic-app-padding;
+    @include flex-cl-row;
+    @include basic-app-margin;
+    background-color: $dark-color;
+    color: $white-color;
+    min-height: 170px;
+    padding-bottom: 50px;
+    background-image: url(/img/hanged-man.png);
+    background-repeat: repeat-x;
+    border-top: 5px solid $black-color;
+    @media all and (max-width: 992px) {
+        min-height: 25px;
+      padding-bottom: 5px;
+      }
+  }
+  

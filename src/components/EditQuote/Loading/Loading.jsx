@@ -36,7 +36,7 @@ export default class Loading extends Component {
           <GridLoader
             css={override}
             sizeUnit={"px"}
-            size={50}
+            size={25}
             color={"#6dba0a"}
             loading={this.state.loading}
           />

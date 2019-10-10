@@ -40,21 +40,30 @@ class Keypad extends Component {
 
   render() {
     const badButtonsArray = _.difference(this.props.typed, this.props.guessed);
-    const { guessed, typed } = this.props;
-    const letters = "q w e r t y u i o p a s d f g h j k l z x c v b n m";
+    const { guessed, typed, gameLang } = this.props;
+    const letters =
+      "q w e r t y u i o p a s d f g h j k l z x c v b n m ą ę ź ó ł ń ć ś ż";
     const arrayLetters = letters.split(" ");
     const untypedLetters = _.without(arrayLetters, ...typed.join(", "));
+    const defaultKeyboard = [
+      "q w e r t y u i o p",
+      "a s d f g h j k l",
+      "z x c v b n m"
+    ];
+    const polishKeyboard = [...defaultKeyboard, "ą ę ź ó ł ń ć ś ż"];
+
+    let keyboard = [];
+
+    gameLang === "pl"
+      ? (keyboard = [...polishKeyboard])
+      : (keyboard = [...defaultKeyboard]);
 
     return (
       <div className="keyboard" key={`${this.props.typed.join("-")}`}>
         <Keyboard
           onKeyPress={this.onKeypadPress}
           layout={{
-            default: [
-              "q w e r t y u i o p",
-              "a s d f g h j k l",
-              "z x c v b n m"
-            ]
+            default: [...keyboard]
           }}
           buttonTheme={[
             {
@@ -80,7 +89,8 @@ class Keypad extends Component {
 const mapStateToProps = state => ({
   gameId: selectors.getGameId(state),
   typed: selectors.getTypedLetters(state),
-  guessed: selectors.getGuessedLetters(state)
+  guessed: selectors.getGuessedLetters(state),
+  gameLang: state.gameReducer.gameLang
 });
 const mapDispatchToProps = {
   pressLetter

@@ -12,6 +12,7 @@ import AddQuote from "./components/AddQuote";
 import EditQuote from "./components/EditQuote";
 import Game from "./components/Game";
 import SignUp from "./components/User/SignUp";
+import Footer from "./components/Footer";
 import history from "./history";
 
 import jwt_decode from "jwt-decode";
@@ -75,7 +76,7 @@ class App extends Component {
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </Main>
-        {/* FOOTER */}
+        <Footer />
       </Router>
     );
   }
