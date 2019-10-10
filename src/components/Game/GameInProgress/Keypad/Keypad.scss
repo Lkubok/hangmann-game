@@ -2,10 +2,14 @@
 @import "../../../../scss/variables.scss";
 
 .key-button {
-  &-typed {
-    background-color: $dark-color-light !important;
+  &-typed-good {
+    background-color: $primary-color !important;
+  }
+  &-typed-bad {
+    background-color: $danger-color !important;
+
   }
   &-untyped {
-    background-color: $white-color !important;
+    background-color: $white-color-light !important;
   }
 }

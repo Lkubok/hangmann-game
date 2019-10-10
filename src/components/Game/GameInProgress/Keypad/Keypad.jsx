@@ -5,13 +5,14 @@ import { pressLetter } from "../../../../actions/gameActions";
 import "react-simple-keyboard/build/css/index.css";
 import * as selectors from "../../../../reducers/selectors";
 import "./Keypad.scss";
+import _ from "lodash";
 
 class Keypad extends Component {
   constructor(props) {
     super(props);
     this.state = {
       typed: [],
-      untyped: []
+      guessed: []
     };
   }
   componentDidMount() {
@@ -38,6 +39,17 @@ class Keypad extends Component {
   };
 
   render() {
+    const badButtonsArray = _.difference(this.props.typed, this.props.guessed);
+    const { guessed, typed } = this.props;
+    const letters = "q w e r t y u i o p a s d f g h j k l z x c v b n m";
+    const arrayLetters = letters.split(" ");
+    const untypedLetters = _.without(arrayLetters, ...typed.join(", "));
+
+    console.log("Untyped", untypedLetters);
+    console.log("Typed", typed);
+    console.log("Guessed", guessed);
+    console.log("Bad", badButtonsArray);
+
     return (
       <div className="keyboard" key={`${this.props.typed.join("-")}`}>
         <Keyboard
@@ -51,12 +63,17 @@ class Keypad extends Component {
           }}
           buttonTheme={[
             {
-              class: "key-button key-button-typed",
-              buttons: `${this.props.typed.join(" ")}`
+              class: "key-button key-button-typed-bad",
+              buttons: `${badButtonsArray.join(" ")}`
             },
             {
+              class: "key-button key-button-typed-good",
+              buttons: `${guessed.join(" ")}`
+            },
+
+            {
               class: "key-button key-button-untyped",
-              buttons: `${this.state.untyped.join(" ")}`
+              buttons: `${untypedLetters.join(" ")}`
             }
           ]}
         />
@@ -64,6 +81,7 @@ class Keypad extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   gameId: selectors.getGameId(state),
   typed: selectors.getTypedLetters(state),
