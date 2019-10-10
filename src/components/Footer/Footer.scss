@@ -8,13 +8,13 @@
     @include basic-app-margin;
     background-color: $dark-color;
     color: $white-color;
-    min-height: 170px;
+    min-height: 250px;
     padding-bottom: 50px;
     background-image: url(/img/hanged-man.png);
     background-repeat: repeat-x;
     border-top: 5px solid $black-color;
     @media all and (max-width: 992px) {
-        min-height: 25px;
+        min-height: 225px;
       padding-bottom: 5px;
       }
   }
