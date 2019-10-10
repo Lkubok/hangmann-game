@@ -27,3 +27,14 @@
   @media all and (max-width: 1920px) {
   }
 }
+
+.quote-query-input,
+.quote-page-size {
+  @media all and (max-width: 992px) {
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @media all and (max-width: 1920px) {
+  }
+}
