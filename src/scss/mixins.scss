@@ -37,9 +37,9 @@
   text-align: center;
 }
 @mixin basic-app-padding {
-  @media all and (min-width: 554px) {
-    padding-left: 0 5px;
-    padding-right: 0 5px;
+  @media all and (min-width: 368px) {
+    padding-left: 5px;
+    padding-right: 5px;
   }
   @media all and (min-width: 768px) {
     padding-left: 10px;
@@ -157,4 +157,23 @@
     background-color: $primary-color;
 
   }
+}
+@mixin border-item-no-last {
+  border-right: 1px solid $grey-color;
+    &:last-child {
+      border-right: none;
+    }
+    @media all and (max-width: 992px) {
+      border: 0;
+    }
+}
+
+@mixin border-body-no-last {
+  border-right: 1px solid $grey-color;
+    &:last-child {
+      border-right: none;
+    }
+    @media all and (max-width: 768px) {
+      border: 0;
+    }
 }

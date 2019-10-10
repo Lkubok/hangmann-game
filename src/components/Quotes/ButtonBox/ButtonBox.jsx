@@ -12,8 +12,8 @@ export class ButtonBox extends PureComponent {
   render() {
     return (
       <div className="btn-box">
-        <Link to={`/quotes/${this.props.id}/edit`}>
-          <button className="btn btn-edit">Edit</button>
+        <Link to={`/quotes/${this.props.id}/edit`} className="btn btn-edit">
+          Edit
         </Link>
         <button
           className="btn btn-danger"

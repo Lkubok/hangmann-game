@@ -53,8 +53,8 @@ export class Quotes extends Component {
   };
   dateToHuman = dateStamp => {
     const date = new Date(dateStamp);
-    return `${date.getFullYear()}-${date.getMonth() +
-      1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    const year = date.getFullYear().toString();
+    return `${year.slice(-2)}-${date.getMonth() + 1}-${date.getDate()}`;
   };
   renderTableContents() {
     const { quotes, sortedQuotes, actualPage, pageLimit } = this.props;

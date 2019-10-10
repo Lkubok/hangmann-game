@@ -2,34 +2,41 @@
 @import "../../../scss/variables.scss";
 
 .btn-box {
+  flex-basis: 100%;
   @media all and (max-width: 1920px) {
-    @include flex-cc-col;
+    @include flex-cc-row;
   }
   @media all and (max-width: 768px) {
     @include flex-cc-row;
+    // align-items: stretch;
     width: 100%;
   }
 }
 
 .btn {
   @include flex-item-btn;
-  flex-basis: 50%;
-  width: 100%;
+  flex-basis: 100%;
+  // width: 100%;
   border: 0;
   border-radius: 5px;
   transition: all 0.4s ease-in-out;
+  color: $white-color;
+  font-size: 12px;
   &-edit {
-    background-color: $primary-color;
+    border: 1px solid $primary-color;
     &:hover {
       cursor: pointer;
-      background-color: $secondary-color;
+      background-color: $primary-color-hover;
     }
   }
   &-danger {
-    background-color: $danger-color;
+    border: 1px solid $danger-color-light;
     &:hover {
       cursor: pointer;
       background-color: red;
     }
   }
+}
+a{
+  text-decoration: none;
 }

@@ -43,41 +43,96 @@
 
   &-body,
   &-header {
+    
     flex-basis: 100%;
+    @media all and (max-width: 768px) {
+      tr:nth-child(1){
+        display:none;
+      }
+    }
     tr {
       @media all and (max-width: 1920px) {
         flex-flow: row;
       }
       @media all and (max-width: 768px) {
-        flex-flow: column;
+        flex-flow: column wrap;
         height: 200px;
+        justify-content: flex-end;
+        align-items: center;
+        td:nth-child(1){
+          flex-basis: 3%;
+          display: none;
+        }
+        td:nth-child(2) {
+          flex-basis: 65% !important;
+          justify-content: center !important;
+          align-items: center !important;
+          order:-1;
+          width: 50%;
+          border-bottom: 1px solid $primary-color;
+          @include flex-cc-col
+        }
+        td:nth-child(3) {
+          flex-basis: 30% !important;
+          width: 50%;
+          color: $secondary-color;
+          @include flex-cc-col
+        }
+        td:nth-child(4){
+          display: none;
+        }
+        td:nth-child(5){
+          display: none;
+        }
+        td:nth-child(6){
+           display: none;
+        }
+      td:nth-child(7),
+      td:nth-child(8) {
+        display: none;
+      }
+      td:nth-child(8){
+        border:0
+      }
+      td:nth-child(9){
+        flex-basis: 100% !important;
+        // width: 100%;
+        @include flex-cc-col
+      }
       }
       display: flex;
-
       justify-content: space-between;
-      align-items: center;
       border-bottom: 1px solid $primary-color;
       padding-right: 10px;
       transition: all 0.4s ease-in-out;
 
+      td:nth-child(1){
+        flex-basis: 3%;
+      }
       td:nth-child(2) {
-        flex-basis: 50%;
-        flex-grow: 1;
+        flex-basis: 35%;
       }
       td:nth-child(3) {
         flex-basis: 20%;
       }
       td:nth-child(4),
       td:nth-child(5),
-      td:nth-child(6),
+      td:nth-child(6){
+        flex-basis: 10%
+      }
       td:nth-child(7),
       td:nth-child(8) {
-        flex-grow: 0;
         flex-basis: 7%;
       }
-      td:nth-child(1) {
-        flex-grow: 0;
-        flex-basis: 3%;
+      td:nth-child(8){
+        border:0
+      }
+      td:nth-child(9){
+        flex-basis: 10%
+      }
+      td{
+  @include border-body-no-last;
+
       }
     }
     tr:nth-child(even) {
@@ -92,6 +147,7 @@
     }
   }
   &-header {
+
     border-bottom: 1px solid $primary-color;
 
     td {
@@ -106,11 +162,18 @@
   }
   &-body {
     tr {
+      justify-content: space-between;
+      align-items: center;
+
       &:hover {
         background-color: $dark-color-hover;
       }
     }
   }
 }
-.quote-table-item {
+
+
+thead{
+  @include border-item-no-last;
 }
+

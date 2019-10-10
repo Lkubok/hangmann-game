@@ -8,15 +8,16 @@
   @include basic-nav-padding;
   background-color: $dark-color;
   color: $white-color;
-
+ 
+  @media all and (max-width: 992px) {
+    justify-content: space-around;
+  }
   li {
+    @include border-item-no-last;
     flex-basis: 10%;
     list-style: none;
-    border-right: 1px solid $grey-color;
     display: flex;
-    &:last-child {
-      border-right: none;
-    }
+    
   }
 }
 .nav-item {
