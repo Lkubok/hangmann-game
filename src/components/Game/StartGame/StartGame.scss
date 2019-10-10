@@ -19,6 +19,10 @@
   button {
     @include std-button;
   }
+  @media all and (max-width: 992px) {
+   
+    padding: 0px
+  }
 }
 
 .game-select-label {

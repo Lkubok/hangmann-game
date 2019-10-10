@@ -3,6 +3,7 @@ import Pagination from "./Pagination";
 import ButtonBox from "./ButtonBox";
 import SearchBoxAndPageSize from "./SearchBoxAndPageSize";
 import { connect } from "react-redux";
+import Loading from "../EditQuote/Loading";
 import {
   tableHeaders as columns,
   columnNames,
@@ -87,23 +88,31 @@ export class Quotes extends Component {
     ));
   }
   render() {
+    const { quotes } = this.props;
     return (
-      <div className="quotes-wrapper">
-        <div className="quotes-navigation">
-          <Pagination />
-          <SearchBoxAndPageSize />
-        </div>
-        <div className="quotes-body">
-          <table className="quote-table">
-            <thead className="quote-table-header">
-              <tr>{this.renderTableHeads()}</tr>
-            </thead>
-            <tbody className="quote-table-body">
-              {this.renderTableContents()}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <>
+        {quotes.length > 0 ? (
+          <div className="quotes-wrapper">
+            <div className="quotes-navigation">
+              <Pagination />
+              <SearchBoxAndPageSize />
+            </div>
+            <div className="quotes-body">
+              <table className="quote-table">
+                <thead className="quote-table-header">
+                  <tr>{this.renderTableHeads()}</tr>
+                </thead>
+                <tbody className="quote-table-body">
+                  {this.renderTableContents()}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : (
+          <Loading />
+          // <div>a</div>
+        )}
+      </>
     );
   }
 }

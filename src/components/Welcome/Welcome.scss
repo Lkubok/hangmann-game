@@ -9,12 +9,25 @@
   color: $primary-color;
   padding-top: 40px;
   padding-bottom: 20px;
+  @media all and (max-width: 992px) {
+    padding-top: 5px;
+    margin-top: 0px;
+    }
 }
 .hang-container {
   flex-basis: 40%;
+  @media all and (max-width: 992px) {
+   
+    flex-basis: 10%;
+  }
+  
+
 }
 
 .hang-image {
+  @media all and (max-width: 992px) {
+    // width: 100%;
+    }
 }
 .app-info {
   @include flex-cc-row;
@@ -27,10 +40,16 @@
     padding-right: 40px;
     &-header {
       font-size: 2em;
+      @media all and (max-width: 992px) {
+      font-size: 1em;
+      }
     }
     &-body {
       font-size: 1.4em;
       font-weight: 400;
+      @media all and (max-width: 992px) {
+        font-size: 0.7em;
+        }
     }
   }
 }
@@ -48,4 +67,9 @@
     background-color: $secondary-color;
     color: $dark-color;
   }
+  @media all and (max-width: 992px) {
+   
+    flex-basis:50%;
+  }
 }
+
