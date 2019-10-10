@@ -107,12 +107,14 @@ const loginFormik = withFormik({
           localStorage.setItem("JWT_HANG_TOKEN", response.data.token);
           props.setUserLogIn(values.username, response.data.email);
           props.setJwt(response.data.token);
-          // props.setUserEmail(response.data.email);
           props.setRequesting(false);
         }
       })
       .catch(error => {
         setErrors({ password: `${error.response.data.msg}` });
+        if (error.response.status === 401) {
+          props.setRequesting(false);
+        }
       });
   }
 });

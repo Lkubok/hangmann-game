@@ -15,8 +15,6 @@ import SignUp from "./components/User/SignUp";
 import history from "./history";
 
 import jwt_decode from "jwt-decode";
-// import { options } from "./options/connection";
-// import { token } from "./options/connection";
 
 import { setUserLogIn } from "./actions/appActions";
 import { connect } from "react-redux";
@@ -53,7 +51,7 @@ class App extends Component {
           }
         })
         .catch(error => {
-          console.log("errors!!!! -> ", error);
+          alert(error);
         });
     }
   }
