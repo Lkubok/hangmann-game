@@ -13,12 +13,10 @@
     justify-content: space-around;
     font-size: 12px;
     li{
-      
         button{
           font-size: 12px;
 
         }
-      
     }
   }
   li {
@@ -26,7 +24,6 @@
     flex-basis: 10%;
     list-style: none;
     display: flex;
-    
   }
 }
 .nav-item {
@@ -55,7 +52,6 @@
     background-color: $dark-color;
     border: none;
     color: $dark-color-light;
-    font-size: 16px;
     cursor: default;
     &:hover {
     color: $dark-color-light;
