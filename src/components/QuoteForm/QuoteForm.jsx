@@ -89,7 +89,8 @@ const myFormik = withFormik({
     return {
       quote: quote || "",
       quoteAuthor: quoteAuthor || "",
-      insertAuthor: (isLogged ? userName : insertAuthor) || "",
+      insertAuthor:
+        (isLogged ? (id ? insertAuthor : userName) : insertAuthor) || "",
       lang: lang || "",
       id: id || ""
     };

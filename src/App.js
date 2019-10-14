@@ -52,7 +52,7 @@ class App extends Component {
           }
         })
         .catch(error => {
-          alert(error);
+          console.log(error);
         });
     }
   }

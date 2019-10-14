@@ -51,4 +51,14 @@
       color: $danger-color-hover;
     }
   }
+  &-disabled{
+    background-color: $dark-color;
+    border: none;
+    color: $dark-color-light;
+    font-size: 16px;
+    cursor: default;
+    &:hover {
+    color: $dark-color-light;
+    }
+  }
 }

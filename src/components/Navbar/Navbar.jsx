@@ -6,7 +6,11 @@ import { setUserLogOut } from "../../actions/appActions";
 import "./Navbar.scss";
 
 class Navbar extends Component {
+  handleClick = e => {
+    if (this.props.gameId) e.preventDefault();
+  };
   render() {
+    const { gameId } = this.props;
     return (
       <nav>
         <ul className="app-navbar">
@@ -15,6 +19,7 @@ class Navbar extends Component {
               to="/game"
               className="nav-item"
               activeClassName="nav-item-active"
+              onClick={this.handleClick}
             >
               Game
             </NavLink>
@@ -23,8 +28,9 @@ class Navbar extends Component {
           <li>
             <NavLink
               to="/quotes"
-              className="nav-item"
+              className={gameId ? "nav-item nav-item-disabled" : "nav-item"}
               activeClassName="nav-item-active"
+              onClick={this.handleClick}
             >
               Quotes
             </NavLink>
@@ -41,8 +47,9 @@ class Navbar extends Component {
           <li>
             <NavLink
               to="/addquote"
-              className="nav-item"
+              className={gameId ? "nav-item nav-item-disabled" : "nav-item"}
               activeClassName="nav-item-active"
+              onClick={this.handleClick}
             >
               {" "}
               AddQuote
@@ -51,8 +58,9 @@ class Navbar extends Component {
           <li>
             <NavLink
               to="/about"
-              className="nav-item"
+              className={gameId ? "nav-item nav-item-disabled" : "nav-item"}
               activeClassName="nav-item-active"
+              onClick={this.handleClick}
             >
               About
             </NavLink>
@@ -60,8 +68,13 @@ class Navbar extends Component {
           <li>
             {this.props.isLogged ? (
               <button
-                className="nav-item nav-item-danger"
+                className={
+                  gameId
+                    ? "nav-item nav-item-disabled"
+                    : "nav-item nav-item-danger"
+                }
                 onClick={() => this.props.setUserLogOut()}
+                disabled={gameId ? true : false}
               >
                 LogOut
               </button>
@@ -70,6 +83,7 @@ class Navbar extends Component {
                 to="/user"
                 className="nav-item"
                 activeClassName="nav-item-active"
+                onClick={this.handleClick}
               >
                 Login
               </NavLink>
@@ -83,7 +97,8 @@ class Navbar extends Component {
 
 const mapStateToProps = state => ({
   userName: state.appParamsReducer.userName,
-  isLogged: state.appParamsReducer.isLogged
+  isLogged: state.appParamsReducer.isLogged,
+  gameId: state.gameReducer.gameId
 });
 
 const mapDispatchToProps = {
