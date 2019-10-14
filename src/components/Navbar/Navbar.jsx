@@ -70,6 +70,22 @@ class Navbar extends Component {
           </li>
           <li>
             <NavLink
+              to="/stats"
+              className={
+                gameId
+                  ? isFinished
+                    ? "nav-item"
+                    : "nav-item nav-item-disabled"
+                  : "nav-item"
+              }
+              activeClassName="nav-item-active"
+              onClick={this.handleClick}
+            >
+              Stats
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/about"
               className={
                 gameId

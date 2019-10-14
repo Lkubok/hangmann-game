@@ -1,2 +1,31 @@
 @import "../../scss/mixins.scss";
 @import "../../scss/variables.scss";
+
+
+.chart-wrapper {
+    @include flex-cc-row;
+    flex-basis: 100%;
+}
+.chart-item{
+    @include flex-cc-row;
+    flex-basis: 45%;
+    @media all and (max-width: 1300px) {
+    flex-basis: 100%;
+     
+      
+      }
+}
+.stat-box{
+    @include flex-cc-col;
+    // width: 45%;
+    flex-basis: 100%;
+}
+
+.stat-header{
+color: $primary-color;
+padding: 10px;
+}
+
+.stat-item{
+color: $white-color;
+}

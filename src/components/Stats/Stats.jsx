@@ -1,7 +1,164 @@
 import React, { Component } from "react";
+import Highcharts, { map } from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import axios from "axios";
+import Loading from "../EditQuote/Loading";
+import { connect } from "react-redux";
+import { setRequesting } from "../../actions/appActions";
+import "./Stats.scss";
 
-export default class Stats extends Component {
+const { REACT_APP_API_HOST } = process.env;
+const connectionOptions = {
+  method: "GET",
+  url: REACT_APP_API_HOST + `/stats`
+};
+
+export class Stats extends Component {
+  state = {
+    chartOptions: {
+      chart: {
+        type: "column",
+        backgroundColor: "#1f2227"
+      },
+      yAxis: {
+        gridLineColor: "#6dba0a",
+        title: {
+          text: ""
+        }
+      },
+      xAxis: {
+        lineColor: "#6dba0a"
+      },
+      colorAxis: {
+        gridLineColor: "green"
+      },
+      legend: {
+        itemStyle: {
+          color: "white"
+        }
+      },
+      column: {
+        pointPadding: 0,
+        borderWidth: 0,
+        groupPadding: 0
+      },
+      title: {
+        text: "Number of played games",
+        style: {
+          color: "#6dba0a"
+        }
+      },
+      series: []
+    },
+    data: {}
+  };
+  componentDidMount() {
+    const { setRequesting } = this.props;
+    setRequesting(true);
+    axios({ ...connectionOptions })
+      .then(response => {
+        this.setState(prevState => {
+          return {
+            chartOptions: {
+              ...prevState.chartOptions,
+              series: [
+                {
+                  name: "Games in General",
+                  data: [
+                    ...response.data.games
+                      .toString()
+                      .split(" ")
+                      .map(el => parseInt(el))
+                  ],
+                  color: "#3c434f",
+                  borderColor: "#6dba0a"
+                },
+                {
+                  name: "Win Games",
+                  data: [
+                    ...response.data.winGames
+                      .toString()
+                      .split(" ")
+                      .map(el => parseInt(el))
+                  ],
+                  color: "#6dba0a",
+                  borderColor: "#3c434f"
+                },
+                {
+                  name: "Dead Games",
+                  data: [
+                    ...response.data.deadGames
+                      .toString()
+                      .split(" ")
+                      .map(el => parseInt(el))
+                  ],
+                  color: "#bd1600",
+                  borderColor: "#6dba0a"
+                }
+              ]
+            }
+          };
+        });
+        setRequesting(false);
+        this.setState({ data: response.data });
+      })
+      .catch(error => {
+        alert(error);
+      });
+  }
   render() {
-    return <div>Stats</div>;
+    const { isRequesting } = this.props;
+    const { quotesCount, quickestGame } = this.state.data;
+    console.log(this.state.data);
+    console.log(quickestGame);
+    return isRequesting ? (
+      <Loading />
+    ) : (
+      <div className="chart-wrapper">
+        <div className="chart-item">
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={this.state.chartOptions}
+          />
+        </div>
+        <div className="chart-item">
+          <div className="stat-box">
+            <h3 className="stat-header"> Quotes in database </h3>
+            <p className="stat-item"> {quotesCount} </p>
+
+            <h3 className="stat-header"> Quickest game by: </h3>
+            {/* <p className="stat-item"> {quickestGame} </p> */}
+
+            <h3 className="stat-header"> Best Score </h3>
+            <p className="stat-item">
+              {" "}
+              {/* {this.state.data.quickestGame[0].player}{" "} */}
+            </p>
+
+            <h3 className="stat-header"> Langs avaliable </h3>
+            {/* <p className="stat-item"> {this.state.data.langs} </p> */}
+
+            <h3 className="stat-header"> Best Score </h3>
+            <p className="stat-item"> Lucas </p>
+
+            <h3 className="stat-header"> Best Score </h3>
+            <p className="stat-item"> Lucas </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  isRequesting: state.appParamsReducer.isRequesting
+});
+
+const mapDispatchToProps = dispatch => ({
+  setRequesting: arg => dispatch(setRequesting(arg))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stats);
