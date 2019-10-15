@@ -44,8 +44,20 @@ class SignForm extends Component {
           </p>
           <Field
             type="password"
-            placeholder="Write your e-mail"
+            placeholder="Write your password"
             name="password"
+          />
+
+          <p className="label">
+            Retype your Password:
+            <span className="error">
+              {touched.passwordVerification && errors.passwordVerification}
+            </span>
+          </p>
+          <Field
+            type="password"
+            placeholder="Retype your password"
+            name="passwordVerification"
           />
 
           <p className="label">
@@ -74,12 +86,21 @@ const mapStateToProps = (state, ownProps) => ({});
 const mapDispatchToProps = { setUserLogIn };
 
 const loginFormik = withFormik({
-  mapPropsToValues({ firstname, lastname, email, age, username, password }) {
+  mapPropsToValues({
+    firstname,
+    lastname,
+    email,
+    age,
+    username,
+    password,
+    passwordVerification
+  }) {
     return {
       firstname: firstname || "",
       lastname: lastname || "",
       username: username || "",
       password: password || "",
+      passwordVerification: passwordVerification || "",
       email: email || "",
       age: age || ""
     };
@@ -101,6 +122,10 @@ const loginFormik = withFormik({
       .min(5)
       .max(255)
       .required("Password is required"),
+    passwordVerification: Yup.string()
+      .min(5)
+      .max(255)
+      .required("Password is required"),
     email: Yup.string()
       .email()
       .min(5)
@@ -112,17 +137,21 @@ const loginFormik = withFormik({
       .required("Age is required")
   }),
   handleSubmit(values, { props, resetForm, setErrors }) {
-    axios
-      .post(REACT_APP_API_HOST + `/auth/signup`, values)
-      .then(response => {
-        if (response.status === 200) {
-          resetForm();
-          history.push("/user");
-        }
-      })
-      .catch(error => {
-        setErrors({ password: `${error.response.data.msg}` });
-      });
+    if (values.passwordVerification !== values.password) {
+      setErrors({ passwordVerification: `Passwords should be equal` });
+    } else {
+      axios
+        .post(REACT_APP_API_HOST + `/auth/signup`, values)
+        .then(response => {
+          if (response.status === 200) {
+            resetForm();
+            history.push("/user");
+          }
+        })
+        .catch(error => {
+          setErrors({ password: `${error.response.data.msg}` });
+        });
+    }
   }
 });
 
