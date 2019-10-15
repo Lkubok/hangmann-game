@@ -9,11 +9,11 @@ class Header extends Component {
       <header className="app-header">
         <img src="./img/logo.png" alt="" />
         {this.props.isLogged && (
-          <NavLink to="/userpanel">
-            <h5 className="user">
-              Logged as: <span>{this.props.userName}</span>
-            </h5>
-          </NavLink>
+          // <NavLink to="/userpanel">
+          <h5 className="user">
+            Logged as: <span>{this.props.userName}</span>
+          </h5>
+          // </NavLink>
         )}
       </header>
     );

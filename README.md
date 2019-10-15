@@ -4,6 +4,18 @@
 
 # Hangmann
 
+## Clone app into your directory
+
+```
+git clone git@github.com:Lkubok/hangmann-game.git
+```
+
+## Install it
+
+```
+npm install
+```
+
 ## Running app:
 ```
 npm run start
@@ -16,6 +28,5 @@ npm run start
 
 ## TODO list
 
-*Implement Auth0 instead of existing authentication*
+*Implement Auth0 instead of existing authentication* <br/>
 *Add UserPanel component*
-*Add Protected Route component*
