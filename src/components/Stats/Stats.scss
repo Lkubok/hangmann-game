@@ -8,7 +8,14 @@
   @include flex-cc-row;
   flex-basis: 45%;
   @media all and (max-width: 1300px) {
-    flex-basis: 100%;
+    // flex-basis: 100%;
+  }
+  &-chart{
+      flex-basis:45%;
+      @media all and (max-width: 1300px) {
+      flex-basis:100%;
+
+      }
   }
 }
 .stat-box {

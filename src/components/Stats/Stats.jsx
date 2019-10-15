@@ -20,6 +20,20 @@ export class Stats extends Component {
         type: "column",
         backgroundColor: "#1f2227"
       },
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 550
+            },
+            chartOptions: {
+              chart: {
+                width: 350
+              }
+            }
+          }
+        ]
+      },
       yAxis: {
         gridLineColor: "#6dba0a",
         title: {
@@ -153,7 +167,7 @@ export class Stats extends Component {
       <Loading />
     ) : (
       <div className="chart-wrapper">
-        <div className="chart-item">
+        <div className="chart-item-chart">
           <HighchartsReact
             highcharts={Highcharts}
             options={this.state.chartOptions}
