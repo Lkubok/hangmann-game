@@ -10,12 +10,11 @@
   @media all and (max-width: 1300px) {
     flex-basis: 100%;
   }
-  &-chart{
-      flex-basis:45%;
-      @media all and (max-width: 1300px) {
-      flex-basis:100%;
-
-      }
+  &-chart {
+    flex-basis: 45%;
+    @media all and (max-width: 1300px) {
+      flex-basis: 100%;
+    }
   }
 }
 .stat-box {
@@ -24,41 +23,46 @@
   justify-content: center;
   align-items: stretch;
 }
-.box-item{
-    flex-basis: 100%;
-    .single-stat{
-        width: 100%;
-    }
-    h2{
-        color: $primary-color;
-    }
+.box-item {
+  flex-basis: 100%;
+  .single-stat {
+    width: 100%;
+  }
+  h2 {
+    color: $primary-color;
+  }
 }
-.stat-section{
-    flex-basis: 45%;
-    @media all and (max-width: 968px) {
-        flex-basis: 100%;
-      }
+.stat-section {
+  flex-basis: 45%;
+  @media all and (max-width: 968px) {
+    flex-basis: 100%;
+  }
 }
 .stat-header {
-    color: $primary-color;
-    padding: 10px;
+  color: $primary-color;
+  padding: 10px;
 }
 .stat-item {
-    color: $white-color;
-    flex-basis: 35%;
+  color: $white-color;
+  flex-basis: 35%;
+  text-align: left;
+  padding: 5px 0;
+  @media all and (max-width: 1300px) {
+    text-align: right;
+    flex-basis: 45%;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-subitem {
+    color: $secondary-color;
+    flex-basis: 45%;
     text-align: left;
-    padding: 5px 0;
     @media all and (max-width: 1300px) {
-        text-align: center;
+      flex-basis: 45%;
+      text-align: left;
     }
-    &-subitem {
-        color: $secondary-color;
-        flex-basis: 45%;
-        text-align: left;
-        @media all and (max-width: 1300px) {
-            text-align: center;
-        }
-    }
+  }
 }
 .single-stat {
   display: flex;
@@ -67,9 +71,19 @@
   justify-content: space-between;
   align-items: center;
 
-
   h4 {
     flex-basis: 100%;
     color: $helper-color;
+    text-decoration: underline;
+    position: relative;
+    margin-top: 10px;
+  }
+  h4::after {
+    content: " ";
+    border-top: 1px solid $primary-color;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -10px;
   }
 }

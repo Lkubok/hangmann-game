@@ -178,9 +178,7 @@ export class Stats extends Component {
             <div className="stat-section">
               <div className="box-item">
                 <h3 className="stat-header"> Quotes in database </h3>
-                <div className="single-stat">
-                  <p className="stat-item"> {quotesCount} </p>
-                </div>
+                <p className="stat-item-center"> {quotesCount} </p>
               </div>
               <div className="box-item">
                 <h3 className="stat-header"> Quickest game by: </h3>
@@ -201,21 +199,21 @@ export class Stats extends Component {
 
               <div className="box-item">
                 <h3 className="stat-header"> Langs avaliable </h3>
-                <p className="stat-item"> {langs.join(", ")} </p>
+                <p className="stat-item-center"> {langs.join(", ")} </p>
               </div>
 
               <div className="box-item">
                 <h3 className="stat-header"> Games played </h3>
-                <p className="stat-item"> {games} </p>
+                <p className="stat-item-center"> {games} </p>
               </div>
 
               <div className="box-item">
                 <h3 className="stat-header"> Games won </h3>
-                <p className="stat-item"> {winGames} </p>
+                <p className="stat-item-center"> {winGames} </p>
               </div>
               <div className="box-item">
                 <h3 className="stat-header"> Games defeated </h3>
-                <p className="stat-item"> {deadGames} </p>
+                <p className="stat-item-center"> {deadGames} </p>
               </div>
             </div>
 
