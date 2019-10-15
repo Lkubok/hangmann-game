@@ -8,7 +8,7 @@
   @include flex-cc-row;
   flex-basis: 45%;
   @media all and (max-width: 1300px) {
-    // flex-basis: 100%;
+    flex-basis: 100%;
   }
   &-chart{
       flex-basis:45%;
@@ -66,6 +66,7 @@
   width: 50%;
   justify-content: space-between;
   align-items: center;
+
 
   h4 {
     flex-basis: 100%;
