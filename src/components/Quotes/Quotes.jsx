@@ -113,7 +113,6 @@ export class Quotes extends Component {
           </div>
         ) : (
           <Loading />
-          // <div>a</div>
         )}
       </>
     );

@@ -23,19 +23,39 @@ export default class About extends Component {
         </div>
         <div className="about-section about-section-inline">
           <h2>Used technologies</h2>
-          <a target="_blank" href="https://reactjs.org">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://reactjs.org"
+          >
             ReactJS
           </a>
-          <a target="_blank" href="https://redux.js.org/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://redux.js.org/"
+          >
             ReduxJS
           </a>
-          <a target="_blank" href="https://jaredpalmer.com/formik/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://jaredpalmer.com/formik/"
+          >
             Formik
           </a>
-          <a target="_blank" href="https://sass-lang.com/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://sass-lang.com/"
+          >
             Sass
           </a>
-          <a target="_blank" href="https://www.highcharts.com/">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.highcharts.com/"
+          >
             HighCharts
           </a>
         </div>

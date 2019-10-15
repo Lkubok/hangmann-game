@@ -1,5 +1,4 @@
 import * as types from "../types/appTypes";
-// const { REACT_APP_API_HOST } = process.env;
 
 export const userLogIn = userName => ({
   type: types.LOG_IN,

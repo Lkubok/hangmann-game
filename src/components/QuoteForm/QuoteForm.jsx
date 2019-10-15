@@ -8,8 +8,6 @@ import "./QuoteForm.scss";
 import * as Yup from "yup";
 import axios from "axios";
 import { updateQuotes } from "../../actions/quoteActions";
-// import { options } from "../../options/connection";
-import qs from "qs";
 
 const { REACT_APP_API_HOST } = process.env;
 
@@ -19,7 +17,7 @@ export class QuoteForm extends Component {
     history.goBack();
   };
   render() {
-    const { errors, touched, isSubmiting, isLogged, token } = this.props;
+    const { errors, touched, isSubmiting, isLogged } = this.props;
 
     return (
       <div className="form-handler">
@@ -114,15 +112,10 @@ const myFormik = withFormik({
       .required("Insertion author is required")
   }),
   handleSubmit(values, { props, resetForm, setErrors }) {
-    // if (!props.isLogged) {
-    //   alert("You should log in");
-    // } else {
-
     const urlAdd = REACT_APP_API_HOST + `/quotes/add`;
     const urlUpdate = REACT_APP_API_HOST + `/quotes/update`;
     if (values.id === "") {
       delete values.id;
-      console.log(values);
       axios
         .post(urlAdd, values, {
           headers: {
@@ -166,7 +159,6 @@ const myFormik = withFormik({
           alert("You should log In to add quotes", error);
         });
     }
-    // }
   }
 });
 

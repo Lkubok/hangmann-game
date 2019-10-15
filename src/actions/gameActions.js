@@ -74,8 +74,6 @@ export const saveLastUser = user => ({
   user
 });
 
-//THUNK
-
 export const launchNewGame = (player, level, lang) => dispatch => {
   dispatch(setRequesting(true));
   setTimeout(() => {

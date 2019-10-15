@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Highcharts, { map } from "highcharts";
+import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import axios from "axios";
 import Loading from "../EditQuote/Loading";
@@ -152,7 +152,6 @@ export class Stats extends Component {
     ));
   };
   render() {
-    console.log(this.state.data);
     const { isRequesting } = this.props;
     const {
       quotesCount,

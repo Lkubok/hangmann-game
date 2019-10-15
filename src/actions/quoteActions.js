@@ -38,7 +38,6 @@ export const changeSortBy = orderBy => ({
   type: types.CHANGE_SORT_BY,
   orderBy
 });
-// THUNK ACTIONS:
 
 export const updateQuotes = api => dispatch => {
   axios

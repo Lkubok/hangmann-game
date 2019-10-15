@@ -13,11 +13,11 @@
   @media all and (max-width: 992px) {
     padding-top: 5px;
     margin-top: 0px;
-    }
+  }
 }
 .hang-container {
   flex-basis: 40%;
-  
+
   @media all and (max-width: 992px) {
     position: absolute;
     top: 40px;
@@ -27,14 +27,11 @@
     flex-basis: 100%;
     border-top: 2px solid $black-color;
   }
-  
-
 }
 
 .hang-image {
   @media all and (max-width: 992px) {
-    // width: 100%;
-    }
+  }
 }
 .app-info {
   @include flex-cc-row;
@@ -48,8 +45,8 @@
     &-header {
       font-size: 2em;
       @media all and (max-width: 992px) {
-      font-size: 1em;
-      margin: 0;
+        font-size: 1em;
+        margin: 0;
       }
     }
     &-body {
@@ -58,7 +55,7 @@
       @media all and (max-width: 992px) {
         font-size: 0.7em;
         margin-bottom: 0;
-        }
+      }
     }
   }
 }
@@ -74,15 +71,14 @@
     @media all and (max-width: 992px) {
       margin: 5px 40px;
       padding: 20px 10px;
-      }
+    }
   }
   .button-play {
     background-color: $secondary-color;
     color: $dark-color;
   }
   @media all and (max-width: 992px) {
-   
-    flex-basis:30%;
+    flex-basis: 30%;
     position: relative;
     top: 40px;
     left: 0;
@@ -97,8 +93,7 @@
       opacity: 50%;
     }
   }
-  .button-play{
+  .button-play {
     background-color: $secondary-color-opacity;
   }
 }
-

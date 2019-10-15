@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import UserPanel from "./UserPanel";
 import SignForm from "./SignForm";
 import history from "../../history";
 
