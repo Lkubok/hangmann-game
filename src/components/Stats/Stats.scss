@@ -1,31 +1,67 @@
 @import "../../scss/mixins.scss";
 @import "../../scss/variables.scss";
-
-
 .chart-wrapper {
-    @include flex-cc-row;
-    flex-basis: 100%;
+  @include flex-cc-row;
+  flex-basis: 100%;
 }
-.chart-item{
-    @include flex-cc-row;
-    flex-basis: 45%;
-    @media all and (max-width: 1300px) {
+.chart-item {
+  @include flex-cc-row;
+  flex-basis: 45%;
+  @media all and (max-width: 1300px) {
     flex-basis: 100%;
-     
-      
+  }
+}
+.stat-box {
+  @include flex-cc-row;
+  flex-basis: 100%;
+  justify-content: center;
+  align-items: stretch;
+}
+.box-item{
+    flex-basis: 100%;
+    .single-stat{
+        width: 100%;
+    }
+    h2{
+        color: $primary-color;
+    }
+}
+.stat-section{
+    flex-basis: 45%;
+    @media all and (max-width: 968px) {
+        flex-basis: 100%;
       }
 }
-.stat-box{
-    @include flex-cc-col;
-    // width: 45%;
+.stat-header {
+    color: $primary-color;
+    padding: 10px;
+}
+.stat-item {
+    color: $white-color;
+    flex-basis: 35%;
+    text-align: left;
+    padding: 5px 0;
+    @media all and (max-width: 1300px) {
+        text-align: center;
+    }
+    &-subitem {
+        color: $secondary-color;
+        flex-basis: 45%;
+        text-align: left;
+        @media all and (max-width: 1300px) {
+            text-align: center;
+        }
+    }
+}
+.single-stat {
+  display: flex;
+  flex-flow: row wrap;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+
+  h4 {
     flex-basis: 100%;
-}
-
-.stat-header{
-color: $primary-color;
-padding: 10px;
-}
-
-.stat-item{
-color: $white-color;
+    color: $helper-color;
+  }
 }

@@ -50,7 +50,17 @@ export class Stats extends Component {
       },
       series: []
     },
-    data: {}
+    data: {
+      quickestGame: {
+        player: "",
+        stateOfGame: "",
+        lifes: "",
+        gameTime: "",
+        difficulty: "easy"
+      },
+      quickestWinGames: [],
+      langs: []
+    }
   };
   componentDidMount() {
     const { setRequesting } = this.props;
@@ -106,11 +116,39 @@ export class Stats extends Component {
         alert(error);
       });
   }
+  renderQuickestGames = quickestWinGames => {
+    return quickestWinGames.map((el, index) => (
+      <div className="single-stat" key={index}>
+        <h4>{index + 1} place :</h4>
+        <p className="stat-item"> Player: </p>
+        <p className="stat-item-subitem"> {el.player} </p>
+
+        <p className="stat-item"> Game lang: </p>
+        <p className="stat-item-subitem"> {el.lang} </p>
+
+        <p className="stat-item"> Time: </p>
+        <p className="stat-item-subitem"> {el.gameTime / 1000 + "s"} </p>
+
+        <p className="stat-item"> Diffculty: </p>
+        <p className="stat-item-subitem"> {el.difficulty} </p>
+
+        <p className="stat-item"> Lifes left: </p>
+        <p className="stat-item-subitem"> {el.lifes} </p>
+      </div>
+    ));
+  };
   render() {
-    const { isRequesting } = this.props;
-    const { quotesCount, quickestGame } = this.state.data;
     console.log(this.state.data);
-    console.log(quickestGame);
+    const { isRequesting } = this.props;
+    const {
+      quotesCount,
+      quickestGame: { player, stateOfGame, gameTime, lifes },
+      quickestWinGames,
+      langs,
+      games,
+      winGames,
+      deadGames
+    } = this.state.data;
     return isRequesting ? (
       <Loading />
     ) : (
@@ -123,26 +161,58 @@ export class Stats extends Component {
         </div>
         <div className="chart-item">
           <div className="stat-box">
-            <h3 className="stat-header"> Quotes in database </h3>
-            <p className="stat-item"> {quotesCount} </p>
+            <div className="stat-section">
+              <div className="box-item">
+                <h3 className="stat-header"> Quotes in database </h3>
+                <div className="single-stat">
+                  <p className="stat-item"> {quotesCount} </p>
+                </div>
+              </div>
+              <div className="box-item">
+                <h3 className="stat-header"> Quickest game by: </h3>
+                <div className="single-stat">
+                  <p className="stat-item"> Player: </p>
+                  <p className="stat-item-subitem"> {player} </p>
 
-            <h3 className="stat-header"> Quickest game by: </h3>
-            {/* <p className="stat-item"> {quickestGame} </p> */}
+                  <p className="stat-item"> Game Result: </p>
+                  <p className="stat-item-subitem"> {stateOfGame} </p>
 
-            <h3 className="stat-header"> Best Score </h3>
-            <p className="stat-item">
-              {" "}
-              {/* {this.state.data.quickestGame[0].player}{" "} */}
-            </p>
+                  <p className="stat-item"> Time: </p>
+                  <p className="stat-item-subitem"> {gameTime / 1000 + "s"} </p>
 
-            <h3 className="stat-header"> Langs avaliable </h3>
-            {/* <p className="stat-item"> {this.state.data.langs} </p> */}
+                  <p className="stat-item"> Lifes left: </p>
+                  <p className="stat-item-subitem"> {lifes} </p>
+                </div>
+              </div>
 
-            <h3 className="stat-header"> Best Score </h3>
-            <p className="stat-item"> Lucas </p>
+              <div className="box-item">
+                <h3 className="stat-header"> Langs avaliable </h3>
+                <p className="stat-item"> {langs.join(", ")} </p>
+              </div>
 
-            <h3 className="stat-header"> Best Score </h3>
-            <p className="stat-item"> Lucas </p>
+              <div className="box-item">
+                <h3 className="stat-header"> Games played </h3>
+                <p className="stat-item"> {games} </p>
+              </div>
+
+              <div className="box-item">
+                <h3 className="stat-header"> Games won </h3>
+                <p className="stat-item"> {winGames} </p>
+              </div>
+              <div className="box-item">
+                <h3 className="stat-header"> Games defeated </h3>
+                <p className="stat-item"> {deadGames} </p>
+              </div>
+            </div>
+
+            <div className="stat-section">
+              <div className="box-item">
+                <h2>Best scores</h2>
+                {quickestWinGames.length > 0
+                  ? this.renderQuickestGames(quickestWinGames)
+                  : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>
