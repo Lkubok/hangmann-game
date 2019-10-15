@@ -68,7 +68,7 @@ export const deleteQuote = (api, quote, token) => dispatch => {
         }
       })
       .catch(error => {
-        alert("You should be logged in to delete files", error);
+        alert(error.response.data);
       });
   }
 };
