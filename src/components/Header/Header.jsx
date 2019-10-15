@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 class Header extends Component {
@@ -8,9 +9,11 @@ class Header extends Component {
       <header className="app-header">
         <img src="./img/logo.png" alt="" />
         {this.props.isLogged && (
-          <h5 className="user">
-            Logged as: <span>{this.props.userName}</span>
-          </h5>
+          <NavLink to="/userpanel">
+            <h5 className="user">
+              Logged as: <span>{this.props.userName}</span>
+            </h5>
+          </NavLink>
         )}
       </header>
     );

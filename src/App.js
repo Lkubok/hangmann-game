@@ -13,6 +13,8 @@ import EditQuote from "./components/EditQuote";
 import Game from "./components/Game";
 import SignUp from "./components/User/SignUp";
 import Footer from "./components/Footer";
+import UserPanel from "./components/UserPanel";
+import ProtectedRoute from "./components/ProtectedRoute";
 import history from "./history";
 
 import jwt_decode from "jwt-decode";
@@ -57,13 +59,13 @@ class App extends Component {
     }
   }
   render() {
+    const { isLogged } = this.props;
     return (
       <Router history={history}>
         <Header />
         <Navbar />
         <Main>
           <Switch>
-            {/* PROTECTED ROUTE 0 inside this another route  */}
             <Route exact path={"/"} component={Welcome} />
             <Route exact path={"/game"} component={Game} />
             <Route exact path={"/about"} component={About} />
@@ -71,6 +73,11 @@ class App extends Component {
             <Route exact path={"/signup"} component={SignUp} />
             <Route exact path={"/stats"} component={Stats} />
             <Route exact path={"/addquote"} component={AddQuote} />
+            <ProtectedRoute
+              isAuth={isLogged}
+              path={"/userpanel"}
+              component={UserPanel}
+            />
             <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />
             <Route exact path={"/user"} component={User} />
             <Route path="*" component={NotFoundPage} />
@@ -81,10 +88,13 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  isLogged: state.appParamsReducer.isLogged
+});
 
 const mapDispatchToProps = { setUserLogIn, setJwt, setUserEmail };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);

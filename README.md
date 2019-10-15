@@ -17,3 +17,5 @@ npm run start
 ## TODO list
 
 *Implement Auth0 instead of existing authentication*
+*Add UserPanel component*
+*Add Protected Route component*

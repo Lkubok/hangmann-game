@@ -36,6 +36,18 @@
       background-color: red;
     }
   }
+  &-disabled{
+    background-color: $dark-color-light;
+    color: $dark-color-light;
+    opacity: 0;
+    pointer-events: none;
+    // display: none;
+    // &:hover {
+    //   pointer-events: none;
+    //   // cursor: initial;
+    //   background-color: $dark-color;
+    // }
+  }
 }
 a{
   text-decoration: none;

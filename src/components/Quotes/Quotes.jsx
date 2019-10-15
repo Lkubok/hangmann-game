@@ -82,7 +82,10 @@ export class Quotes extends Component {
         <td>{el.lang}</td>
         <td>{el.difficulty}</td>
         <td>
-          <ButtonBox id={el._id} />
+          <ButtonBox
+            canDelete={el.insertAuthor === this.props.userName ? true : false}
+            id={el._id}
+          />
         </td>
       </tr>
     ));
@@ -123,7 +126,8 @@ const mapStateToPops = (state, ownProps) => ({
   actualPage: selectors.getActualPage(state),
   pageLimit: selectors.getPageLimit(state),
   sortOrder: selectors.getSortingOrder(state),
-  sortBy: selectors.getSortingBy(state)
+  sortBy: selectors.getSortingBy(state),
+  userName: state.appParamsReducer.userName
 });
 
 const mapDispatchToProps = {

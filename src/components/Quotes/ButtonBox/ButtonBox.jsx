@@ -15,12 +15,22 @@ export class ButtonBox extends PureComponent {
         <Link to={`/quotes/${this.props.id}/edit`} className="btn btn-edit">
           Edit
         </Link>
-        <button
-          className="btn btn-danger"
-          onClick={this.handleDelete(this.props.id)}
-        >
-          Delete
-        </button>
+        {this.props.canDelete ? (
+          <button
+            className="btn btn-danger"
+            onClick={this.handleDelete(this.props.id)}
+          >
+            Delete
+          </button>
+        ) : (
+          <button
+            className="btn btn-disabled"
+            onClick={this.handleDelete(this.props.id)}
+            disabled={true}
+          >
+            Delete
+          </button>
+        )}
       </div>
     );
   }
