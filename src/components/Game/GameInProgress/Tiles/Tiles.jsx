@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as selectors from "../../../../reducers/selectors";
+import PropTypes from "prop-types";
 import "./Tiles.scss";
 
 export class Tiles extends Component {
@@ -54,6 +55,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {};
+
+Tiles.propTypes = {
+  lettersToGuess: PropTypes.array.isRequired,
+  typed: PropTypes.array.isRequired
+};
 
 export default connect(
   mapStateToProps,

@@ -6,6 +6,7 @@ import "react-simple-keyboard/build/css/index.css";
 import * as selectors from "../../../../reducers/selectors";
 import "./Keypad.scss";
 import _ from "lodash";
+import PropTypes from "prop-types";
 
 export class Keypad extends Component {
   constructor(props) {
@@ -94,6 +95,14 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = {
   pressLetter
+};
+
+Keypad.propTypes = {
+  pressLetter: PropTypes.func.isRequired,
+  gameId: PropTypes.string.isRequired,
+  typed: PropTypes.array.isRequired,
+  guessed: PropTypes.array.isRequired,
+  gameLang: PropTypes.string.isRequired
 };
 
 export default connect(

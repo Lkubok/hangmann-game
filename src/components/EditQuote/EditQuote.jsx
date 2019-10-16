@@ -4,6 +4,7 @@ import { fetchQuote } from "../../actions/editQuoteActions";
 import * as selectors from "../../reducers/selectors";
 import Loading from "./Loading";
 import Loaded from "./Loaded";
+import PropTypes from "prop-types";
 import "./EditQuote.scss";
 
 export class EditQuote extends PureComponent {
@@ -29,6 +30,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchQuote
+};
+
+EditQuote.propTypes = {
+  fetchQuote: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default connect(

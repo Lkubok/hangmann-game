@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
+import PropTypes from "prop-types";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
@@ -85,6 +86,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = { setUserLogIn, setJwt, setUserEmail };
+
+App.propTypes = {
+  isLogged: PropTypes.bool,
+  setUserEmail: PropTypes.func,
+  setJwt: PropTypes.func,
+  setUserLogIn: PropTypes.func
+};
 
 export default connect(
   mapStateToProps,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SignForm from "./SignForm";
 import history from "../../history";
+import PropTypes from "prop-types";
 
 import "./User.scss";
 
@@ -17,6 +18,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {};
+
+User.propTypes = {
+  isLogged: PropTypes.bool.isRequired
+};
 
 export default connect(
   mapStateToProps,

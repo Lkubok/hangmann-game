@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./UserPanel.scss";
+import PropTypes from "prop-types";
 
 export class UserPanel extends Component {
   render() {
@@ -17,6 +18,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({});
+
+UserPanel.propTypes = {
+  isLogged: PropTypes.bool.isRequired
+};
 
 export default connect(
   mapStateToProps,

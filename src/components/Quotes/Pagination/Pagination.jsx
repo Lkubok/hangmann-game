@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as selectors from "../../../reducers/selectors";
 import { changeActualPage } from "../../../actions/quoteActions";
 import "./Pagination.scss";
+import PropTypes from "prop-types";
 
 export class Pagination extends PureComponent {
   handlePageClick = e => this.props.changePage(e.selected);
@@ -40,6 +41,14 @@ const mapStateToPops = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   changePage: arg => dispatch(changeActualPage(arg))
 });
+
+Pagination.propTypes = {
+  pagesCount: PropTypes.number.isRequired,
+  actualPage: PropTypes.number.isRequired,
+  filterQuery: PropTypes.string.isRequired,
+  pageLimit: PropTypes.number.isRequired,
+  changePage: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToPops,

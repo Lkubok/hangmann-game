@@ -5,6 +5,7 @@ import axios from "axios";
 import Loading from "../EditQuote/Loading";
 import { connect } from "react-redux";
 import { setRequesting } from "../../actions/appActions";
+import PropTypes from "prop-types";
 import "./Stats.scss";
 
 const { REACT_APP_API_HOST } = process.env;
@@ -238,6 +239,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setRequesting: arg => dispatch(setRequesting(arg))
 });
+
+Stats.propTypes = {
+  isRequesting: PropTypes.bool.isRequired,
+  setRequesting: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

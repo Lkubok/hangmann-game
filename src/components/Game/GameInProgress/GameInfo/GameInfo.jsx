@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as selectors from "../../../../reducers/selectors";
 import "./GameInfo.scss";
 import { closeGame, saveTime } from "../../../../actions/gameActions";
+import PropTypes from "prop-types";
 const { REACT_APP_GAME_TIME } = process.env;
 
 export class GameInfo extends Component {
@@ -52,22 +53,22 @@ export class GameInfo extends Component {
     return (
       <div className="game-info">
         <div className="info-elem">
-          <p className>
+          <p>
             Lifes left: <span>{lifes}</span>
           </p>
         </div>
         <div className="info-elem">
-          <p className>
+          <p>
             Game Start Time: <span>{this.getStartDate(startTime)}</span>
           </p>
         </div>
         <div className="info-elem">
-          <p className>
+          <p>
             State Of Game: <span>{stateOfGame}</span>
           </p>
         </div>
         <div className="info-elem">
-          <p className>
+          <p>
             Time Left: <span>{this.showTime()}</span>
           </p>
         </div>
@@ -86,6 +87,16 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   closeGame,
   saveTime
+};
+
+GameInfo.propTypes = {
+  lifes: PropTypes.number.isRequired,
+  startTime: PropTypes.number.isRequired,
+  stateOfGame: PropTypes.string.isRequired,
+  isFinished: PropTypes.bool.isRequired,
+  stoppedTime: PropTypes.string,
+  closeGame: PropTypes.func.isRequired,
+  saveTime: PropTypes.func.isRequired
 };
 
 export default connect(

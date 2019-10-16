@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Header.scss";
+import PropTypes from "prop-types";
 
 export class Header extends Component {
   render() {
@@ -21,6 +22,11 @@ const mapStateToProps = state => ({
   userName: state.appParamsReducer.userName,
   isLogged: state.appParamsReducer.isLogged
 });
+
+Header.propTypes = {
+  userName: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired
+};
 
 export default connect(
   mapStateToProps,

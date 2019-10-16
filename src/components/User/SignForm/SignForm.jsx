@@ -5,6 +5,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import PropTypes from "prop-types";
 import {
   setUserLogIn,
   setJwt,
@@ -118,6 +119,14 @@ const loginFormik = withFormik({
       });
   }
 });
+
+SignForm.propTypes = {
+  isRequesting: PropTypes.bool.isRequired,
+  setUserLogIn: PropTypes.func.isRequired,
+  setJwt: PropTypes.func.isRequired,
+  setUserEmail: PropTypes.func.isRequired,
+  setRequesting: PropTypes.func.isRequired
+};
 
 export default compose(
   withRouter,

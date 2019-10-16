@@ -8,6 +8,7 @@ import {
   sendGameStat,
   fetchSingleQuote
 } from "../../../../actions/gameActions";
+import PropTypes from "prop-types";
 
 const { REACT_APP_API_HOST } = process.env;
 
@@ -80,6 +81,23 @@ const mapDispatchToProps = {
   clearGameParams,
   fetchSingleQuote,
   sendGameStat
+};
+
+GameFinished.propTypes = {
+  userName: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  userLevel: PropTypes.string.isRequired,
+  userLang: PropTypes.string.isRequired,
+  isGuessed: PropTypes.bool.isRequired,
+  gameStatus: PropTypes.string.isRequired,
+  gameId: PropTypes.string.isRequired,
+  searchedQuote: PropTypes.string.isRequired,
+  scoreToSend: PropTypes.object.isRequired,
+  startTime: PropTypes.number.isRequired,
+  isFinished: PropTypes.bool.isRequired,
+  clearGameParams: PropTypes.func.isRequired,
+  fetchSingleQuote: PropTypes.func.isRequired,
+  sendGameStat: PropTypes.func.isRequired
 };
 
 export default connect(

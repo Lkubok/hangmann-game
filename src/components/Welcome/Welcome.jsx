@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./Welcome.scss";
 
 export class Welcome extends Component {
@@ -42,6 +43,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {};
+
+Welcome.propTypes = {
+  isLogged: PropTypes.bool.isRequired
+};
 
 export default connect(
   mapStateToProps,

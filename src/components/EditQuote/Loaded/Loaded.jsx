@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import QuoteForm from "../../QuoteForm/QuoteForm";
 import * as selectors from "../../../reducers/selectors";
+import PropTypes from "prop-types";
 import "./Loaded.scss";
 
 export class Loaded extends Component {
@@ -28,6 +29,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({});
+
+Loaded.propTypes = {
+  fetchedQuote: PropTypes.object.isRequired
+};
 
 export default connect(
   mapStateToProps,

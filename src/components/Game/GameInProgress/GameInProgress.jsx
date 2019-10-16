@@ -12,6 +12,7 @@ import GameInfo from "./GameInfo";
 import GameFinished from "./GameFinished/index";
 import * as selectors from "../../../reducers/selectors";
 import "./GameInProgress.scss";
+import PropTypes from "prop-types";
 
 export class GameInProgress extends Component {
   handleGameDelete = id => () => {
@@ -55,6 +56,22 @@ const mapDispatchToProps = {
   pressLetter,
   closeGame,
   clearGameParams
+};
+
+GameInProgress.propTypes = {
+  deleteGame: PropTypes.func.isRequired,
+  pressLetter: PropTypes.func.isRequired,
+  closeGame: PropTypes.func.isRequired,
+  clearGameParams: PropTypes.func.isRequired,
+  gameId: PropTypes.string.isRequired,
+  quoteAuthor: PropTypes.string.isRequired,
+  isFinished: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  userLevel: PropTypes.string.isRequired,
+  userLang: PropTypes.string.isRequired,
+  typed: PropTypes.array.isRequired,
+  guessed: PropTypes.array.isRequired
 };
 
 export default connect(

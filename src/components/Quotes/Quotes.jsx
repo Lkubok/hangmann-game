@@ -16,6 +16,7 @@ import {
 } from "../../actions/quoteActions";
 import * as selectors from "../../reducers/selectors";
 import "./Quotes.scss";
+import PropTypes from "prop-types";
 const { REACT_APP_API_HOST } = process.env;
 
 export class Quotes extends Component {
@@ -133,6 +134,19 @@ const mapDispatchToProps = {
   updateQuotes,
   removeAllQuotes,
   changeSorting
+};
+
+Quotes.propTypes = {
+  quotes: PropTypes.array.isRequired,
+  sortedQuotes: PropTypes.array.isRequired,
+  actualPage: PropTypes.number.isRequired,
+  pageLimit: PropTypes.number.isRequired,
+  sortOrder: PropTypes.string.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  updateQuotes: PropTypes.func.isRequired,
+  removeAllQuotes: PropTypes.func.isRequired,
+  changeSorting: PropTypes.func.isRequired
 };
 
 export default connect(

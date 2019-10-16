@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUserLogOut } from "../../actions/appActions";
 import * as selectors from "../../reducers/selectors";
+import PropTypes from "prop-types";
 
 import "./Navbar.scss";
 
@@ -137,6 +138,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setUserLogOut
+};
+
+Navbar.propTypes = {
+  userName: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  gameId: PropTypes.string,
+  isFinished: PropTypes.bool.isRequired,
+  setUserLogOut: PropTypes.func.isRequired
 };
 
 export default connect(

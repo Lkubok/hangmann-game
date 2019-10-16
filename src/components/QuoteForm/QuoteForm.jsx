@@ -8,6 +8,7 @@ import "./QuoteForm.scss";
 import * as Yup from "yup";
 import axios from "axios";
 import { updateQuotes } from "../../actions/quoteActions";
+import PropTypes from "prop-types";
 
 const { REACT_APP_API_HOST } = process.env;
 
@@ -161,6 +162,14 @@ const myFormik = withFormik({
     }
   }
 });
+
+QuoteForm.propTypes = {
+  quoteId: PropTypes.string,
+  isLogged: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  updateQuotes: PropTypes.func.isRequired
+};
 
 export default compose(
   withRouter,

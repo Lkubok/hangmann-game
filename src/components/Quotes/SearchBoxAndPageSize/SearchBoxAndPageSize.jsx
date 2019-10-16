@@ -7,6 +7,7 @@ import {
 } from "../../../actions/quoteActions";
 import * as selectors from "../../../reducers/selectors";
 import "./SearchBoxAndPageSize.scss";
+import PropTypes from "prop-types";
 
 export class SearchBoxAndPageSize extends Component {
   handleChange = e => {
@@ -58,6 +59,15 @@ const mapDispatchToProps = {
   changeFilter,
   changeSortedQuotes,
   changePageSize
+};
+
+SearchBoxAndPageSize.propTypes = {
+  filterQuery: PropTypes.string.isRequired,
+  pageSize: PropTypes.number,
+  quotes: PropTypes.array.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+  changeSortedQuotes: PropTypes.func.isRequired,
+  changePageSize: PropTypes.func.isRequired
 };
 
 export default connect(

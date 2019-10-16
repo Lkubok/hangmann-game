@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { deleteQuote } from "../../../actions/quoteActions";
 import "./ButtonBox.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 const { REACT_APP_API_HOST } = process.env;
 
 export class ButtonBox extends PureComponent {
@@ -39,6 +40,12 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
   deleteQuote
+};
+
+ButtonBox.propTypes = {
+  id: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  deleteQuote: PropTypes.func.isRequired
 };
 
 export default connect(
