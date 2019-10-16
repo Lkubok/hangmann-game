@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loaded component Should match snapshot 1`] = `
+<div>
+  <withRouter(Connect(WithFormik(QuoteForm)))
+    error=""
+    insertAuthor="test"
+    lang="test"
+    quote="test"
+    quoteAuthor="test"
+    touched=""
+  />
+</div>
+`;

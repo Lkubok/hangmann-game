@@ -10,7 +10,7 @@ const override = css`
   color: green;
 `;
 
-export default class Loading extends Component {
+export class Loading extends Component {
   state = {
     dots: ""
   };
@@ -45,3 +45,5 @@ export default class Loading extends Component {
     );
   }
 }
+
+export default Loading;

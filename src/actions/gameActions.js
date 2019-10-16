@@ -180,5 +180,5 @@ export const sendGameStat = score => dispatch => {
   axios
     .post(REACT_APP_API_HOST + "/games/stats", score)
     .then(response => response.data)
-    .then(data => console.log(data));
+    .then(data => {});
 };

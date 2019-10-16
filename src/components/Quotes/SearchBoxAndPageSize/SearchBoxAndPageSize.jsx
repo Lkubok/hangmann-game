@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   changeFilter,
@@ -8,14 +8,13 @@ import {
 import * as selectors from "../../../reducers/selectors";
 import "./SearchBoxAndPageSize.scss";
 
-export class SearchBoxAndPageSize extends PureComponent {
+export class SearchBoxAndPageSize extends Component {
   handleChange = e => {
     const { value, name } = e.target;
-    const { changePageSize, changeFilter, changeSortedQuotes } = this.props;
-    if (name === "pageSize") changePageSize(parseInt(value));
-    else {
-      /*       changeFilter(value);
-      changeSortedQuotes(this.props.quotes); */
+    const { changePageSize } = this.props;
+    if (name === "pageSize") {
+      changePageSize(parseInt(value));
+    } else {
     }
   };
   render() {

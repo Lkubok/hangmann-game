@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartGame component Should match snapshot 1`] = `
+<Fragment>
+  <div
+    className="form-holder"
+  >
+    <Form
+      className="user-params-form"
+      onSubmit={[Function]}
+    >
+      <p
+        className="game-select-label"
+      >
+        User name: 
+        <span>
+          test
+        </span>
+      </p>
+      <FormikConnect(FieldInner)
+        name="username"
+        type="text"
+      />
+      <p
+        className="game-select-label"
+      >
+        Email: 
+        <span>
+          test
+        </span>
+      </p>
+      <FormikConnect(FieldInner)
+        name="email"
+        type="email"
+      />
+      <p
+        className="game-select-label"
+      >
+        Language: 
+        <span>
+          test
+        </span>
+      </p>
+      <FormikConnect(FieldInner)
+        component="select"
+        name="lang"
+      >
+        <option>
+          --- select lang ---
+        </option>
+      </FormikConnect(FieldInner)>
+      <p
+        className="game-select-label"
+      >
+        Level: 
+        <span>
+          test
+        </span>
+      </p>
+      <FormikConnect(FieldInner)
+        component="select"
+        name="level"
+      >
+        <option>
+          --- select level ---
+        </option>
+        <option
+          value="easy"
+        >
+          easy
+        </option>
+        <option
+          value="medium"
+        >
+          medium
+        </option>
+        <option
+          value="hard"
+        >
+          hard
+        </option>
+      </FormikConnect(FieldInner)>
+      <button>
+        Start Game
+      </button>
+    </Form>
+  </div>
+</Fragment>
+`;

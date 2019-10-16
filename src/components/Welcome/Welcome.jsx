@@ -12,7 +12,6 @@ export class Welcome extends Component {
         </div>
         <div className="welcome-buttons">
           <button className="button-play" onClick={() => history.push("/game")}>
-            {/* Play without login for free */}
             {isLogged ? <>Play</> : <>Play without login for free</>}
           </button>
           {isLogged ? null : (

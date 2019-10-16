@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
@@ -15,21 +18,12 @@ import SignUp from "./components/User/SignUp";
 import Footer from "./components/Footer";
 import UserPanel from "./components/UserPanel";
 import ProtectedRoute from "./components/ProtectedRoute";
-import history from "./history";
-
-import jwt_decode from "jwt-decode";
-
 import { setUserLogIn } from "./actions/appActions";
-import { connect } from "react-redux";
-
 import { setJwt, setUserEmail } from "./actions/appActions";
-
-import { Router, Route, Switch } from "react-router-dom";
+import history from "./history";
 import axios from "axios";
-
 const { REACT_APP_API_HOST } = process.env;
 const token = localStorage.getItem("JWT_HANG_TOKEN");
-
 const connectionOptions = {
   headers: {
     "content-type": "application/json",
@@ -39,7 +33,7 @@ const connectionOptions = {
   url: REACT_APP_API_HOST + `/islogged`
 };
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     if (token) {
       axios({ ...connectionOptions })
@@ -53,9 +47,7 @@ class App extends Component {
             localStorage.removeItem("JWT_HANG_TOKEN");
           }
         })
-        .catch(error => {
-          console.log(error);
-        });
+        .catch(error => {});
     }
   }
   render() {

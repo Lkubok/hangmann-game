@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameSending component Should match snapshot 1`] = `
+<h6
+  className="database-info"
+>
+  game stored in database
+</h6>
+`;

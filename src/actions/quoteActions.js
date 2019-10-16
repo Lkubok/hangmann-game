@@ -43,7 +43,7 @@ export const updateQuotes = api => dispatch => {
   axios
     .get(api + "/quotes/all")
     .then(response => dispatch(loadQuotes(response.data)))
-    .catch(err => console.log(err));
+    .catch(err => {});
 };
 
 export const deleteQuote = (api, quote, token) => dispatch => {

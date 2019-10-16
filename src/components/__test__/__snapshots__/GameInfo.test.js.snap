@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameInfo component Should match snapshot 1`] = `
+<div
+  className="game-info"
+>
+  <div
+    className="info-elem"
+  >
+    <p
+      className={true}
+    >
+      Lifes left: 
+      <span />
+    </p>
+  </div>
+  <div
+    className="info-elem"
+  >
+    <p
+      className={true}
+    >
+      Game Start Time: 
+      <span>
+        NaN : NaN : NaN
+      </span>
+    </p>
+  </div>
+  <div
+    className="info-elem"
+  >
+    <p
+      className={true}
+    >
+      State Of Game: 
+      <span />
+    </p>
+  </div>
+  <div
+    className="info-elem"
+  >
+    <p
+      className={true}
+    >
+      Time Left: 
+      <span>
+        0s
+      </span>
+    </p>
+  </div>
+</div>
+`;

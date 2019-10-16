@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component Should match snapshot 1`] = `
+<div
+  className="loading-holder"
+>
+  <div
+    className="sweet-loading"
+  >
+    <Loader
+      color="#6dba0a"
+      css={
+        Object {
+          "map": undefined,
+          "name": "mso4ej",
+          "next": undefined,
+          "styles": "
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  color: green;
+",
+        }
+      }
+      loading={true}
+      margin="2px"
+      size={25}
+      sizeUnit="px"
+    />
+  </div>
+</div>
+`;

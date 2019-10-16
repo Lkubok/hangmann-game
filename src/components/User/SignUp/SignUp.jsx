@@ -12,7 +12,7 @@ import { setUserLogIn } from "../../../actions/appActions";
 import "./SignUp.scss";
 const { REACT_APP_API_HOST } = process.env;
 
-class SignForm extends Component {
+export class SignForm extends Component {
   render() {
     const { errors, touched, isSubmiting } = this.props;
 

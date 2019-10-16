@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonBox component Should match snapshot 1`] = `
+<div
+  className="btn-box"
+>
+  <Link
+    className="btn btn-edit"
+    to="/quotes/undefined/edit"
+  >
+    Edit
+  </Link>
+  <button
+    className="btn btn-disabled"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;

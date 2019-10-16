@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination component Should match snapshot 1`] = `
+<PaginationBoxView
+  activeClassName="page-active"
+  breakClassName="break-me"
+  breakLabel="..."
+  containerClassName="pagination"
+  disableInitialCallback={false}
+  disabledClassName="disabled"
+  key="undefined+undefined"
+  marginPagesDisplayed={2}
+  nextClassName="next"
+  nextLabel="next"
+  onPageChange={[Function]}
+  pageCount={10}
+  pageRangeDisplayed={5}
+  previousClassName="previous"
+  previousLabel="previous"
+  subContainerClassName="pages pagination"
+/>
+`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tiles component Should match snapshot 1`] = `
+<div
+  className="letter-box"
+>
+  <div
+    className="tile tile-guessed"
+    key="0"
+  >
+    a
+  </div>
+  <div
+    className="tile tile-guessed"
+    key="1"
+  >
+    b
+  </div>
+</div>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component Should match snapshot 1`] = `
+<nav>
+  <ul
+    className="app-navbar"
+  >
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/game"
+      >
+        Game
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/quotes"
+      >
+        Quotes
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/addquote"
+      >
+         
+        AddQuote
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/stats"
+      >
+        Stats
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/about"
+      >
+        About
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="nav-item-active"
+        className="nav-item"
+        onClick={[Function]}
+        to="/user"
+      >
+        Login
+      </NavLink>
+    </li>
+  </ul>
+</nav>
+`;

@@ -7,7 +7,7 @@ import * as selectors from "../../../../reducers/selectors";
 import "./Keypad.scss";
 import _ from "lodash";
 
-class Keypad extends Component {
+export class Keypad extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -100,3 +100,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Keypad);
+
+

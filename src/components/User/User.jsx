@@ -5,7 +5,7 @@ import history from "../../history";
 
 import "./User.scss";
 
-class User extends Component {
+export class User extends Component {
   render() {
     const { isLogged } = this.props;
     return <>{isLogged ? history.push("/") : <SignForm />}</>;

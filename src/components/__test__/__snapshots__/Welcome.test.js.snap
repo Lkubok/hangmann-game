@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome component Should match snaptshot 1`] = `
+<div
+  className="app-welcome"
+>
+  <div
+    className="hang-container"
+  >
+    <img
+      alt=""
+      className="hang-image"
+      src="./img/hanged-man.png"
+    />
+  </div>
+  <div
+    className="welcome-buttons"
+  >
+    <button
+      className="button-play"
+      onClick={[Function]}
+    >
+      Play without login for free
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Browse available quotes
+    </button>
+  </div>
+  <div
+    className="app-info"
+  >
+    <p
+      className="info info-header"
+    >
+      Why play Hangman ?
+    </p>
+    <p
+      className="info info-body"
+    >
+      Learn languages with Hangman! No more dry, out of date textbook story lines! Here at Hangmann you'll learn languages with fun, interesting and cultural relevant lessons that are easy to listen to. But not only are they fun - they're effective too! Join the hundreds of thousands of people already learning languages through the power of this app!
+    </p>
+  </div>
+</div>
+`;

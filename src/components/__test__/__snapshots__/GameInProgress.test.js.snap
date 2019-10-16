@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameInProgress component Should match snapshot 1`] = `
+<Fragment>
+  <div
+    className="game-container"
+    tabIndex="0"
+  >
+    <Connect(Tiles) />
+    <div
+      className="quote-author"
+    >
+      <div
+        className="quote-item"
+      >
+        Quote by:
+      </div>
+      <div
+        className="quote-item"
+      />
+    </div>
+    <Connect(Keypad) />
+    <button
+      onClick={[Function]}
+    >
+      Leave game
+    </button>
+  </div>
+  <Connect(GameInfo) />
+</Fragment>
+`;

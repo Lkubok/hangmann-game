@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Quotes component Should match snapshot 1`] = `
+<Fragment>
+  <div
+    className="quotes-wrapper"
+  >
+    <div
+      className="quotes-navigation"
+    >
+      <Connect(Pagination) />
+      <Connect(SearchBoxAndPageSize) />
+    </div>
+    <div
+      className="quotes-body"
+    >
+      <table
+        className="quote-table"
+      >
+        <thead
+          className="quote-table-header"
+        >
+          <tr>
+            <td
+              className="table-headings"
+              key="nr."
+              onClick={[Function]}
+            >
+              nr.
+            </td>
+            <td
+              className="table-headings"
+              key="Quote"
+              onClick={[Function]}
+            >
+              Quote
+            </td>
+            <td
+              className="table-headings"
+              key="Author"
+              onClick={[Function]}
+            >
+              Author
+            </td>
+            <td
+              className="table-headings"
+              key="Ins By"
+              onClick={[Function]}
+            >
+              Ins By
+            </td>
+            <td
+              className="table-headings"
+              key="Insert"
+              onClick={[Function]}
+            >
+              Insert
+            </td>
+            <td
+              className="table-headings"
+              key="Modify"
+              onClick={[Function]}
+            >
+              Modify
+            </td>
+            <td
+              className="table-headings"
+              key="Lang"
+              onClick={[Function]}
+            >
+              Lang
+            </td>
+            <td
+              className="table-headings"
+              key="diff."
+              onClick={[Function]}
+            >
+              diff.
+            </td>
+            <td
+              className="table-headings"
+              key="mod. "
+              onClick={[Function]}
+            >
+              mod. 
+            </td>
+          </tr>
+        </thead>
+        <tbody
+          className="quote-table-body"
+        />
+      </table>
+    </div>
+  </div>
+</Fragment>
+`;

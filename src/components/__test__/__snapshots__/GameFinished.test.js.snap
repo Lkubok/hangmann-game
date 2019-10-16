@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameFinished component Should match snapshot 1`] = `
+<div
+  className="game-finished game-finished-dead"
+>
+   
+  <h2>
+    game over !
+  </h2>
+  <h3>
+    You are dead ;( 
+  </h3>
+  <h4>
+    searched quote was:
+  </h4>
+  <h5>
+    test quote
+  </h5>
+  <button
+    className="btn-restart"
+    onClick={[Function]}
+  >
+    Play again
+  </button>
+  <Connect(GameSending) />
+</div>
+`;

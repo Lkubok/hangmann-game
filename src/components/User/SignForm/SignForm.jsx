@@ -17,7 +17,7 @@ import "./SignForm.scss";
 
 const { REACT_APP_API_HOST } = process.env;
 
-class SignForm extends Component {
+export class SignForm extends Component {
   handleButton = e => {
     e.preventDefault();
     history.push("/signup");

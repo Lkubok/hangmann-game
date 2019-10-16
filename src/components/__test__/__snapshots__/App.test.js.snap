@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component Should match snaptshot 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Connect(Header) />
+  <Connect(Navbar) />
+  <Main>
+    <Switch>
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(Welcome)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(Game)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/game"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/about"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(Quotes)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/quotes"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/signup"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(Stats)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/stats"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/addquote"
+      />
+      <ProtectedRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(UserPanel)",
+            "type": [Function],
+          }
+        }
+        path="/userpanel"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(EditQuote)",
+            "type": [Function],
+          }
+        }
+        path="/quotes/:quoteId/edit"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(User)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/user"
+      />
+      <Route
+        component={[Function]}
+        path="*"
+      />
+    </Switch>
+  </Main>
+  <Footer />
+</Router>
+`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeyPad component Should match snapshot 1`] = `
+<div
+  className="keyboard"
+  key="a-b"
+>
+  <e
+    buttonTheme={
+      Array [
+        Object {
+          "buttons": "",
+          "class": "key-button key-button-typed-bad",
+        },
+        Object {
+          "buttons": "a b",
+          "class": "key-button key-button-typed-good",
+        },
+        Object {
+          "buttons": "q w e r t y u i o p s d f g h j k l z x c v n m ą ę ź ó ł ń ć ś ż",
+          "class": "key-button key-button-untyped",
+        },
+      ]
+    }
+    layout={
+      Object {
+        "default": Array [
+          "q w e r t y u i o p",
+          "a s d f g h j k l",
+          "z x c v b n m",
+          "ą ę ź ó ł ń ć ś ż",
+        ],
+      }
+    }
+    onKeyPress={[Function]}
+  />
+</div>
+`;

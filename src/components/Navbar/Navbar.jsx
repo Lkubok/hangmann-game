@@ -6,7 +6,7 @@ import * as selectors from "../../reducers/selectors";
 
 import "./Navbar.scss";
 
-class Navbar extends Component {
+export class Navbar extends Component {
   handleClick = e => {
     if (this.props.gameId && !this.props.isFinished) e.preventDefault();
   };
@@ -42,15 +42,7 @@ class Navbar extends Component {
               Quotes
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink
-              to="/stats"
-              className="nav-item"
-              activeClassName="nav-item-active"
-            >
-              Stats
-            </NavLink>
-          </li> */}
+
           <li>
             <NavLink
               to="/addquote"

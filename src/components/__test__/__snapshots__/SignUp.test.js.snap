@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp component Should match snapshot 1`] = `
+<Fragment>
+  <Form
+    className="add-edit-form"
+  >
+    <p
+      className="label"
+    >
+      First Name:
+       
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="firstname"
+      placeholder="Write your first name"
+    />
+    <p
+      className="label"
+    >
+      Last name:
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="lastname"
+      placeholder="Write your last name"
+    />
+    <p
+      className="label"
+    >
+      Game username:
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="username"
+      placeholder="Write your Game username"
+    />
+    <p
+      className="label"
+    >
+      Password:
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="password"
+      placeholder="Write your password"
+      type="password"
+    />
+    <p
+      className="label"
+    >
+      Retype your Password:
+      <span
+        className="error"
+      >
+        123
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="passwordVerification"
+      placeholder="Retype your password"
+      type="password"
+    />
+    <p
+      className="label"
+    >
+      E-mail:
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="email"
+      placeholder="Write your e-mail"
+      type="email"
+    />
+    <p
+      className="label"
+    >
+      Age:
+      <span
+        className="error"
+      >
+        test
+      </span>
+    </p>
+    <FormikConnect(FieldInner)
+      name="age"
+      placeholder="What your age ?"
+      type="number"
+    />
+    <button
+      className="btn"
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </Form>
+</Fragment>
+`;

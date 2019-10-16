@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 
-export default class ProtectedRoute extends Component {
+export class ProtectedRoute extends Component {
   render() {
     const { isAuth } = this.props;
     return isAuth ? (
@@ -11,3 +11,5 @@ export default class ProtectedRoute extends Component {
     );
   }
 }
+
+export default ProtectedRoute;
