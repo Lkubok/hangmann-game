@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { updateQuotes, deleteQuote } from "../../../actions/quoteActions";
+import { deleteQuote } from "../../../actions/quoteActions";
 import "./ButtonBox.scss";
 import { Link } from "react-router-dom";
 const { REACT_APP_API_HOST } = process.env;
@@ -23,11 +23,7 @@ export class ButtonBox extends PureComponent {
             Delete
           </button>
         ) : (
-          <button
-            className="btn btn-disabled"
-            onClick={this.handleDelete(this.props.id)}
-            disabled={true}
-          >
+          <button className="btn btn-disabled" disabled={true}>
             Delete
           </button>
         )}
@@ -42,7 +38,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  updateQuotes,
   deleteQuote
 };
 

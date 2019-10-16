@@ -6,7 +6,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("GameFinished component", () => {
   let props;
-  const spyFunction = jest.fn();
+  const spyFunctionFetch = jest.fn();
+  const spyFunctionClearGame = jest.fn();
   beforeEach(() => {
     props = {
       userName: "lucas",
@@ -20,11 +21,24 @@ describe("GameFinished component", () => {
       scoreToSend: "win",
       startTime: 123,
       isFinished: true,
-      fetchSingleQuote: spyFunction
+      fetchSingleQuote: spyFunctionFetch,
+      clearGameParams: spyFunctionClearGame
     };
   });
   it("Should match snapshot", () => {
     const wrapper = shallow(<GameFinished {...props} />);
     expect(wrapper).toMatchSnapshot();
+  });
+  it("Should launch new game when restart button was clicked", () => {
+    const spyFunctionLaunch = jest.fn();
+    const wrapper = shallow(<GameFinished {...props} />);
+    wrapper.instance().handlePlayAgain = spyFunctionLaunch;
+    wrapper.instance().forceUpdate();
+    wrapper.find(".btn-restart").simulate("click");
+    expect(spyFunctionLaunch).toHaveBeenCalled();
+  });
+  it("Should fetch quote when game is finished to show the quote to user", () => {
+    const wrapper = shallow(<GameFinished {...props} />);
+    expect(spyFunctionFetch).toHaveBeenCalled();
   });
 });

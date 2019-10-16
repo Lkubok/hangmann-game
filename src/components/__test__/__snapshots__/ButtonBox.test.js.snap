@@ -6,13 +6,12 @@ exports[`ButtonBox component Should match snapshot 1`] = `
 >
   <Link
     className="btn btn-edit"
-    to="/quotes/undefined/edit"
+    to="/quotes/123/edit"
   >
     Edit
   </Link>
   <button
-    className="btn btn-disabled"
-    disabled={true}
+    className="btn btn-danger"
     onClick={[Function]}
   >
     Delete

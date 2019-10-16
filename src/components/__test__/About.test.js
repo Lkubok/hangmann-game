@@ -10,4 +10,8 @@ describe("About component", () => {
     const wrapper = shallow(<About />);
     expect(wrapper).toMatchSnapshot();
   });
+  it("Tech section should contain only 5 positions", () => {
+    const wrapper = shallow(<About />);
+    expect(wrapper.find(".about-section-inline a").length).toEqual(5);
+  });
 });

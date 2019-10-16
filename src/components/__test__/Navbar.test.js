@@ -11,4 +11,15 @@ describe("Navbar component", () => {
     const wrapper = shallow(<Navbar />);
     expect(wrapper).toMatchSnapshot();
   });
+  it("Should launch handleClick when clicked on link", () => {
+    const spyClick = jest.fn();
+    const wrapper = shallow(<Navbar />);
+    wrapper.instance().handleClick = spyClick;
+    wrapper.instance().forceUpdate();
+    wrapper
+      .find(".nav-item")
+      .first()
+      .simulate("click");
+    expect(spyClick).toHaveBeenCalled();
+  });
 });

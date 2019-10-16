@@ -18,4 +18,15 @@ describe("Quotes component", () => {
     const wrapper = shallow(<Quotes {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+  it("Should change order of sorting after click", () => {
+    const clickSpy = jest.fn();
+    const wrapper = shallow(<Quotes {...props} />);
+    wrapper.instance().handleClick = clickSpy;
+    wrapper.instance().forceUpdate();
+    wrapper
+      .find(".table-headings")
+      .first()
+      .simulate("click");
+    expect(clickSpy).toHaveBeenCalled();
+  });
 });

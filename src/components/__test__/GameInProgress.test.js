@@ -10,4 +10,12 @@ describe("GameInProgress component", () => {
     const wrapper = shallow(<GameInProgress />);
     expect(wrapper).toMatchSnapshot();
   });
+  it("Should delete game when clicked the button Leave Game", () => {
+    const deleteSpy = jest.fn();
+    const wrapper = shallow(<GameInProgress />);
+    wrapper.instance().handleGameDelete = deleteSpy;
+    wrapper.instance().forceUpdate();
+    wrapper.find("button").simulate("click");
+    expect(deleteSpy).toHaveBeenCalled();
+  });
 });

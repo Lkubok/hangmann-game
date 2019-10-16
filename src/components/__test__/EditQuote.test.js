@@ -6,7 +6,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("EditQuote component", () => {
   let props;
-  const spyFunction = jest.fn();
+  const spyFunctionMount = jest.fn();
   beforeEach(() => {
     props = {
       match: {
@@ -14,11 +14,15 @@ describe("EditQuote component", () => {
           quoteId: "123"
         }
       },
-      fetchQuote: spyFunction
+      fetchQuote: spyFunctionMount
     };
   });
   it("Should match snapshot", () => {
     const wrapper = shallow(<EditQuote {...props} />);
     expect(wrapper).toMatchSnapshot();
+  });
+  it("Should start fetching new quote on componentDidMount", () => {
+    const wrapper = shallow(<EditQuote {...props} />);
+    expect(spyFunctionMount).toHaveBeenCalled();
   });
 });

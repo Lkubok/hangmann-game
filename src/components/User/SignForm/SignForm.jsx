@@ -49,7 +49,7 @@ export class SignForm extends Component {
               placeholder="Write your password"
               name="password"
             />
-            <button className="btn" type="submit" disbaled={isSubmiting}>
+            <button className="btn" type="submit" disabled={isSubmiting}>
               Sign In
             </button>
 

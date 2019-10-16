@@ -6,11 +6,12 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("GameSending component", () => {
   let props;
-  const spyFunction = jest.fn();
+  const spyFunctionFetch = jest.fn();
+  const spyFunctionSendGame = jest.fn();
   beforeEach(() => {
     props = {
-      fetchSingleQuote: spyFunction,
-      sendGameStat: spyFunction,
+      fetchSingleQuote: spyFunctionFetch,
+      sendGameStat: spyFunctionSendGame,
       scoreToSend: "win",
       gameId: "123",
       startTime: 123
@@ -19,5 +20,13 @@ describe("GameSending component", () => {
   it("Should match snapshot", () => {
     const wrapper = shallow(<GameSending {...props} />);
     expect(wrapper).toMatchSnapshot();
+  });
+  it("Should fetch single quote on mount", () => {
+    const wrapper = shallow(<GameSending {...props} />);
+    expect(spyFunctionFetch).toHaveBeenCalled();
+  });
+  it("Should send game stats after game", () => {
+    const wrapper = shallow(<GameSending {...props} />);
+    expect(spyFunctionSendGame).toHaveBeenCalled();
   });
 });

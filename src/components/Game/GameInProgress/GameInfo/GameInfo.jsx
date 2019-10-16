@@ -8,6 +8,7 @@ const { REACT_APP_GAME_TIME } = process.env;
 export class GameInfo extends Component {
   constructor(props) {
     super(props);
+    this.interval = null;
     this.state = {
       startTime: props.startTime,
       timeLeft: props.stoppedTime
@@ -16,9 +17,7 @@ export class GameInfo extends Component {
     };
   }
   componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(prevState => ({ timeLeft: prevState.timeLeft - 1000 }));
-    }, 1000);
+    this.launchInterval();
   }
   componentDidUpdate() {
     const { startTime, timeLeft } = this.state;
@@ -33,6 +32,12 @@ export class GameInfo extends Component {
     saveTime(this.state.timeLeft);
     clearInterval(this.interval);
   }
+  launchInterval() {
+    this.interval = setInterval(() => {
+      this.setState(prevState => ({ timeLeft: prevState.timeLeft - 1000 }));
+    }, 1000);
+  }
+
   showTime = () => {
     const { startTime, timeLeft } = this.state;
     const timeLeftValue = timeLeft - startTime;
