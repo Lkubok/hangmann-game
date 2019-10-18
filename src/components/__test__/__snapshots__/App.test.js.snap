@@ -141,7 +141,7 @@ exports[`App component Should match snaptshot 1`] = `
     <Footer />
   </Router>
   <Formatter
-    date={1571399442508}
+    date={1571401022001}
   />
 </Fragment>
 `;

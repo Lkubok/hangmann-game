@@ -11,9 +11,7 @@ export default function DateFormatter(WrappedComponent) {
     }
     componentDidMount() {
       const { date } = this.props;
-      console.log(date);
       const newDate = dateToHuman(date);
-      console.log(newDate);
       this.setState({ date: newDate });
     }
     render() {
