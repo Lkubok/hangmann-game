@@ -20,6 +20,13 @@ export class SignForm extends Component {
   componentDidMount() {
     this.inputFocus.current.focus();
   }
+  validatePassword = value => {
+    let error;
+    if (value === "admin") {
+      error = "dont use admin as password";
+    }
+    return error;
+  };
   render() {
     const { errors, touched, isSubmiting } = this.props;
 
@@ -35,7 +42,7 @@ export class SignForm extends Component {
           <Field
             placeholder="Write your first name"
             name="firstname"
-            innerRef={this.inputFocuskh}
+            innerRef={this.inputFocus}
           />
           <p className="label">
             Last name:
@@ -57,6 +64,7 @@ export class SignForm extends Component {
             type="password"
             placeholder="Write your password"
             name="password"
+            validate={this.validatePassword}
           />
 
           <p className="label">

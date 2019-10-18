@@ -30,6 +30,7 @@ export class SignForm extends Component {
     e.preventDefault();
     history.push("/signup");
   };
+
   render() {
     const { errors, touched, isSubmiting, isRequesting } = this.props;
 
