@@ -82,7 +82,7 @@ export class App extends Component {
           </Main>
           <Footer />
         </Router>
-        <DateDisplay date={Date.now()} />
+        {/* <DateDisplay date={Date.now()} /> */}
       </>
     );
   }
