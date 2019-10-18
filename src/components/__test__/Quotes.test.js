@@ -36,8 +36,4 @@ describe("Quotes component", () => {
       .simulate("click");
     expect(clickSpy).toHaveBeenCalled();
   });
-  it("Should render heading of table correctly", () => {
-    // const wrapper = shallow(<Quotes {...props}/>)
-    // renderTableHeads
-  });
 });

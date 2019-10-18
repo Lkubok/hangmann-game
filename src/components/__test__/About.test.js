@@ -14,4 +14,13 @@ describe("About component", () => {
     const wrapper = shallow(<About />);
     expect(wrapper.find(".about-section-inline a").length).toEqual(5);
   });
+  it("Should render heading correctly", () => {
+    const wrapper = shallow(<About />);
+    expect(
+      wrapper
+        .find("h2")
+        .first()
+        .text()
+    ).toEqual("Hangmann game github repository");
+  });
 });
