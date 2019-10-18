@@ -13,6 +13,13 @@ import PropTypes from "prop-types";
 const { REACT_APP_API_HOST } = process.env;
 
 export class QuoteForm extends Component {
+  constructor() {
+    super();
+    this.inputFocus = React.createRef();
+  }
+  componentDidMount() {
+    this.inputFocus.current.focus();
+  }
   handleGoBack = e => {
     e.preventDefault();
     history.goBack();
@@ -27,7 +34,12 @@ export class QuoteForm extends Component {
             Quote:{" "}
             <span className="error">{touched.quote && errors.quote}</span>
           </p>
-          <Field component="textarea" placeholder="Write Quote" name="quote" />
+          <Field
+            component="textarea"
+            placeholder="Write Quote"
+            name="quote"
+            innerRef={this.inputFocus}
+          />
           <p className="label">
             Quote Author:
             <span className="error">

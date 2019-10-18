@@ -1,0 +1,13 @@
+@import "../../scss/mixins.scss";
+@import "../../scss/variables.scss";
+
+
+.test-app-hoc{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color:$dark-color;
+    color: $white-color;
+}

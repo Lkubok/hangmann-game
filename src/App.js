@@ -19,10 +19,13 @@ import SignUp from "./components/User/SignUp";
 import Footer from "./components/Footer";
 import UserPanel from "./components/UserPanel";
 import ProtectedRoute from "./components/ProtectedRoute";
+// import DateFormatter from "./components/DateFormatter";
+import DateDisplay from "./components/DateDisplay";
 import { setUserLogIn } from "./actions/appActions";
 import { setJwt, setUserEmail } from "./actions/appActions";
 import history from "./history";
 import axios from "axios";
+
 const { REACT_APP_API_HOST } = process.env;
 const token = localStorage.getItem("JWT_HANG_TOKEN");
 const connectionOptions = {
@@ -54,30 +57,33 @@ export class App extends Component {
   render() {
     const { isLogged } = this.props;
     return (
-      <Router history={history}>
-        <Header />
-        <Navbar />
-        <Main>
-          <Switch>
-            <Route exact path={"/"} component={Welcome} />
-            <Route exact path={"/game"} component={Game} />
-            <Route exact path={"/about"} component={About} />
-            <Route exact path={"/quotes"} component={Quotes} />
-            <Route exact path={"/signup"} component={SignUp} />
-            <Route exact path={"/stats"} component={Stats} />
-            <Route exact path={"/addquote"} component={AddQuote} />
-            <ProtectedRoute
-              isAuth={isLogged}
-              path={"/userpanel"}
-              component={UserPanel}
-            />
-            <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />
-            <Route exact path={"/user"} component={User} />
-            <Route path="*" component={NotFoundPage} />
-          </Switch>
-        </Main>
-        <Footer />
-      </Router>
+      <>
+        <Router history={history}>
+          <Header />
+          <Navbar />
+          <Main>
+            <Switch>
+              <Route exact path={"/"} component={Welcome} />
+              <Route exact path={"/game"} component={Game} />
+              <Route exact path={"/about"} component={About} />
+              <Route exact path={"/quotes"} component={Quotes} />
+              <Route exact path={"/signup"} component={SignUp} />
+              <Route exact path={"/stats"} component={Stats} />
+              <Route exact path={"/addquote"} component={AddQuote} />
+              <ProtectedRoute
+                isAuth={isLogged}
+                path={"/userpanel"}
+                component={UserPanel}
+              />
+              <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />
+              <Route exact path={"/user"} component={User} />
+              <Route path="*" component={NotFoundPage} />
+            </Switch>
+          </Main>
+          <Footer />
+        </Router>
+        <DateDisplay date={Date.now()} />
+      </>
     );
   }
 }

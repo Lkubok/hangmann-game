@@ -4,6 +4,7 @@ import ButtonBox from "./ButtonBox";
 import SearchBoxAndPageSize from "./SearchBoxAndPageSize";
 import { connect } from "react-redux";
 import Loading from "../EditQuote/Loading";
+import { dateToHuman } from "../../functions/dateToHuman";
 import {
   tableHeaders as columns,
   columnNames,
@@ -53,11 +54,6 @@ export class Quotes extends Component {
       </td>
     );
   };
-  dateToHuman = dateStamp => {
-    const date = new Date(dateStamp);
-    const year = date.getFullYear().toString();
-    return `${year.slice(-2)}-${date.getMonth() + 1}-${date.getDate()}`;
-  };
   renderTableContents() {
     const { quotes, sortedQuotes, actualPage, pageLimit } = this.props;
     if (quotes.length === 0 || sortedQuotes.length === 0)
@@ -78,8 +74,8 @@ export class Quotes extends Component {
         <td>{el.quote}</td>
         <td>{el.quoteAuthor}</td>
         <td>{el.insertAuthor}</td>
-        <td>{this.dateToHuman(el.dateInsert)}</td>
-        <td>{this.dateToHuman(el.dateModify)}</td>
+        <td>{dateToHuman(el.dateInsert)}</td>
+        <td>{dateToHuman(el.dateModify)}</td>
         <td>{el.lang}</td>
         <td>{el.difficulty}</td>
         <td>

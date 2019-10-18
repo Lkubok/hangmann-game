@@ -19,6 +19,13 @@ import "./SignForm.scss";
 const { REACT_APP_API_HOST } = process.env;
 
 export class SignForm extends Component {
+  constructor() {
+    super();
+    this.focusInput = React.createRef();
+  }
+  componentDidMount() {
+    this.focusInput.current.focus();
+  }
   handleButton = e => {
     e.preventDefault();
     history.push("/signup");
@@ -38,7 +45,11 @@ export class SignForm extends Component {
                 {touched.username && errors.username}
               </span>
             </p>
-            <Field placeholder="Write username" name="username" />
+            <Field
+              placeholder="Write username"
+              name="username"
+              innerRef={this.focusInput}
+            />
             <p className="label">
               Password:
               <span className="error">
