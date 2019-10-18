@@ -6,12 +6,19 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("Quotes component", () => {
   let props;
+  let spyFunction = jest.fn();
   beforeEach(() => {
     props = {
       quotes: ["a", "b"],
       sortedQuotes: ["b", "c"],
       actualPage: 1,
-      pageLimit: 5
+      pageLimit: 5,
+      sortOrder: "ASC",
+      sortBy: "quote",
+      userName: "lucas",
+      updateQuotes: spyFunction,
+      removeAllQuotes: spyFunction,
+      changeSorting: spyFunction
     };
   });
   it("Should match snapshot", () => {
@@ -28,5 +35,9 @@ describe("Quotes component", () => {
       .first()
       .simulate("click");
     expect(clickSpy).toHaveBeenCalled();
+  });
+  it("Should render heading of table correctly", () => {
+    // const wrapper = shallow(<Quotes {...props}/>)
+    // renderTableHeads
   });
 });

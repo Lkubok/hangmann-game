@@ -34,6 +34,7 @@ exports[`Quotes component Should match snapshot 1`] = `
               onClick={[Function]}
             >
               Quote
+              ↑
             </td>
             <td
               className="table-headings"

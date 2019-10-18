@@ -17,7 +17,6 @@ export default function DateFormatter(WrappedComponent) {
       this.setState({ date: newDate });
     }
     render() {
-      const { date } = this.props;
       return (
         <div>
           <WrappedComponent {...this.state} />

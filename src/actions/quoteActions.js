@@ -1,10 +1,6 @@
 import * as types from "../types/quotesTypes";
 import axios from "axios";
 
-export const loadQuotes = quotes => ({
-  type: types.LOAD_QUOTES,
-  quotes
-});
 export const updateSortedQuotes = sortedQuotes => ({
   type: types.UPDATE_SORTED_QUOTES,
   sortedQuotes

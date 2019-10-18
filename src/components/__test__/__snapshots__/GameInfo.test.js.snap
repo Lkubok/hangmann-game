@@ -7,9 +7,7 @@ exports[`GameInfo component Should match snapshot 1`] = `
   <div
     className="info-elem"
   >
-    <p
-      className={true}
-    >
+    <p>
       Lifes left: 
       <span />
     </p>
@@ -17,9 +15,7 @@ exports[`GameInfo component Should match snapshot 1`] = `
   <div
     className="info-elem"
   >
-    <p
-      className={true}
-    >
+    <p>
       Game Start Time: 
       <span>
         NaN : NaN : NaN
@@ -29,9 +25,7 @@ exports[`GameInfo component Should match snapshot 1`] = `
   <div
     className="info-elem"
   >
-    <p
-      className={true}
-    >
+    <p>
       State Of Game: 
       <span />
     </p>
@@ -39,9 +33,7 @@ exports[`GameInfo component Should match snapshot 1`] = `
   <div
     className="info-elem"
   >
-    <p
-      className={true}
-    >
+    <p>
       Time Left: 
       <span>
         0s
