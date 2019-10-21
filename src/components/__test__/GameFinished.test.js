@@ -41,8 +41,4 @@ describe("GameFinished component", () => {
     const wrapper = shallow(<GameFinished {...props} />);
     expect(spyFunctionFetch).toHaveBeenCalled();
   });
-  // it("Should init ComponentDidMount method", () => {
-  //   const wrapper = mount(<GameFinished {...props} />);
-  //   expect(wrapper.instance().componentDidMount()).toEqual(true);
-  // });
 });

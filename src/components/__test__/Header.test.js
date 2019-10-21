@@ -3,25 +3,46 @@ import { shallow, mount } from "enzyme";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { Header } from "../Header/Header";
-// import { connect } from "react-redux";
-// import configureMockStore from "redux-mock-store";
+import configureStore from "redux-mock-store";
 import fetchMock from "fetch-mock";
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 
-// const middlewares = [thunk];
-// const mockStore = configureMockStore(middlewares);
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Header component", () => {
-  beforeEach(() => {});
-  afterEach(() => {
-    fetchMock.restore();
-  });
+  // beforeEach(() => {
+  //   const initialState = {
+  //     appParamsReducer:{
+  //       isLogged: true,
+  //       userName: "Test User"
+  //     }
+  //   }
+  //   // const store = mockStore(initialState)
+  // });
+  // afterEach(() => {
+  //   fetchMock.restore();
+  // });
   it("Should match snapshot", () => {
     const wrapper = shallow(<Header />);
     expect(wrapper).toMatchSnapshot();
   });
+  // it("Should get user data from redux store", () => {
+  //   const initialState = {
+  //     // appParamsReducer: {
+  //     isLogged: true,
+  //     userName: "Test User"
+  //     // }
+  //   };
+  //   const store = mockStore(initialState);
+
+  //   // const userName = store.appParamsReducer.isLogged
+  //   const wrapper = mount(<Header />);
+  //   const user = wrapper.find("h5").text();
+  //   expect(user).toEqual("Test User");
+  // });
   // it("should fully render woth mocked redux store", () => {
   //   const mapStateToProps = state => ({
   //     userName: state.appParamsReducer.userName,

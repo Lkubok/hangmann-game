@@ -1,11 +1,10 @@
 import React from "react";
-import Enzyme, { shallow, mount } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { Keypad } from "../Game/GameInProgress/Keypad/Keypad";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("KeyPad component", () => {
-  const spyAddListener = jest.fn();
   const spyRemoveListener = jest.fn();
   let props = {
     guessed: ["a", "b"],
