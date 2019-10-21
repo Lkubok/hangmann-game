@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withFormik, Form, Field, getIn } from "formik";
+import { withFormik, Form, Field, FieldArray, getIn } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
@@ -108,6 +108,8 @@ export class SignForm extends Component {
           </p>
           <Field type="text" placeholder="City" name="address.city" />
 
+          <FieldArray />
+
           <button className="btn" type="submit" disabled={isSubmiting}>
             Sign Up
           </button>
@@ -188,7 +190,6 @@ const loginFormik = withFormik({
     if (values.passwordVerification !== values.password) {
       setErrors({ passwordVerification: `Passwords should be equal` });
     } else {
-      console.log(values);
       axios
         .post(REACT_APP_API_HOST + `/auth/signup`, values)
         .then(response => {

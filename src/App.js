@@ -18,6 +18,7 @@ import Game from "./components/Game";
 import SignUp from "./components/User/SignUp";
 import Footer from "./components/Footer";
 import UserPanel from "./components/UserPanel";
+import SignUpFieldArray from "./components/User/SignUpFieldArray";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TextDisplay from "./components/TextDisplay";
 import { setUserLogIn } from "./actions/appActions";
@@ -76,6 +77,7 @@ export class App extends Component {
               />
               <Route path={"/quotes/:quoteId/edit"} component={EditQuote} />
               <Route exact path={"/user"} component={User} />
+              <Route exact path="/field" component={SignUpFieldArray} />
               <Route path="*" component={NotFoundPage} />
             </Switch>
           </Main>
