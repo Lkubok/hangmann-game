@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
+import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { GameFinished } from "../Game/GameInProgress/GameFinished/GameFinished";
 Enzyme.configure({ adapter: new Adapter() });
@@ -41,4 +41,8 @@ describe("GameFinished component", () => {
     const wrapper = shallow(<GameFinished {...props} />);
     expect(spyFunctionFetch).toHaveBeenCalled();
   });
+  // it("Should init ComponentDidMount method", () => {
+  //   const wrapper = mount(<GameFinished {...props} />);
+  //   expect(wrapper.instance().componentDidMount()).toEqual(true);
+  // });
 });

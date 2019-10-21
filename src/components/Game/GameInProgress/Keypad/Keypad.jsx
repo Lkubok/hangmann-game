@@ -16,11 +16,21 @@ export class Keypad extends Component {
       guessed: []
     };
   }
-  componentDidMount() {
+  launchListener() {
     window.addEventListener("keydown", this.handleKeyPress);
   }
-  componentWillUnmount() {
+  removeListener() {
     window.removeEventListener("keydown", this.handleKeyPress);
+  }
+  componentDidMount() {
+    this.launchListener();
+  }
+  componentWillUnmount() {
+    this.removeListener();
+  }
+  shouldComponentUpdate(prevProps, nextProps) {
+    if (prevProps.typed === nextProps.typed) return false;
+    return true;
   }
   onKeypadPress = button => {
     const { typed } = this.props;
