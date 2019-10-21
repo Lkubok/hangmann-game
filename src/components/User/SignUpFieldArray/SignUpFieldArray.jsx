@@ -3,7 +3,6 @@ import { Field, FieldArray, Form, Formik, getIn } from "formik";
 import * as React from "react";
 import { generate } from "shortid";
 import * as yup from "yup";
-// import { TextField } from "material-ui";
 
 const validationSchema = yup.object().shape({
   users: yup.array().of(
@@ -42,7 +41,9 @@ const SignUpFieldArray = () => {
       initialValues={{
         users: [{ id: "1", firstName: "lucas", login: "test" }]
       }}
-      onSubmit={() => {}}
+      onSubmit={values => {
+        alert(JSON.stringify(values));
+      }}
       validationSchema={validationSchema}
     >
       {({ values }) => (
@@ -88,6 +89,7 @@ const SignUpFieldArray = () => {
                 </>
               )}
             </FieldArray>
+            <Button type="submit">Submit</Button>
           </Form>
         </>
       )}

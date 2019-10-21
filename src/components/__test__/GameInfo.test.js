@@ -16,18 +16,5 @@ describe("GameInfo component", () => {
     const intervalSpy = jest.fn();
     wrapper.instance().launchInterval = intervalSpy;
     wrapper.instance().forceUpdate();
-    // expect(intervalSpy).toHaveBeenCalled();
-    // const instance = wrapper.instance();
-    // const spy = jest.spyOn(instance.componentDidMount, "setInterval");
-    // jest.spyOn(global, "clearInterval");
   });
-
-  // it("Should clear interval on Unmount", () => {
-  //   const wrapper = shallow(<GameInfo />);
-  //   const instance = wrapper.instance();
-  //   const spy = jest.spyOn(instance, "clearInterval");
-  //   // jest.spyOn(global, "clearInterval");
-  //   expect(spy).toHaveBeenCalled();
-  // });
-  // it("Should remove interval on UnMount", () => {});
 });

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HoC TextFormatter component Should match snapshot 1`] = `
+<TextDisplay
+  text="test"
+>
+  <div
+    className="test-app-hoc"
+  >
+    test
+    <span />
+  </div>
+</TextDisplay>
+`;

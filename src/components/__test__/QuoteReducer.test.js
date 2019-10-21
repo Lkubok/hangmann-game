@@ -24,10 +24,4 @@ describe("quotes reducer", () => {
       actualPage: 4
     });
   });
-
-  // should load quotes on startup
-
-  // export const loadQuotes = quotes => ({
-  //     type: types.LOAD_QUOTES,
-  //     quotes
 });
