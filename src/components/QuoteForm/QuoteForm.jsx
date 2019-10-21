@@ -65,7 +65,7 @@ export class QuoteForm extends Component {
             <span className="error">{touched.lang && errors.lang}</span>
           </p>
           <Field type="text" placeholder="Language" name="lang" />
-          <button className="btn" type="submit" disbaled={isSubmiting}>
+          <button className="btn" type="submit" disabled={isSubmiting}>
             Submit quote
           </button>
           <button className="btn btn-info" onClick={this.handleGoBack}>

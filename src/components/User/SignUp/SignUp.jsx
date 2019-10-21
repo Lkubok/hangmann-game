@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withFormik, Form, Field } from "formik";
+import { withFormik, Form, Field, getIn } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
@@ -91,7 +91,24 @@ export class SignForm extends Component {
           </p>
           <Field type="number" placeholder="What your age ?" name="age" />
 
-          <button className="btn" type="submit" disbaled={isSubmiting}>
+          <p className="label">
+            Country:
+            <span className="error">
+              {getIn(touched, "address.country") &&
+                getIn(errors, "address.country")}
+            </span>
+          </p>
+          <Field type="text" placeholder="Country" name="address.country" />
+
+          <p className="label">
+            City:
+            <span className="error">
+              {getIn(touched, "address.city") && getIn(errors, "address.city")}
+            </span>
+          </p>
+          <Field type="text" placeholder="City" name="address.city" />
+
+          <button className="btn" type="submit" disabled={isSubmiting}>
             Sign Up
           </button>
         </Form>
@@ -112,7 +129,8 @@ const loginFormik = withFormik({
     age,
     username,
     password,
-    passwordVerification
+    passwordVerification,
+    address
   }) {
     return {
       firstname: firstname || "",
@@ -121,7 +139,8 @@ const loginFormik = withFormik({
       password: password || "",
       passwordVerification: passwordVerification || "",
       email: email || "",
-      age: age || ""
+      age: age || "",
+      address: address || ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -153,12 +172,23 @@ const loginFormik = withFormik({
     age: Yup.number()
       .min(6)
       .max(115)
-      .required("Age is required")
+      .required("Age is required"),
+    address: Yup.object().shape({
+      country: Yup.string()
+        .min(3)
+        .max(255)
+        .required("Country is Required"),
+      city: Yup.string()
+        .min(3)
+        .max(255)
+        .required("City is Required")
+    })
   }),
   handleSubmit(values, { props, resetForm, setErrors }) {
     if (values.passwordVerification !== values.password) {
       setErrors({ passwordVerification: `Passwords should be equal` });
     } else {
+      console.log(values);
       axios
         .post(REACT_APP_API_HOST + `/auth/signup`, values)
         .then(response => {
