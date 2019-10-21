@@ -140,5 +140,8 @@ exports[`App component Should match snaptshot 1`] = `
     </Main>
     <Footer />
   </Router>
+  <TextFormatter
+    text="Wisielec"
+  />
 </Fragment>
 `;

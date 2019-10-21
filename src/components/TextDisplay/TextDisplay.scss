@@ -8,6 +8,11 @@
     justify-content: center;
     align-items: center;
     height: 30px;
-    background-color:$dark-color;
+    background-color:$dark-color-light-hover;
     color: $white-color;
+    color: $primary-color;
+    white-space: pre;
+    span{
+        color: $secondary-color;
+    }
 }

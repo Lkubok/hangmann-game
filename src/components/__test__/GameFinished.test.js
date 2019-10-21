@@ -18,7 +18,7 @@ describe("GameFinished component", () => {
       gameStatus: "win",
       gameId: "123",
       searchedQuote: "test quote",
-      scoreToSend: "win",
+      scoreToSend: {},
       startTime: 123,
       isFinished: true,
       fetchSingleQuote: spyFunctionFetch,

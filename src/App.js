@@ -19,8 +19,7 @@ import SignUp from "./components/User/SignUp";
 import Footer from "./components/Footer";
 import UserPanel from "./components/UserPanel";
 import ProtectedRoute from "./components/ProtectedRoute";
-// import DateFormatter from "./components/DateFormatter";
-import DateDisplay from "./components/DateDisplay";
+import TextDisplay from "./components/TextDisplay";
 import { setUserLogIn } from "./actions/appActions";
 import { setJwt, setUserEmail } from "./actions/appActions";
 import history from "./history";
@@ -82,7 +81,7 @@ export class App extends Component {
           </Main>
           <Footer />
         </Router>
-        {/* <DateDisplay date={Date.now()} /> */}
+        <TextDisplay text={"Wisielec"} />
       </>
     );
   }
