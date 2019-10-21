@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({});
 
 UserPanel.propTypes = {
-  isLogged: PropTypes.bool.isRequired
+  isLogged: PropTypes.bool
 };
 
 export default connect(

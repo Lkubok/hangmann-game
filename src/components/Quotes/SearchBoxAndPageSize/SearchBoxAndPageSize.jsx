@@ -62,12 +62,12 @@ const mapDispatchToProps = {
 };
 
 SearchBoxAndPageSize.propTypes = {
-  filterQuery: PropTypes.string.isRequired,
+  filterQuery: PropTypes.string,
   pageSize: PropTypes.number,
-  quotes: PropTypes.array.isRequired,
-  changeFilter: PropTypes.func.isRequired,
-  changeSortedQuotes: PropTypes.func.isRequired,
-  changePageSize: PropTypes.func.isRequired
+  quotes: PropTypes.array,
+  changeFilter: PropTypes.func,
+  changeSortedQuotes: PropTypes.func,
+  changePageSize: PropTypes.func
 };
 
 export default connect(

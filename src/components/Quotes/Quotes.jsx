@@ -133,16 +133,16 @@ const mapDispatchToProps = {
 };
 
 Quotes.propTypes = {
-  quotes: PropTypes.array.isRequired,
-  sortedQuotes: PropTypes.array.isRequired,
-  actualPage: PropTypes.number.isRequired,
-  pageLimit: PropTypes.number.isRequired,
-  sortOrder: PropTypes.string.isRequired,
-  sortBy: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  updateQuotes: PropTypes.func.isRequired,
-  removeAllQuotes: PropTypes.func.isRequired,
-  changeSorting: PropTypes.func.isRequired
+  quotes: PropTypes.array,
+  sortedQuotes: PropTypes.array,
+  actualPage: PropTypes.number,
+  pageLimit: PropTypes.number,
+  sortOrder: PropTypes.string,
+  sortBy: PropTypes.string,
+  userName: PropTypes.string,
+  updateQuotes: PropTypes.func,
+  removeAllQuotes: PropTypes.func,
+  changeSorting: PropTypes.func
 };
 
 export default connect(

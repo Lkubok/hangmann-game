@@ -241,8 +241,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Stats.propTypes = {
-  isRequesting: PropTypes.bool.isRequired,
-  setRequesting: PropTypes.func.isRequired
+  isRequesting: PropTypes.bool,
+  setRequesting: PropTypes.func
 };
 
 export default connect(

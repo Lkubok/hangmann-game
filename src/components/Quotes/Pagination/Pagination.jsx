@@ -43,11 +43,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Pagination.propTypes = {
-  pagesCount: PropTypes.number.isRequired,
-  actualPage: PropTypes.number.isRequired,
-  filterQuery: PropTypes.string.isRequired,
-  pageLimit: PropTypes.number.isRequired,
-  changePage: PropTypes.func.isRequired
+  pagesCount: PropTypes.number,
+  actualPage: PropTypes.number,
+  filterQuery: PropTypes.string,
+  pageLimit: PropTypes.number,
+  changePage: PropTypes.func
 };
 
 export default connect(

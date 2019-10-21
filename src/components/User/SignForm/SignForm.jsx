@@ -133,11 +133,11 @@ const loginFormik = withFormik({
 });
 
 SignForm.propTypes = {
-  isRequesting: PropTypes.bool.isRequired,
-  setUserLogIn: PropTypes.func.isRequired,
-  setJwt: PropTypes.func.isRequired,
-  setUserEmail: PropTypes.func.isRequired,
-  setRequesting: PropTypes.func.isRequired
+  isRequesting: PropTypes.bool,
+  setUserLogIn: PropTypes.func,
+  setJwt: PropTypes.func,
+  setUserEmail: PropTypes.func,
+  setRequesting: PropTypes.func
 };
 
 export default compose(

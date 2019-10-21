@@ -141,11 +141,11 @@ const mapDispatchToProps = {
 };
 
 Navbar.propTypes = {
-  userName: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
+  isLogged: PropTypes.bool,
   gameId: PropTypes.string,
-  isFinished: PropTypes.bool.isRequired,
-  setUserLogOut: PropTypes.func.isRequired
+  isFinished: PropTypes.bool,
+  setUserLogOut: PropTypes.func
 };
 
 export default connect(

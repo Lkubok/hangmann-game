@@ -33,8 +33,8 @@ const mapDispatchToProps = {
 };
 
 EditQuote.propTypes = {
-  fetchQuote: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  fetchQuote: PropTypes.func,
+  isFetching: PropTypes.bool
 };
 
 export default connect(

@@ -57,8 +57,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {};
 
 Tiles.propTypes = {
-  lettersToGuess: PropTypes.array.isRequired,
-  typed: PropTypes.array.isRequired
+  lettersToGuess: PropTypes.array,
+  typed: PropTypes.array
 };
 
 export default connect(

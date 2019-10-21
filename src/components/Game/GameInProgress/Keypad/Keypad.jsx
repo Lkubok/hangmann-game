@@ -98,11 +98,11 @@ const mapDispatchToProps = {
 };
 
 Keypad.propTypes = {
-  pressLetter: PropTypes.func.isRequired,
-  gameId: PropTypes.string.isRequired,
-  typed: PropTypes.array.isRequired,
-  guessed: PropTypes.array.isRequired,
-  gameLang: PropTypes.string.isRequired
+  pressLetter: PropTypes.func,
+  gameId: PropTypes.string,
+  typed: PropTypes.array,
+  guessed: PropTypes.array,
+  gameLang: PropTypes.string
 };
 
 export default connect(

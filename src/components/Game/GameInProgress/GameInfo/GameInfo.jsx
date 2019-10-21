@@ -90,13 +90,13 @@ const mapDispatchToProps = {
 };
 
 GameInfo.propTypes = {
-  lifes: PropTypes.number.isRequired,
-  startTime: PropTypes.number.isRequired,
-  stateOfGame: PropTypes.string.isRequired,
-  isFinished: PropTypes.bool.isRequired,
+  lifes: PropTypes.number,
+  startTime: PropTypes.number,
+  stateOfGame: PropTypes.string,
+  isFinished: PropTypes.bool,
   stoppedTime: PropTypes.string,
-  closeGame: PropTypes.func.isRequired,
-  saveTime: PropTypes.func.isRequired
+  closeGame: PropTypes.func,
+  saveTime: PropTypes.func
 };
 
 export default connect(

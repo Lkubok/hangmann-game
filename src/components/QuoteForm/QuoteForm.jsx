@@ -177,10 +177,10 @@ const myFormik = withFormik({
 
 QuoteForm.propTypes = {
   quoteId: PropTypes.string,
-  isLogged: PropTypes.bool.isRequired,
-  userName: PropTypes.string.isRequired,
-  token: PropTypes.string.isRequired,
-  updateQuotes: PropTypes.func.isRequired
+  isLogged: PropTypes.bool,
+  userName: PropTypes.string,
+  token: PropTypes.string,
+  updateQuotes: PropTypes.func
 };
 
 export default compose(

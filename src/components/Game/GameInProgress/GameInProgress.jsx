@@ -59,19 +59,19 @@ const mapDispatchToProps = {
 };
 
 GameInProgress.propTypes = {
-  deleteGame: PropTypes.func.isRequired,
-  pressLetter: PropTypes.func.isRequired,
-  closeGame: PropTypes.func.isRequired,
-  clearGameParams: PropTypes.func.isRequired,
-  gameId: PropTypes.string.isRequired,
-  quoteAuthor: PropTypes.string.isRequired,
-  isFinished: PropTypes.bool.isRequired,
-  userName: PropTypes.string.isRequired,
-  userEmail: PropTypes.string.isRequired,
-  userLevel: PropTypes.string.isRequired,
-  userLang: PropTypes.string.isRequired,
-  typed: PropTypes.array.isRequired,
-  guessed: PropTypes.array.isRequired
+  deleteGame: PropTypes.func,
+  pressLetter: PropTypes.func,
+  closeGame: PropTypes.func,
+  clearGameParams: PropTypes.func,
+  gameId: PropTypes.string,
+  quoteAuthor: PropTypes.string,
+  isFinished: PropTypes.bool,
+  userName: PropTypes.string,
+  userEmail: PropTypes.string,
+  userLevel: PropTypes.string,
+  userLang: PropTypes.string,
+  typed: PropTypes.array,
+  guessed: PropTypes.array
 };
 
 export default connect(

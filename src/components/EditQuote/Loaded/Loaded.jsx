@@ -31,7 +31,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({});
 
 Loaded.propTypes = {
-  fetchedQuote: PropTypes.object.isRequired
+  fetchedQuote: PropTypes.object
 };
 
 export default connect(

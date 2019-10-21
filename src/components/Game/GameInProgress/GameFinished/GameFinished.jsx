@@ -84,20 +84,20 @@ const mapDispatchToProps = {
 };
 
 GameFinished.propTypes = {
-  userName: PropTypes.string.isRequired,
-  userEmail: PropTypes.string.isRequired,
-  userLevel: PropTypes.string.isRequired,
-  userLang: PropTypes.string.isRequired,
-  isGuessed: PropTypes.bool.isRequired,
-  gameStatus: PropTypes.string.isRequired,
-  gameId: PropTypes.string.isRequired,
-  searchedQuote: PropTypes.string.isRequired,
-  scoreToSend: PropTypes.object.isRequired,
-  startTime: PropTypes.number.isRequired,
-  isFinished: PropTypes.bool.isRequired,
-  clearGameParams: PropTypes.func.isRequired,
-  fetchSingleQuote: PropTypes.func.isRequired,
-  sendGameStat: PropTypes.func.isRequired
+  userName: PropTypes.string,
+  userEmail: PropTypes.string,
+  userLevel: PropTypes.string,
+  userLang: PropTypes.string,
+  isGuessed: PropTypes.bool,
+  gameStatus: PropTypes.string,
+  gameId: PropTypes.string,
+  searchedQuote: PropTypes.string,
+  scoreToSend: PropTypes.object,
+  startTime: PropTypes.number,
+  isFinished: PropTypes.bool,
+  clearGameParams: PropTypes.func,
+  fetchSingleQuote: PropTypes.func,
+  sendGameStat: PropTypes.func
 };
 
 export default connect(

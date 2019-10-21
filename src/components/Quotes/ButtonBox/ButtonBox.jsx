@@ -43,9 +43,9 @@ const mapDispatchToProps = {
 };
 
 ButtonBox.propTypes = {
-  id: PropTypes.string.isRequired,
-  token: PropTypes.string.isRequired,
-  deleteQuote: PropTypes.func.isRequired
+  id: PropTypes.string,
+  token: PropTypes.string,
+  deleteQuote: PropTypes.func
 };
 
 export default connect(

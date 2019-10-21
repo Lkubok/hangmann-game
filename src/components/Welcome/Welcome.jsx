@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {};
 
 Welcome.propTypes = {
-  isLogged: PropTypes.bool.isRequired
+  isLogged: PropTypes.bool
 };
 
 export default connect(
