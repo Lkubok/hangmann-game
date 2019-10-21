@@ -12,10 +12,11 @@ import PropTypes from "prop-types";
 export class SearchBoxAndPageSize extends Component {
   handleChange = e => {
     const { value, name } = e.target;
-    const { changePageSize } = this.props;
-    if (name === "pageSize") {
-      changePageSize(parseInt(value));
-    } else {
+    const { changePageSize, changeFilter, changeSortedQuotes } = this.props;
+    if (name === "pageSize") changePageSize(parseInt(value));
+    else {
+      changeFilter(value);
+      changeSortedQuotes(this.props.quotes);
     }
   };
   render() {

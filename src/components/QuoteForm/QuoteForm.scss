@@ -10,8 +10,6 @@
   @include form-edit;
   @media all and (max-width: 992px) {
     padding-top: 0px !important;
- 
-  
   }
 
   input,
@@ -19,14 +17,14 @@
     @include input-textarea-look;
   }
   textarea {
-    resize: none;
     height: 100px;
+    resize: none;
   }
   .btn {
     @include std-button;
     &-info {
-      border: 1px solid $secondary-color;
       background-color: $dark-color;
+      border: 1px solid $secondary-color;
       &:hover {
         background-color: $dark-color-light;
         color: $white-color;
