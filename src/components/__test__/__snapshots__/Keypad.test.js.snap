@@ -5,7 +5,7 @@ exports[`KeyPad component Should match snapshot 1`] = `
   className="keyboard"
   key="a-b"
 >
-  <KeyboardReact
+  <e
     buttonTheme={
       Array [
         Object {

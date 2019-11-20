@@ -15,7 +15,10 @@ exports[`App component It should fully mount with redux mocked store 1`] = `
       "subscription": Subscription {
         "handleChangeWrapper": [Function],
         "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
           "notify": [Function],
+          "subscribe": [Function],
         },
         "onStateChange": [Function],
         "parentSub": undefined,
@@ -27,7 +30,7 @@ exports[`App component It should fully mount with redux mocked store 1`] = `
           "replaceReducer": [Function],
           "subscribe": [Function],
         },
-        "unsubscribe": null,
+        "unsubscribe": [Function],
       },
     }
   }
