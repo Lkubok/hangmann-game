@@ -32,6 +32,9 @@ exports[`Welcome component Should match snaptshot 1`] = `
     >
       Browse available quotes
     </button>
+    <ErrorBoundary>
+      <ProblematicButton />
+    </ErrorBoundary>
   </div>
   <div
     className="app-info"

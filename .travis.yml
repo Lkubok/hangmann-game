@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
   - node_modules
 script:
-  - npm test
-  - npm run build
+- npm test
+- npm run build
+deploy:
+  provider: heroku
+  app: hangmann-game
+  api_key:
+    secure: c065JaeeO8aPwQUDIYy743F/zj5ojYp+nq7JAs1hsbvisAMn1BnYywZ7t7tQ3D1G8Vmorz4dk0CJvr6gagWvzvT2yyde5OpqlF2PJdFpRdNckU3OTHunOSR8VFYhDU9HhkPJ9tpUFZ08hkXTrrKZXUc3+Nn163+LOsKZFRvnCxbGUy3891vebCrCrHHApiGq2f6nN47n5/OPt5f4BHkcahKwFcakAxEc0v2rM9ELCQOsxvNsRG9YXjVc5+amV+zLYd32NLHBU2STmH+TC2vcs0b5SQpc2pMQWICuaMTX3nJ91oZbAJLExbfD5715wYQUbMhEock1QG1FAn0sMWdsJNC9SfP/oPFZ9v860v/36mjmK4aJyBtwU7rkbyuOIGz+wPqvFMj/dA177t8BQ3Y29z9wzW5iNkiujBGMy98XYsAJ9hvq14R3hl9REi1WbJm7k7CMjOw6gDjYEB52tidoIZ71Rf6UcePslI49CsPM/A+FrQPMn/fHGnQVpqMrhidEUjwH7KunjaCew052hSCLQ7kPTwRP58bvuISaRpbG211wHjtEVCtDE7wx4FsuqHoX1s0FC1fp8ZvjbSKpRuKWCZJpfTn5dPOnhKG+t/+iFBSjWL8DumqU6v2Oy+ZRGyGi8Vt74Dj534hLmgHDtsYX0hNWy+xqkXfLmB2hvlB4weI=
