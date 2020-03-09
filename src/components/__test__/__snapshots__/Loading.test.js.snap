@@ -20,6 +20,7 @@ exports[`Loading component Should match snapshot 1`] = `
   border-color: red;
   color: green;
 ",
+          "toString": [Function],
         }
       }
       loading={true}
