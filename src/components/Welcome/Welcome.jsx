@@ -14,7 +14,11 @@ export class Welcome extends Component {
           <img className="hang-image" src="./img/hanged-man.png" alt="" />
         </div>
         <div className="welcome-buttons">
-          <button className="button-play" onClick={() => history.push("/game")}>
+          <button
+            className="button-play"
+            data-tooltip="CSS EVALUATION"
+            onClick={() => history.push("/game")}
+          >
             {isLogged ? <>Play</> : <>Play without login for free</>}
           </button>
           {isLogged ? null : (

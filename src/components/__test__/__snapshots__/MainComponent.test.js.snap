@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Box Component Should match snapshot after mount 1`] = `
+<App
+  changeFilter={[MockFunction]}
+  changePageSize={[MockFunction]}
+  changeSortedQuotes={[MockFunction]}
+  filterQuery={null}
+  pageSize={null}
+  quotes={null}
+>
+  <div
+    style={
+      Object {
+        "height": "100vh",
+      }
+    }
+  >
+    <LogicComponent
+      render={[Function]}
+    >
+      <div
+        onMouseMove={[Function]}
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <h1
+          id="test"
+        >
+          Coordinates: (
+          0
+          , 
+          0
+          )
+        </h1>
+      </div>
+    </LogicComponent>
+  </div>
+</App>
+`;
