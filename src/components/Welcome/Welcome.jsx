@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import ProblematicButton from "../ProblematicButon/ProblematicButton";
 import "./Welcome.scss";
 
 export class Welcome extends Component {
@@ -21,6 +23,9 @@ export class Welcome extends Component {
           <button onClick={() => history.push("/quotes")}>
             Browse available quotes
           </button>
+          <ErrorBoundary>
+            <ProblematicButton />
+          </ErrorBoundary>
         </div>
         <div className="app-info">
           <p className="info info-header">Why play Hangman ?</p>
@@ -48,7 +53,4 @@ Welcome.propTypes = {
   isLogged: PropTypes.bool
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
