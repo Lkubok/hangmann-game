@@ -11,7 +11,7 @@
     "fetch-mock": "^7.5.1",
     "formik": "^1.5.8",
     "formik-persist": "^1.1.0",
-    "highcharts": "^7.2.0",
+    "highcharts": "^7.2.2",
     "highcharts-react-official": "^2.2.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
