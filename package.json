@@ -21,7 +21,7 @@
     "path": "^0.12.7",
     "normalizr": "^3.6.0",
     "prop-types": "^15.7.2",
-    "qs": "^6.9.0",
+    "qs": "^6.9.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-paginate": "^6.3.0",
